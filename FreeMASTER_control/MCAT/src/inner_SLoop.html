@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html style="text-align: center;">     
+  <head>       
+    <meta http-equiv="content-type" content="text/html; charset=windows-1250">       
+    <meta name="generator" content="PSPad editor, www.pspad.com">       
+    <title>    
+    </title>       
+    <link href="style.css" rel="stylesheet" type="text/css" />      
+    <script type="text/javascript" src="JS_functions\mainInclude.js"></script>
+    <script LANGUAGE="JavaScript" type ="text/javascript">
+       includeJSfiles();
+    </script>
+   </head>     
+  <body id="SLoop"  onload=" initLoadFormSloop()" background="images/pozadi.png"  style="display: inline-block; margin: 10px auto; text-align: center; ">                                          
+    <OBJECT id="MCB_PC_Master_Services1" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153" name="pcm">	     
+    </OBJECT>	   
+    <OBJECT style="display:none;" CLASSID = "clsid:5220cb21-c88d-11cf-b347-00aa00a28331">         
+      <PARAM NAME="LPKPath" VALUE="gmsctls.lpk">         
+    </OBJECT>   
+      
+    <!-- Headline -->
+    <div class="HeadBorder fontTitle" style="width: 700px;">Speed Control Loop</div>  
+    <div>              
+      <table style="width: 700px;" class="MainTab">               
+          <tr>                 
+            <td width="45%" align="left" valign="top" style="padding-left: 5px;">                      		                            
+            <!-- speed control loop input parameters-->     
+              <fieldset  style="width: 100%;" class="ContBox">
+                <legend class="fontControlLabel">Loop Parameters</legend>        
+                <table id="parameterTable" width="100%"  border="0"   class="ContBoxTab">          
+                           
+                  <script>
+                  // speed control loop sampling period
+                  document.write( build_parameter_line("Sample&nbsp;Time", "SLOOP_Ts", "sec", "Speed Control Loop Sampling Period", 0, ""));
+                  // speed control loop bandwidth
+                  document.write( build_parameter_line("F0", "SLOOP_F0", "Hz", "Speed Control Loop Bandwidth, typical range <5;50>", 0, ""));
+                  // speed control loop attenuation
+                  document.write( build_parameter_line("&xi;", "SLOOP_Att", "-", "Speed Control Loop Attenuation, typical range <0.707;1>", 0, ""));
+                  </script>	
+              	                            
+               </table>
+              </fieldset>
+             
+              <!-- speed ramp-->     
+              <fieldset id="SpeedRamp"  style="width: 100%;" class="ContBox">
+                <legend class="fontControlLabel">Speed Ramp </legend>        
+                <table  width="100%"  border="0"   class="ContBoxTab"  >            
+                       
+                  <script>
+                  // speed controller ramp
+                  document.write( build_parameter_line("Ramp&nbsp;Up","RAMP_UP", "rpm/sec", "Speed Ramp slope definition - rising ", 0, "sat"));
+                  document.write( build_parameter_line("Ramp&nbsp;Down", "RAMP_DOWN", "rpm/sec", "Speed Ramp slope definition - falling", 0, "sat"));
+                  </script>	
+                                          
+               </table>
+              </fieldset>
+              <!-- speed filter Moving Average with Lambda parameter-->
+              <fieldset id="SpeedFilterMAF_lambda"  style="width: 100%;" class="ContBox">
+                <legend class="fontControlLabel">Actual Speed Filter</legend>        
+                <table  width="100%"  border="0"   class="ContBoxTab" >            
+                             
+                  <script>
+                    document.write( build_parameter_line("MA Filter&nbsp;(lambda)", "SPEED_MAF_L", "-", "Smoothing factor of the Moving Avarage Filter for speed measurement, range <0,1>"));
+                  </script>	
+                                             
+                </table>
+              </fieldset>
+              <!-- speed filter Moving Average with n-point parameter-->
+              <fieldset id="SpeedFilterMAF_npoint"  style="width: 100%; " class="ContBox">
+                <legend class="fontControlLabel">Actual Speed Filter</legend>        
+                <table  width="100%"  border="0"   class="ContBoxTab" >            
+                         
+                  <script>
+                    document.write( build_parameter_line("MA Filter&nbsp;(n-samples)", "SPEED_MAF_N", "2^n", "Number of 2^n points of Moving Avarage Filter for speed measurement, range <0;15>"));
+                  </script>	
+                                        
+               </table> 
+              </fieldset>              
+              <!-- speed filter IIR -->
+              <fieldset id="SpeedFilterIIR"  style="width: 100%; " class="ContBox">
+                <legend class="fontControlLabel">Actual Speed Filter</legend>        
+                <table  width="100%"  border="0"   class="ContBoxTab" >            
+                         
+                  <script>
+                    document.write( build_parameter_line("IIR Cut-off&nbsp;freq ", "SPEED_IIR_FREQ", "Hz", "Cut-off Frequency of 1st order IIR Filter for speed measurement"));
+                  </script>	
+                                        
+               </table> 
+              </fieldset>
+              <!-- speed controller limits-->
+              <fieldset id="SpeedPIlimits"  style="width: 100%;" class="ContBox">     
+                <legend class="fontControlLabel">Speed PI Controller Limits</legend>        
+                <table width="100%"  border="0"   class="ContBoxTab" >            
+                          
+                  <script>
+                  // speed controller limits
+                  document.write( build_parameter_line("Upper&nbsp;limit", "SL_HIGH_LIM", "A", "Upper Limit of Speed Loop, typically equals to I phase nominal", 0, ""));
+                  document.write( build_parameter_line("Lower&nbsp;limit" ,"SL_LOW_LIM", "A", "Lower Limit of Speed Loop, typically equals to minus I phase nominal", 0, ""));
+                  </script>	
+                                      
+               </table>
+              </fieldset>
+            </td>                                
+            <td width="60%"  align="right" valign="top" style="padding-left: 5px; padding-right: 10px;">                                                 
+              <!-- Speed PI parallel controller parameters-->   
+                <fieldset id="Speed_PIparal"  style="width: 100%;" class="ContBox">
+                    <legend class="fontControlLabel">Speed Parallel PI Controller Constants</legend>
+
+                    <table id="SL_PI_const" width="100%" class="ContBoxTab"  >            
+                      <script>
+                      // speed controller proportional gain and gain scales 
+                      document.write(build_constant_line("PropGain", "SL_Kp_g", "Speed PI - Proportional gain in Z domain"));
+                      document.write(build_constant_line("PropGainShift", "SL_Kp_sh", "Speed PI - Proportional gain shift in Z domain")); 
+                      // speed controller integral gain and gain scales 
+                      document.write(build_constant_line("IntegGain","SL_Ki_g", "Speed PI - Intergral gain in Z domain"));
+                      document.write(build_constant_line("IntegGainShift", "SL_Ki_sh", "Speed PI - Intergral gain shift in Z domain")); 
+                      </script>	
+                    </table>
+                </fieldset>
+
+                <fieldset id="Speed_PIparal_manual"  style="width: 100%;" class="ContBox">
+                    <legend class="fontControlLabel">Speed Parallel PI Controller Constants</legend>                
+                    <table id="SL_PI_const_manual" width="100%" class="ContBoxTab">
+                    <script>
+                    // speed loop controller P and I constant manually edited 
+                    document.write(build_parameter_line_SL("PropGain&nbsp;manual" ,"SLOOP_KP_Z_MAN", "", "Z-domain speed PI proportional gain, unscaled"));
+                    document.write(build_parameter_line_SL("IntegGain&nbsp;manual","SLOOP_KI_Z_MAN", "","Z-domain speed PI integral gain, unscaled"));
+
+                    document.write(build_constant_line("PropGain" ,"SLOOP_KP_MAN", "Z-domain speed PI proportional gain scale"));
+                    document.write(build_constant_line("PropGainShift","SLOOP_KP_SHIFT_MAN", "Z-domain speed PI proportional gain shift"));
+
+                    document.write(build_constant_line("IntegGain" ,"SLOOP_KI_MAN", "Z-domain speed PI integral gain scale"));
+                    document.write(build_constant_line("IntegGainShift", "SLOOP_KI_SHIFT_MAN", "Z-domain speed PI integral gain shift"));                 
+                    </script>	
+                    </table>
+                 </fieldset>
+              
+               <table width="100%">
+                <tr> 
+                  <!-- Check box for PI controller constant manual tuning-->
+                  <td align="right" title="Manual tuning of Speed Loop PI controller proportional and integral constants." 
+                      style="width: 69%; font-family:Arial; font-size:11px; padding-right:0.3cm">Edit PI Controller Constants Manually</td>                  
+                  <td>                           
+                  <script>
+                    //get active motor to selct proper prefix
+                    var prefixM = getActiveMotor();
+                    // add prefix to var ID  //style=\"transform:scale(0.8)\" 
+                    if(prefixM!='')
+                      varID = prefixM + 'SL_PImanualTuning'; 
+                      document.write("<input type=\"checkbox\" class=\"sLoopCB\" id=\"" + varID + "\" onclick=\"(SL_PImanualTuning())\" value=\"1\" checked>");
+                  </script>
+                  </td>
+                  
+                  </tr>
+                </table>
+              
+              <!-- Speed PI reccurent controller parameters-->
+              <fieldset  id="Speed_PIrecur"   style="width: 100%; " class="ContBox">
+                <legend class="fontControlLabel">Speed Recurrent PI Controller Constants</legend>        
+                <table width="100%"  border="0"   class="ContBoxTab" >            
+                            
+                  <script>        
+                    document.write( build_constant_line("CC1cs", "SL_CC1", "Speed Controller Controller CC1 constant in Z domain"));
+                    document.write( build_constant_line("CC2cs","SL_CC2", "Speed Controller Controller CC2 constant in Z domain")); 
+                    document.write(build_constant_line("Nshift", "SL_Nsh", "D-Axis PI Controller CC2 constant in Z domain"));
+                 </script>	
+                	                            
+               </table>
+              </fieldset>
+              <!-- Speed feedforward ramp Up/Down parameters-->
+              <fieldset  id="SpeedRamp_out"   style="width: 100%; " class="ContBox">
+                <legend class="fontControlLabel">Speed Ramp Constants</legend>        
+                <table width="100%"  border="0"   class="ContBoxTab" >            
+                            
+                  <script>                 
+                    document.write( build_constant_line("Ramp&nbsp;Up&nbsp; &nbsp;[el rad/sec]", "RAMP_UP_OUT", "Ramp UP increment in Z domain, recalculated for Electrical Angular Speed"));
+                    document.write( build_constant_line("Ramp&nbsp;Down&nbsp; &nbsp;[el rad/sec]","RAMP_DOWN_OUT", "Ramp DOWN increment in Z domain, recalculated for Electrical Angular Speed"));
+                 </script>	
+                  
+               </table>
+              </fieldset>              
+              <!--Speed Loop ZC constants-->   
+              <fieldset id="Speed_ZC"   style="width: 100%; " class="ContBox">
+                <legend class="fontControlLabel">Speed Loop ZC Constants</legend>        
+                <table width="100%"  border="0"   class="ContBoxTab" >            
+                             
+                  <script>
+    	            document.write( build_constant_line("B0", "SL_ZC_B0", "Speed Loop Zero Cancelation Filter Constant B1"));
+                  document.write( build_constant_line("B1", "SL_ZC_B1", "Speed Loop Zero Cancelation Filter Constant B2"));
+                  document.write( build_constant_line("A1", "SL_ZC_A1", "Speed Loop Zero Cancelation Filter Constant A2"));
+                  </script>	
+               	                            
+               </table>
+              </fieldset>
+              <!--Speed Freedback Filter constants-->   
+              <fieldset id="Speed_IIR_filt"  style="width: 100%; display:none;" class="ContBox">
+                <legend class="fontControlLabel">Speed Feedback Filter Constants</legend>        
+                <table width="100%"  border="0"   class="ContBoxTab" >            
+                         
+                  <script>
+    	           document.write( build_constant_line("B0", "SL_IIR_B0", "Actual speed filter constant B1"));
+                  document.write( build_constant_line("B1", "SL_IIR_B1", "Actual speed filter constant B2"));
+                  document.write( build_constant_line("A1", "SL_IIR_A1", "Actual speed filter constant A2"));
+                  </script>	
+                                      
+               </table>
+              </fieldset>
+           </td>                     
+        </tr>         
+      </table>                      
+      <!-- calculation buttons-->
+      <table class = "fButtonGroup" >                     
+            <tr>       
+                <td><input type="button" class="fButtonsEnabled" value="Update Target" id="SLoopUpdateFrm" onmouseout="unmarkUpdateSLField()" onmouseover="markUpdateSLField()" onclick="clickUpdateSloopFM()" /></td> 
+                <td><input type="button" class="fButtonsDisabled" value="Reload Data" id="ReloadData" onmouseover="reloadSLField()" onclick="clickReloadData(); initLoadFormSloop();" disabled="disabled" /></td> 
+                <td><input type="button" class="fButtonsDisabled" value="Store Data" id="StoreData" onmouseover="storeSLField()" onclick="clickStoreData()" disabled="disabled" /></td> 
+            </tr>            
+      </table>                 
+         
+    </div>
+    <!--<div id="chart1" style="height:300px; width:500px;"></div>-->
+  </body>
+</html>

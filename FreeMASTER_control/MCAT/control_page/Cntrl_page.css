@@ -1,0 +1,260 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 21, 2015, 10:54:55 AM
+    Author     : B34195
+*/
+
+/* On/Off Button - off state*/
+.OnOff_button_off {
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background: transparent no-repeat 7px center;  
+    background-color: rgba(221,221,221,0.8);  
+   /* background-image:url('IcoOff_1.png');*/
+    color:#000;
+    /*text-decoration: none;    
+    text-align:left;
+    padding-left: 50px;*/
+    font-size:14px;
+    font-family:verdana;
+    font-weight:normal;
+    height: 30px; 
+    width: 95%;
+    cursor: pointer;
+}
+
+.OnOff_button_off:hover{
+    background-color: rgba(221,221,221,0.2);  
+   /* background-image:url('IcoOff_1.png');*/
+    border: 1px solid #888888;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+}
+
+.OnOff_button_off:active{
+    background: transparent no-repeat scroll 8px 4px;
+    background-color: rgba(221,221,221,0.2);  
+   /* background-image:url('IcoOn_1.png');*/
+    border: 1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+/* On/Off Button - on state */
+.OnOff_button_on {
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background: transparent no-repeat 7px center;  
+   /*// background-color: rgba(221,221,221,0.8);  /**/
+    background-color: rgba(51, 255, 51, 0.7);  
+    /*background-image:url('IcoOn_1.png');*/
+    color:#000;
+    text-shadow: 0px 0px #666666;
+    /**/
+    text-decoration: none;    
+   /* text-align:left;
+    padding-left: 55px;*/
+    font-size:14px;
+    font-family:verdana;
+    font-weight:normal;
+    height: 30px;
+    width: 95%;
+    cursor: pointer;
+}
+
+.OnOff_button_on:hover{
+    /*background-color: rgba(221,221,221,0.2);  */
+    /*background-image:url('IcoOn_1.png');*/
+    border: 1px solid #888888;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+}
+
+.OnOff_button_on:active{
+    background: transparent no-repeat scroll 8px 4px;
+    background-color: rgba(221,221,221,0.2);  
+    /*background-image:url('IcoOff_1.png');*/
+    border: 1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+/* State machine button as text field - in NO FAULT state*/
+.State_machine_text{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);  
+    color:#000;
+    text-decoration: none;    
+    text-align: center;
+    font-size:14px;
+    font-family:verdana;
+    font-weight:normal;
+    width: 95%;
+    height: 30px; 
+}
+
+/* State machine button - in FAULT state*/
+.State_machine_button{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);
+    color:red;
+    text-decoration: none;    
+    text-align: center;
+    font-size: 14px;
+    font-family:verdana;
+    font-weight:normal;
+    position: relative; 
+    width: 95%;
+    height: 30px; 
+    cursor: pointer;
+}
+
+.State_machine_button:hover{
+    border: 1px solid #999999;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+    background-color: rgba(221,221,221,0.2);
+}
+
+.State_machine_button:active{
+    border: 1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+/* Reset - Default setting */
+.Load_button{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);
+    color:#000;
+    text-decoration: none;    
+    text-align: center;
+    font-size: 14px;
+    font-family:verdana;
+    font-weight:normal;
+    position: relative; 
+    width: 95%;
+    height: 30px; 
+    cursor: pointer;
+}
+
+.Load_button:hover{
+    border: 1px solid #999999;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+    background-color: rgba(221,221,221,0.2);
+}
+.Load_button:active{
+    border: 1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+/* Reset - Default setting */
+.Load_button_off{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);
+    color:#000;
+    text-decoration: none;    
+    text-align: center;
+    font-size: 14px;
+    font-family:verdana;
+    font-weight:normal;
+    position: relative; 
+    width: 95%;
+    height: 30px; 
+    cursor: default;
+}
+
+/*Label to Application State button - NO FAULT state */
+.controlPanelLabel{
+    font-size:10px;
+    font-family:verdana;
+    font-weight:normal;
+    color:#666666;
+}
+
+/*Label to Application State button - FAULT state !!!*/
+.controlPanelLabel_red{
+    font-size:11px;
+    font-family:verdana;
+    font-weight:bold;
+    color:red;
+}
+
+/* Sensor selector formating */
+.Sensor{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;    
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);  
+    color:black;
+    text-decoration: none;    
+    text-align: center;
+    font-size:13px;
+    font-family:verdana;
+    font-weight:normal;
+
+    width: 95%;
+    height: 30px;
+    cursor: pointer;
+}
+.Sensor:hover{
+    background-color: rgba(221,221,221,0.2);
+    border: 1px solid #999999;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+}
+
+.SensorOff{
+    border: 1px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;    
+    border-radius: 5px;
+    background-color: rgba(221,221,221,0.8);  
+    color:black;
+    text-decoration: none;    
+    text-align: center;
+    font-size:13px;
+    font-family:verdana;
+    font-weight:normal;
+
+    width: 95%;
+    height: 30px;
+    cursor: default;
+}
+
+.controlPanelLabel{
+    font-size:13px;
+    font-family:verdana;
+    font-weight:normal;
+    color:#666666;
+    padding-bottom: 20px;
+}
+.controlPanelLabel_red{
+    font-size:13px;
+    font-family:verdana;
+    font-weight:bold;
+    color:red;
+}

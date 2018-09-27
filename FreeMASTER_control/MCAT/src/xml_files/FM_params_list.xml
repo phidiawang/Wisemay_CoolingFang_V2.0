@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<control>
+  <appcontrol>
+    <M1_onoff>On/Off</M1_onoff><!-- Main application switch of MOTOR1 -->
+    <M2_onoff></M2_onoff><!-- Main application switch of MOTOR2 -->
+    <M3_onoff></M3_onoff><!-- Main application switch of MOTOR3 -->
+  </appcontrol>
+  
+  <faultcontrol>
+    <M1_FltClr>Clear Faults</M1_FltClr><!-- Main application switch of MOTOR1 -->
+    <M2_FltClr></M2_FltClr><!-- Main application switch of MOTOR2 -->
+    <M3_FltClr></M3_FltClr><!-- Main application switch of MOTOR3 -->
+  </faultcontrol>
+
+  <M1_states FreemasterName="State"><!-- Application state variable of MOTOR1 -->
+    <M1_state>INIT</M1_state>
+    <M1_state>FAULT</M1_state>
+    <M1_state>READY</M1_state>
+    <M1_state>CALIB</M1_state>
+    <M1_state>ALIGN</M1_state>
+    <M1_state>RUN</M1_state>
+    <M1_state>RESET</M1_state>    
+  </M1_states>
+  
+  <M2_states FreemasterName=""> <!-- Application state variable of MOTOR2 -->
+    <M2_state></M2_state>               
+  </M2_states> 
+  
+  <M3_states FreemasterName=""> <!-- Application state variable of MOTOR3 -->
+    <M3_state></M3_state>
+  </M3_states>
+    
+  <M1_Parameters><!-- Variables for rotor alignment for MOTOR1 -->
+    <M1_Align_Voltage>drvFOC.alignVoltage</M1_Align_Voltage>
+    <M1_Align_Current></M1_Align_Current>
+    <M1_Align_Duration>drvFOC.alignCntrInit</M1_Align_Duration>
+    <M1_UDCB_IIR_B0>drvFOC.uDcbFilter.trFiltCoeff.f16B0</M1_UDCB_IIR_B0>
+    <M1_UDCB_IIR_B1>drvFOC.uDcbFilter.trFiltCoeff.f16B1</M1_UDCB_IIR_B1>
+    <M1_UDCB_IIR_A1>drvFOC.uDcbFilter.trFiltCoeff.f16A1</M1_UDCB_IIR_A1>
+  </M1_Parameters>
+ 
+  <M2_Parameters><!-- Variables for rotor alignment for MOTOR2 -->
+    <M2_Align_Voltage></M2_Align_Voltage>
+    <M2_Align_Current></M2_Align_Current>
+    <M2_Align_Duration></M2_Align_Duration>
+  </M2_Parameters>
+
+   <M3_Parameters><!-- Variables for rotor alignment for MOTOR3 -->
+    <M3_Align_Voltage></M3_Align_Voltage>
+    <M3_Align_Current></M3_Align_Current>
+    <M3_Align_Duration></M3_Align_Duration>
+  </M3_Parameters>
+  
+  <M1_SpeedPiController><!-- Variables for Speed Controller for MOTOR1 -->
+    <M1_SL_Kp_g>drvFOC.speedPI.f16PropGain</M1_SL_Kp_g><!-- Parallel PI KP gain --> 
+    <M1_SL_Kp_sc>drvFOC.speedPI.s16PropGainShift</M1_SL_Kp_sc><!-- Parallel PI KP gain scale --> 
+    <M1_SL_Ki_g>drvFOC.speedPI.f16IntegGain</M1_SL_Ki_g><!-- Parallel PI KI gain -->
+    <M1_SL_Ki_sc>drvFOC.speedPI.s16IntegGainShift</M1_SL_Ki_sc><!-- Parallel PI KI gain scale -->
+    <M1_SL_Nsh></M1_SL_Nsh><!-- Reccurent PI shift -->
+    <M1_SL_CC1SC></M1_SL_CC1SC><!-- Reccurent PI CC1 constant --> 
+    <M1_SL_CC2SC></M1_SL_CC2SC><!-- Reccurent PI CC2 constant  -->
+    <M1_SL_UP_LIM>drvFOC.pospeSensorless.iQUpperLimit</M1_SL_UP_LIM><!-- PI High limit -->
+    <M1_SL_LOW_LIM>drvFOC.pospeSensorless.iQLowerLimit</M1_SL_LOW_LIM><!-- PI Low limit -->
+    <M1_RAMP_UP_g>CL_SpeedRampInc</M1_RAMP_UP_g><!-- Speed ramp increment UP -->
+    <M1_RAMP_DOWN_g>CL_SpeedRampDec</M1_RAMP_DOWN_g><!-- Speed ramp increment DOWN -->
+    <M1_SPEED_RES_MAF_sc></M1_SPEED_RES_MAF_sc><!-- Actual Speed Filter, number of samples -->
+    <M1_SPEED_ENC_MAF_sc></M1_SPEED_ENC_MAF_sc><!-- Actual Speed Filter, number of samples -->    
+    <M1_SPEED_SLSS_MAF_sc>drvFOC.pospeSensorless.filterMA.u16NSamples</M1_SPEED_SLSS_MAF_sc><!-- Actual Speed Filter, number of samples -->  
+    <M1_SPEED_IIR_B1_g></M1_SPEED_IIR_B1_g><!-- Actual Speed IIR Filter constant -->
+    <M1_SPEED_IIR_B2_g></M1_SPEED_IIR_B2_g><!-- Actual Speed IIR Filter constant -->
+    <M1_SPEED_IIR_A2_g></M1_SPEED_IIR_A2_g><!-- Actual Speed IIR Filter constant -->
+  </M1_SpeedPiController>
+  
+    <M2_SpeedPiController><!-- Variables for Speed Controller for MOTOR2 -->
+    <M2_SL_Kp_g></M2_SL_Kp_g><!-- Parallel PI KP gain --> 
+    <M2_SL_Kp_sc></M2_SL_Kp_sc><!-- Parallel PI KP gain scale --> 
+    <M2_SL_Ki_g></M2_SL_Ki_g><!-- Parallel PI KI gain -->
+    <M2_SL_Ki_sc></M2_SL_Ki_sc><!-- Parallel PI KI gain scale -->
+    <M2_SL_Nsh></M2_SL_Nsh><!-- Reccurent PI shift -->
+    <M2_SL_CC1SC></M2_SL_CC1SC><!-- Reccurent PI CC1 constant --> 
+    <M2_SL_CC2SC></M2_SL_CC2SC><!-- Reccurent PI CC2 constant  -->
+    <M2_SL_UP_LIM></M2_SL_UP_LIM><!-- PI High limit -->
+    <M2_SL_LOW_LIM></M2_SL_LOW_LIM><!-- PI Low limit -->
+    <M2_RAMP_UP_g></M2_RAMP_UP_g><!-- Speed ramp increment UP -->
+    <M2_RAMP_DOWN_g></M2_RAMP_DOWN_g><!-- Speed ramp increment DOWN -->
+    <M2_SPEED_RES_MAF_sc></M2_SPEED_RES_MAF_sc><!-- Actual Speed Filter, number of samples -->
+    <M2_SPEED_ENC_MAF_sc></M2_SPEED_ENC_MAF_sc><!-- Actual Speed Filter, number of samples -->    
+    <M2_SPEED_SLSS_MAF_sc></M2_SPEED_SLSS_MAF_sc><!-- Actual Speed Filter, number of samples -->  
+    <M2_SPEED_IIR_B1_g></M2_SPEED_IIR_B1_g><!-- Actual Speed IIR Filter constant -->
+    <M2_SPEED_IIR_B2_g></M2_SPEED_IIR_B2_g><!-- Actual Speed IIR Filter constant -->
+    <M2_SPEED_IIR_A2_g></M2_SPEED_IIR_A2_g><!-- Actual Speed IIR Filter constant -->
+  </M2_SpeedPiController>
+  
+  <M3_SpeedPiController><!-- Variables for Speed Controller for MOTOR3 -->
+    <M3_SL_Kp_g></M3_SL_Kp_g><!-- Parallel PI KP gain --> 
+    <M3_SL_Kp_sc></M3_SL_Kp_sc><!-- Parallel PI KP gain scale --> 
+    <M3_SL_Ki_g></M3_SL_Ki_g><!-- Parallel PI KI gain -->
+    <M3_SL_Ki_sc></M3_SL_Ki_sc><!-- Parallel PI KI gain scale -->
+    <M3_SL_Nsh></M3_SL_Nsh><!-- Reccurent PI shift -->
+    <M3_SL_CC1SC></M3_SL_CC1SC><!-- Reccurent PI CC1 constant --> 
+    <M3_SL_CC2SC></M3_SL_CC2SC><!-- Reccurent PI CC2 constant  -->
+    <M3_SL_UP_LIM_FM></M3_SL_UP_LIM_FM><!-- PI High limit -->
+    <M3_SL_LOW_LIM_FM></M3_SL_LOW_LIM_FM><!-- PI Low limit -->
+    <M3_RAMP_UP_g></M3_RAMP_UP_g><!-- Speed ramp increment UP -->
+    <M3_RAMP_DOWN_g></M3_RAMP_DOWN_g><!-- Speed ramp increment DOWN -->
+    <M3_SPEED_RES_MAF_sc></M3_SPEED_RES_MAF_sc><!-- Actual Speed Filter, number of samples -->
+    <M3_SPEED_ENC_MAF_sc></M3_SPEED_ENC_MAF_sc><!-- Actual Speed Filter, number of samples -->    
+    <M3_SPEED_SLSS_MAF_sc></M3_SPEED_SLSS_MAF_sc><!-- Actual Speed Filter, number of samples -->  
+    <M3_SPEED_IIR_B1_g></M3_SPEED_IIR_B1_g><!-- Actual Speed IIR Filter constant -->
+    <M3_SPEED_IIR_B2_g></M3_SPEED_IIR_B2_g><!-- Actual Speed IIR Filter constant -->
+    <M3_SPEED_IIR_A2_g></M3_SPEED_IIR_A2_g><!-- Actual Speed IIR Filter constant -->
+  </M3_SpeedPiController>
+  
+  <M1_CurrentPiController><!-- Variables for Current Controller for MOTOR1 -->
+    <M1_CL_LIMIT>drvFOC.iCLoop_Limit.f16UpperLimit</M1_CL_LIMIT><!-- Current loop limit -->
+    <M1_D_Kp_g></M1_D_Kp_g><!-- Parallel D_PI KIgain  --> 
+    <M1_D_Ki_g></M1_D_Ki_g><!-- Parallel D_PI KIgain  --> 
+    <M1_D_Kp_sc></M1_D_Kp_sc><!-- Parallel D_PI KP gain scale -->
+    <M1_D_Ki_sc></M1_D_Ki_sc><!-- Parallel D_PI KI gain scale -->
+    <M1_Q_Kp_g></M1_Q_Kp_g><!-- Parallel Q_PI KP gain -->
+    <M1_Q_Ki_g></M1_Q_Ki_g><!-- Parallel Q_PI KI gain -->
+    <M1_Q_Kp_sc></M1_Q_Kp_sc><!-- Parallel Q_PI KP gain scale -->
+    <M1_Q_Ki_sc></M1_Q_Ki_sc><!-- Parallel Q_PI KI gain scale -->
+    <M1_D_NSHIFT>drvFOC.dAxisPI.u16NShift</M1_D_NSHIFT><!-- Reccurent D_PI shift -->
+    <M1_D_CC1SC>drvFOC.dAxisPI.f16CC1sc</M1_D_CC1SC><!-- Reccurent D_PI constant CC1 -->
+    <M1_D_CC2SC>drvFOC.dAxisPI.f16CC2sc</M1_D_CC2SC><!-- Reccurent D_PI constant CC2 -->
+    <M1_Q_NSHIFT>drvFOC.qAxisPI.u16NShift</M1_Q_NSHIFT><!-- Reccurent Q_PI shift -->
+    <M1_Q_CC1SC>drvFOC.qAxisPI.f16CC1sc</M1_Q_CC1SC><!-- Reccurent Q_PI constant CC1 -->
+    <M1_Q_CC2SC>drvFOC.qAxisPI.f16CC2sc</M1_Q_CC2SC><!-- Reccurent Q_PI constant CC2 -->
+    <M1_D_ZC_B0></M1_D_ZC_B0><!-- Zero Cancelation Filter constant D_B1 -->
+    <M1_D_ZC_B1></M1_D_ZC_B1><!-- Zero Cancelation Filter constant D_B2 -->
+    <M1_D_ZC_A1></M1_D_ZC_A1><!-- Zero Cancelation Filter constant D_A2 -->
+    <M1_Q_ZC_B0></M1_Q_ZC_B0><!-- Zero Cancelation Filter constant Q_B1 -->
+    <M1_Q_ZC_B1></M1_Q_ZC_B1><!-- Zero Cancelation Filter constant Q_B2 -->
+    <M1_Q_ZC_A1></M1_Q_ZC_A1><!-- Zero Cancelation Filter constant Q_A2 -->
+  </M1_CurrentPiController>
+  
+  <M2_CurrentPiController><!-- Variables for Current Controller for MOTOR2 -->
+    <M2_CL_LIMIT></M2_CL_LIMIT><!-- Current loop limit -->
+    <M2_D_Kp_g></M2_D_Kp_g><!-- Parallel D_PI KP gain --> 
+    <M2_D_Ki_g></M2_D_Ki_g><!-- Parallel D_PI KIgain  --> 
+    <M2_D_Kp_sc></M2_D_Kp_sc><!-- Parallel D_PI KP gain scale -->
+    <M2_D_Ki_sc></M2_D_Ki_sc><!-- Parallel D_PI KI gain scale -->
+    <M2_Q_Kp_g></M2_Q_Kp_g><!-- Parallel Q_PI KP gain -->
+    <M2_Q_Ki_g></M2_Q_Ki_g><!-- Parallel Q_PI KI gain -->
+    <M2_Q_Kp_sc></M2_Q_Kp_sc><!-- Parallel Q_PI KP gain scale -->
+    <M2_Q_Ki_sc></M2_Q_Ki_sc><!-- Parallel Q_PI KI gain scale -->
+    <M2_D_NSHIFT></M2_D_NSHIFT><!-- Reccurent D_PI shift -->
+    <M2_D_CC1SC></M2_D_CC1SC><!-- Reccurent D_PI constant CC1 -->
+    <M2_D_CC2SC></M2_D_CC2SC><!-- Reccurent D_PI constant CC2 -->
+    <M2_Q_NSHIFT></M2_Q_NSHIFT><!-- Reccurent Q_PI shift -->
+    <M2_Q_CC1SC></M2_Q_CC1SC><!-- Reccurent Q_PI constant CC1 -->
+    <M2_Q_CC2SC></M2_Q_CC2SC><!-- Reccurent Q_PI constant CC2 -->
+    <M2_D_ZC_B0></M2_D_ZC_B0><!-- Zero Cancelation Filter constant D_B0 -->
+    <M2_D_ZC_B1></M2_D_ZC_B1><!-- Zero Cancelation Filter constant D_B1 -->
+    <M2_D_ZC_A1></M2_D_ZC_A1><!-- Zero Cancelation Filter constant D_A1 -->
+    <M2_Q_ZC_B0></M2_Q_ZC_B0><!-- Zero Cancelation Filter constant Q_B0 -->
+    <M2_Q_ZC_B1></M2_Q_ZC_B1><!-- Zero Cancelation Filter constant Q_B1 -->
+    <M2_Q_ZC_A1></M2_Q_ZC_A1><!-- Zero Cancelation Filter constant Q_A1 -->
+  </M2_CurrentPiController>
+  
+  <M3_CurrentPiController><!-- Variables for Current Controller for MOTOR3 -->
+    <M3_CL_LIMIT></M3_CL_LIMIT><!-- Current loop limit -->
+    <M3_D_Kp_g></M3_D_Kp_g><!-- Parallel D_PI KP gain -->     
+    <M3_D_Ki_g></M3_D_Ki_g><!-- Parallel D_PI KIgain  --> 
+    <M3_D_Kp_sc></M3_D_Kp_sc><!-- Parallel D_PI KP gain scale -->
+    <M3_D_Ki_sc></M3_D_Ki_sc><!-- Parallel D_PI KI gain scale -->
+    <M3_Q_Kp_g></M3_Q_Kp_g><!-- Parallel Q_PI KP gain -->
+    <M3_Q_Ki_g></M3_Q_Ki_g><!-- Parallel Q_PI KI gain -->
+    <M3_Q_Kp_sc></M3_Q_Kp_sc><!-- Parallel Q_PI KP gain scale -->
+    <M3_Q_Ki_sc></M3_Q_Ki_sc><!-- Parallel Q_PI KI gain scale -->
+    <M3_D_NSHIFT></M3_D_NSHIFT><!-- Reccurent D_PI shift -->
+    <M3_D_CC1SC></M3_D_CC1SC><!-- Reccurent D_PI constant CC1 -->
+    <M3_D_CC2SC></M3_D_CC2SC><!-- Reccurent D_PI constant CC2 -->
+    <M3_Q_NSHIFT></M3_Q_NSHIFT><!-- Reccurent Q_PI shift -->
+    <M3_Q_CC1SC></M3_Q_CC1SC><!-- Reccurent Q_PI constant CC1 -->
+    <M3_Q_CC2SC></M3_Q_CC2SC><!-- Reccurent Q_PI constant CC2 -->
+    <M3_D_ZC_B0></M3_D_ZC_B0><!-- Zero Cancelation Filter constant D_B0 -->
+    <M3_D_ZC_B1></M3_D_ZC_B1><!-- Zero Cancelation Filter constant D_B1 -->
+    <M3_D_ZC_A1></M3_D_ZC_A1><!-- Zero Cancelation Filter constant D_A1 -->
+    <M3_Q_ZC_B0></M3_Q_ZC_B0><!-- Zero Cancelation Filter constant Q_B0 -->
+    <M3_Q_ZC_B1></M3_Q_ZC_B1><!-- Zero Cancelation Filter constant Q_B1 -->
+    <M3_Q_ZC_A1></M3_Q_ZC_A1><!-- Zero Cancelation Filter constant Q_A1 -->
+  </M3_CurrentPiController>
+  
+  <M1_PoSpeBemfDQ><!-- Variables for BEMF and Tracking Observers for MOTOR1 -->
+    <M1_E_scale>drvFOC.pospeSensorless.bEMFObs.f16EGain</M1_E_scale>
+    <M1_I_scale>drvFOC.pospeSensorless.bEMFObs.f16IGain</M1_I_scale>
+    <M1_U_scale>drvFOC.pospeSensorless.bEMFObs.f16UGain</M1_U_scale>
+    <M1_WI_scale>drvFOC.pospeSensorless.bEMFObs.f16WIGain</M1_WI_scale>
+    <M1_Nsh>drvFOC.pospeSensorless.bEMFObs.s16Shift</M1_Nsh>
+    <M1_BEMF_D_Kp_g></M1_BEMF_D_Kp_g>
+    <M1_BEMF_D_Ki_g></M1_BEMF_D_Ki_g>
+    <M1_BEMF_D_Kp_sc></M1_BEMF_D_Kp_sc>
+    <M1_BEMF_D_Ki_sc></M1_BEMF_D_Ki_sc>
+    <M1_BEMF_Q_Kp_g></M1_BEMF_Q_Kp_g>
+    <M1_BEMF_Q_Ki_g></M1_BEMF_Q_Ki_g>
+    <M1_BEMF_Q_Kp_sc></M1_BEMF_Q_Kp_sc>
+    <M1_BEMF_Q_Ki_sc></M1_BEMF_Q_Ki_sc>    
+    <M1_BEMF_D_CC1_g>drvFOC.pospeSensorless.bEMFObs.pParamD.f16CC1sc</M1_BEMF_D_CC1_g>
+    <M1_BEMF_D_CC2_g>drvFOC.pospeSensorless.bEMFObs.pParamD.f16CC2sc</M1_BEMF_D_CC2_g>
+    <M1_BEMF_D_Nsh>drvFOC.pospeSensorless.bEMFObs.pParamD.u16NShift</M1_BEMF_D_Nsh>
+    <M1_BEMF_Q_CC1_g>drvFOC.pospeSensorless.bEMFObs.pParamQ.f16CC1sc</M1_BEMF_Q_CC1_g>
+    <M1_BEMF_Q_CC2_g>drvFOC.pospeSensorless.bEMFObs.pParamQ.f16CC2sc</M1_BEMF_Q_CC2_g>
+    <M1_BEMF_Q_Nsh>drvFOC.pospeSensorless.bEMFObs.pParamQ.u16NShift</M1_BEMF_Q_Nsh>
+    <M1_TO_Kp_g></M1_TO_Kp_g>
+    <M1_TO_Ki_g></M1_TO_Ki_g>
+    <M1_TO_Kp_sc></M1_TO_Kp_sc>
+    <M1_TO_Ki_sc></M1_TO_Ki_sc>
+    <M1_Theta_g>drvFOC.pospeSensorless.TrackObsrv.pParamInteg.f16C1</M1_Theta_g>
+    <M1_Theta_sc>drvFOC.pospeSensorless.TrackObsrv.pParamInteg.u16NShift</M1_Theta_sc>    
+    <M1_TO_CC1>drvFOC.pospeSensorless.TrackObsrv.pParamPI.f16CC1sc</M1_TO_CC1>
+    <M1_TO_CC2>drvFOC.pospeSensorless.TrackObsrv.pParamPI.f16CC2sc</M1_TO_CC2>
+    <M1_TO_Nsh>drvFOC.pospeSensorless.TrackObsrv.pParamPI.u16NShift</M1_TO_Nsh>    
+    <M1_Startup_Ramp_inc>OL_SpeedRampInc</M1_Startup_Ramp_inc><!-- Start-up ramp increment -->
+    <M1_Startup_Ramp_dec>OL_SpeedRampDec</M1_Startup_Ramp_dec><!-- Start-up ramp increment -->
+    <M1_Startup_I_pos_FM>drvFOC.pospeOpenLoop.iQUpperLimit</M1_Startup_I_pos_FM><!-- Start-up current -->
+    <M1_Startup_I_neg_FM>drvFOC.pospeOpenLoop.iQLowerLimit</M1_Startup_I_neg_FM><!-- Start-up current -->
+    <M1_Startup_N_merging_1>wRotElMatch_1</M1_Startup_N_merging_1><!-- Start-up merging speed 1 trigger -->
+    <M1_Startup_N_merging_2>wRotElMatch_2</M1_Startup_N_merging_2><!-- Start-up merging speed 2 trigger -->
+  </M1_PoSpeBemfDQ>
+  
+  <M2_PoSpeBemfDQ><!-- Variables for BEMF and Tracking Observers for MOTOR1 -->
+    <M2_E_scale></M2_E_scale>
+    <M2_I_scale></M2_I_scale>
+    <M2_U_scale></M2_U_scale>
+    <M2_WI_scale></M2_WI_scale>
+    <M2_Nsh></M2_Nsh>
+    <M2_BEMF_D_Kp_g></M2_BEMF_D_Kp_g>
+    <M2_BEMF_D_Ki_g></M2_BEMF_D_Ki_g>
+    <M2_BEMF_D_Kp_sc></M2_BEMF_D_Kp_sc>
+    <M2_BEMF_D_Ki_sc></M2_BEMF_D_Ki_sc>
+    <M2_BEMF_Q_Kp_g></M2_BEMF_Q_Kp_g>
+    <M2_BEMF_Q_Ki_g></M2_BEMF_Q_Ki_g>
+    <M2_BEMF_Q_Kp_sc></M2_BEMF_Q_Kp_sc>
+    <M2_BEMF_Q_Ki_sc></M2_BEMF_Q_Ki_sc>    
+    <M2_BEMF_D_CC1_g></M2_BEMF_D_CC1_g>
+    <M2_BEMF_D_CC2_g></M2_BEMF_D_CC2_g>
+    <M2_BEMF_D_Nsh></M2_BEMF_D_Nsh>
+    <M2_BEMF_Q_CC1_g></M2_BEMF_Q_CC1_g>
+    <M2_BEMF_Q_CC2_g></M2_BEMF_Q_CC2_g>
+    <M2_BEMF_Q_Nsh></M2_BEMF_Q_Nsh>
+    <M2_TO_Kp_g></M2_TO_Kp_g>
+    <M2_TO_Ki_g></M2_TO_Ki_g>
+    <M2_TO_Kp_sc></M2_TO_Kp_sc>
+    <M2_TO_Ki_sc></M2_TO_Ki_sc>
+    <M2_Theta_g></M2_Theta_g>
+    <M2_Theta_sc></M2_Theta_sc>    
+    <M2_TO_CC1></M2_TO_CC1>
+    <M2_TO_CC2></M2_TO_CC2>
+    <M2_TO_Nsh></M2_TO_Nsh>    
+    <M2_Startup_Ramp_inc></M2_Startup_Ramp_inc><!-- Start-up ramp increment -->
+    <M2_Startup_Ramp_dec></M2_Startup_Ramp_dec><!-- Start-up ramp increment -->
+    <M2_Startup_I_pos_FM></M2_Startup_I_pos_FM><!-- Start-up current -->
+    <M2_Startup_I_neg_FM></M2_Startup_I_neg_FM><!-- Start-up current -->
+    <M2_Startup_N_merging_1></M2_Startup_N_merging_1><!-- Start-up merging speed 1 trigger -->
+    <M2_Startup_N_merging_2></M2_Startup_N_merging_2><!-- Start-up merging speed 2 trigger -->
+  </M2_PoSpeBemfDQ>
+  
+  <M3_PoSpeBemfDQ><!-- Variables for BEMF and Tracking Observers for MOTOR1 -->
+   <M3_E_scale></M3_E_scale>
+    <M3_I_scale></M3_I_scale>
+    <M3_U_scale></M3_U_scale>
+    <M3_WI_scale></M3_WI_scale>
+    <M3_Nsh></M3_Nsh>
+    <M3_BEMF_D_Kp_g></M3_BEMF_D_Kp_g>
+    <M3_BEMF_D_Ki_g></M3_BEMF_D_Ki_g>
+    <M3_BEMF_D_Kp_sc></M3_BEMF_D_Kp_sc>
+    <M3_BEMF_D_Ki_sc></M3_BEMF_D_Ki_sc>
+    <M3_BEMF_Q_Kp_g></M3_BEMF_Q_Kp_g>
+    <M3_BEMF_Q_Ki_g></M3_BEMF_Q_Ki_g>
+    <M3_BEMF_Q_Kp_sc></M3_BEMF_Q_Kp_sc>
+    <M3_BEMF_Q_Ki_sc></M3_BEMF_Q_Ki_sc>    
+    <M3_BEMF_D_CC1_g></M3_BEMF_D_CC1_g>
+    <M3_BEMF_D_CC2_g></M3_BEMF_D_CC2_g>
+    <M3_BEMF_D_Nsh></M3_BEMF_D_Nsh>
+    <M3_BEMF_Q_CC1_g></M3_BEMF_Q_CC1_g>
+    <M3_BEMF_Q_CC2_g></M3_BEMF_Q_CC2_g>
+    <M3_BEMF_Q_Nsh></M3_BEMF_Q_Nsh>
+    <M3_TO_Kp_g></M3_TO_Kp_g>
+    <M3_TO_Ki_g></M3_TO_Ki_g>
+    <M3_TO_Kp_sc></M3_TO_Kp_sc>
+    <M3_TO_Ki_sc></M3_TO_Ki_sc>
+    <M3_Theta_g></M3_Theta_g>
+    <M3_Theta_sc></M3_Theta_sc>    
+    <M3_TO_CC1></M3_TO_CC1>
+    <M3_TO_CC2></M3_TO_CC2>
+    <M3_TO_Nsh></M3_TO_Nsh>    
+    <M3_Startup_Ramp_inc></M3_Startup_Ramp_inc><!-- Start-up ramp increment -->
+    <M3_Startup_Ramp_dec></M3_Startup_Ramp_dec><!-- Start-up ramp increment -->
+    <M3_Startup_I_pos_FM></M3_Startup_I_pos_FM><!-- Start-up current -->
+    <M3_Startup_I_neg_FM></M3_Startup_I_neg_FM><!-- Start-up current -->
+    <M3_Startup_N_merging_1></M3_Startup_N_merging_1><!-- Start-up merging speed 1 trigger -->
+    <M3_Startup_N_merging_2></M3_Startup_N_merging_2><!-- Start-up merging speed 2 trigger -->
+  </M3_PoSpeBemfDQ>
+  
+  <M1_PoSpeSensor><!-- Variables for Position and Speed sensors of MOTOR1 -->
+    <M1_ATO_ENC_CC1></M1_ATO_ENC_CC1>
+    <M1_ATO_ENC_CC2></M1_ATO_ENC_CC2>
+    <M1_ATO_ENC_NSHIFT></M1_ATO_ENC_NSHIFT>    
+    <M1_INTEG_ENC_G></M1_INTEG_ENC_G>
+    <M1_INTEG_ENC_SC></M1_INTEG_ENC_SC>
+    <M1_ATO_RES_CC1></M1_ATO_RES_CC1>
+    <M1_ATO_RES_CC2></M1_ATO_RES_CC2>
+    <M1_ATO_RES_NSHIFT></M1_ATO_RES_NSHIFT>       
+    <M1_INTEG_RES_G></M1_INTEG_RES_G>
+    <M1_INTEG_RES_SC></M1_INTEG_RES_SC>    
+ </M1_PoSpeSensor>
+  
+  <M2_PoSpeSensor><!-- Variables for Position and Speed sensors of MOTOR2 -->
+    <M2_ATO_ENC_CC1></M2_ATO_ENC_CC1>
+    <M2_ATO_ENC_CC2></M2_ATO_ENC_CC2>
+    <M2_ATO_ENC_NSHIFT></M2_ATO_ENC_NSHIFT>     
+    <M2_INTEG_ENC_G></M2_INTEG_ENC_G>
+    <M2_INTEG_ENC_SC></M2_INTEG_ENC_SC>
+    <M2_ATO_RES_CC1></M2_ATO_RES_CC1>
+    <M2_ATO_RES_CC2></M2_ATO_RES_CC2>
+    <M2_ATO_RES_NSHIFT></M2_ATO_RES_NSHIFT>       
+    <M2_INTEG_RES_G>1</M2_INTEG_RES_G>
+    <M2_INTEG_RES_SC></M2_INTEG_RES_SC>    
+  </M2_PoSpeSensor>
+  
+  <M3_PoSpeSensor><!-- Variables for Position and Speed sensors of MOTOR2 -->
+    <M3_ATO_ENC_CC1></M3_ATO_ENC_CC1>
+    <M3_ATO_ENC_CC2></M3_ATO_ENC_CC2>
+    <M3_ATO_ENC_NSHIFT></M3_ATO_ENC_NSHIFT>     
+    <M3_INTEG_ENC_G></M3_INTEG_ENC_G>
+    <M3_INTEG_ENC_SC></M3_INTEG_ENC_SC>
+    <M3_ATO_RES_CC1></M3_ATO_RES_CC1>
+    <M3_ATO_RES_CC2></M3_ATO_RES_CC2>
+    <M3_ATO_RES_NSHIFT></M3_ATO_RES_NSHIFT>       
+    <M3_INTEG_RES_G></M3_INTEG_RES_G>
+    <M3_INTEG_RES_SC></M3_INTEG_RES_SC>    
+  </M3_PoSpeSensor>  
+    
+   <M1_ControlStructure><!-- Cascade Structure State Variables of MOTOR1 -->
+    <M1_ControlStructureMethod>cntrState.usrControl.FOCcontrolMode</M1_ControlStructureMethod>
+    <M1_ControlStructurePoSpe>switchSensor</M1_ControlStructurePoSpe>
+  </M1_ControlStructure>
+  
+  <M2_ControlStructure><!-- Cascade Structure State Variables of MOTOR2 -->
+    <M2_ControlStructureMethod></M2_ControlStructureMethod>
+    <M2_ControlStructurePoSpe></M2_ControlStructurePoSpe>
+  </M2_ControlStructure>
+  
+  <M3_ControlStructure><!-- Cascade Structure State Variables of MOTOR3 -->
+    <M3_ControlStructureMethod></M3_ControlStructureMethod>
+    <M3_ControlStructurePoSpe></M3_ControlStructurePoSpe>
+  </M3_ControlStructure>
+  
+  <M1_ControlVariables><!-- Control Cascade Structure Variables of MOTOR1 -->
+    <M1_Freq_req>OL Speed Required</M1_Freq_req><!-- V/Hz required speed -->
+    <M1_SCALAR_VHZ_FACTOR_GAIN>drvFOC.scalarControl.VHzRatioReq</M1_SCALAR_VHZ_FACTOR_GAIN><!-- V/Hz ratio -->
+    <M1_SCALAR_VHZ_FACTOR_SHIFT>drvFOC.scalarControl.VHzRatioReq_Shift</M1_SCALAR_VHZ_FACTOR_SHIFT><!-- V/Hz ratio -->
+    <M1_Ud_req>uDReq</M1_Ud_req><!-- Voltage FOC - Ud required -->
+    <M1_Uq_req>uQReq</M1_Uq_req><!-- Voltage FOC - Uq required -->
+    <M1_Id_req>iD Req</M1_Id_req><!-- Current FOC - Id required -->
+    <M1_Iq_req>iQ Req</M1_Iq_req><!-- Current FOC - Id required -->
+    <M1_Speed_req>Speed Required</M1_Speed_req><!-- Speed FOC - Speed required -->
+  </M1_ControlVariables>
+
+   <M2_ControlVariables><!-- Control Cascade Structure Variables of MOTOR1 -->
+    <M2_Freq_req></M2_Freq_req><!-- V/Hz required speed -->
+    <M2_SCALAR_VHZ_FACTOR_GAIN></M2_SCALAR_VHZ_FACTOR_GAIN><!-- V/Hz ratio -->
+    <M2_SCALAR_VHZ_FACTOR_SHIFT></M2_SCALAR_VHZ_FACTOR_SHIFT><!-- V/Hz ratio -->
+    <M2_Ud_req></M2_Ud_req><!-- Voltage FOC - Ud required -->
+    <M2_Uq_req></M2_Uq_req><!-- Voltage FOC - Uq required -->
+    <M2_Id_req></M2_Id_req><!-- Current FOC - Id required -->
+    <M2_Iq_req></M2_Iq_req><!-- Current FOC - Id required -->
+    <M2_Speed_req></M2_Speed_req><!-- Speed FOC - Speed required -->
+  </M2_ControlVariables>  
+   <M3_ControlVariables><!-- Control Cascade Structure Variables of MOTOR1 -->
+    <M3_Freq_req></M3_Freq_req><!-- V/Hz required speed -->
+    <M3_SCALAR_VHZ_FACTOR_GAIN></M3_SCALAR_VHZ_FACTOR_GAIN><!-- V/Hz ratio -->
+    <M3_SCALAR_VHZ_FACTOR_SHIFT></M3_SCALAR_VHZ_FACTOR_SHIFT><!-- V/Hz ratio -->
+    <M3_Ud_req></M3_Ud_req><!-- Voltage FOC - Ud required -->
+    <M3_Uq_req></M3_Uq_req><!-- Voltage FOC - Uq required -->
+    <M3_Id_req></M3_Id_req><!-- Current FOC - Id required -->
+    <M3_Iq_req></M3_Iq_req><!-- Current FOC - Id required -->
+    <M3_Speed_req></M3_Speed_req><!-- Speed FOC - Speed required -->
+  </M3_ControlVariables>  
+</control>
+
+

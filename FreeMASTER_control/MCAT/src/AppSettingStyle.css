@@ -1,0 +1,241 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 11, 2017, 3:33:07 PM
+    Author     : B34195
+*/
+
+/* Vertical menu in setting page tab*/
+.AppSet-menu {
+  height: 400px;
+  width: 100px;/**/
+  background-image:url('images/pozadi.png');
+}
+
+.AppSet-menu ul {
+  list-style-type: none;
+  text-align: left;
+  padding: 0px;
+  margin-top: -1px;
+  margin-right:  -1px;
+}
+
+.AppSet-menu li a {
+  display: block;
+  border-top: 2px solid #EEEEEE; 
+  font-family:arial;
+  font-weight:bold; 
+  font-size:12px;
+  color: rgb(53,58,63);  
+  padding-left: 10px;
+  line-height: 25px;  
+}
+
+.AppSet-menu li a:hover {
+  background-color: #DDDDDD;
+}
+.AppSet-menu li a.active { 
+  color: black;
+  font-weight:bold;  
+  background-color: #EEEEEE;
+  }
+  
+.AppSet-menu li a.last { 
+  cursor: default;
+  background-image:url('images/pozadi.png');
+  }
+
+/* Workspace of individual item in the Setting page menu*/
+.AppSet-box {
+  display: inline-block;
+  width: 100%;
+  height: 375px;
+  margin: 0px;
+  position: relative;
+  background-color: #EEEEEE;
+}
+
+.AppSet-box td{
+  height: 25px;  /**/
+}
+
+.fieldset-style{
+  border: 0px;
+  border-top: 1px solid #888888;
+  box-sizing:  border-box;/**/
+  text-align: left; 
+  width: 95%;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.AppSet-select{
+  font-size:11px; 
+  font-family:arial; 
+  font-weight: normal; 
+  text-align: left;
+  width:150px;
+  padding-left: 15px;
+}
+
+.AppSet-option{
+  font-size:11px; 
+  font-family:arial; 
+  font-weight: normal; 
+  text-align: left;
+  width:150px;
+  color: black;
+  border: 2px solid white;
+}
+
+.AppSet-option:hover{
+  background-color:#DDDDDD;
+  background-image:none;
+  border: 2px solid #DDDDDD;    
+}
+
+.AppSet-select_FOC{
+  font-size:11px; 
+  font-family:arial; 
+  font-weight: normal; 
+  text-align: left;
+  width:150px;
+  padding-left: 35px;
+}
+
+.AppSet-option_FOC{
+  font-size:11px; 
+  font-family:arial; 
+  font-weight: normal; 
+  text-align: left;
+ /* width:125px;*/
+ width: 100%;
+  
+  color: black;
+  border: 2px solid white;    
+}
+
+.AppSet-option_FOC:hover{
+  background-color:#DDDDDD;
+  background-image:none;
+  border: 2px solid #DDDDDD;      
+}
+
+/* Project path button selector */    
+.AppSet-ProjPathButton{
+    border: 1px solid #888888;
+    color: black;
+    text-decoration:none;
+    background-color: transparent;  
+    text-align: center;
+    font-size:12px;
+    font-family:arial;
+    font-weight:normal;
+    border-radius: 3px;
+    width: 150px; 
+    height: 20px;
+    cursor: pointer;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+    margin-top: 1px;
+}
+.AppSet-ProjPathButton:hover{
+    background-color:#DDDDDD;
+   
+}
+.AppSet-ProjPathButton:active{ 
+    background: #F4F4F4 no-repeat scroll 6px 9px;
+    border-right: 1px solid #888888;
+    border-bottom:  1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+/* */
+.TabMenu-checkbox {font-size:12px; font-family:arial; font-weight:normal;  }
+.TabMenu-checkbox td { padding-left:35px; text-align: center;}
+
+.Sensors-checkbox {text-align: center;}
+
+.PathSelectHeadline{
+ font-size:12px; 
+ font-family:Arial; 
+ text-align: center; 
+ font-weight: bold; 
+ padding: 5px 0px 10px 0px;   
+ color:rgb(136,13,19); 
+ width: 400px;
+}
+#path{  position:absolute;  font-size: 11px;  font-family: Arial;  font-weight: bold;  padding: 0px;}
+#list{  font-size: 11px;  font-family: Arial;  overflow:auto;}
+#projectPathFrameSelect{
+    width:450px; 
+    height:300px;
+    display:none; 
+    position:absolute; 
+    left:125px; 
+    top: 60px; 
+    z-index:1; 
+    background-image: url('images/pozadi.png');
+    border: 0px;
+}
+
+#container{
+    background-color: #EEEEEE;
+    border: 2px solid white;
+}
+
+.folders{
+  padding: 1px;
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+  cursor: pointer;
+  background-color: white;
+  padding-left: 5px;
+  text-align: left; 
+}
+
+.folders:hover{
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  background-color: whitesmoke;
+}
+
+.AppSet-SelectButton  {
+    border: 1px solid #888888;
+    color: black;
+    text-decoration:none;
+    background-color: transparent;  
+    text-align: center;
+    font-size:12px;
+    font-family:arial;
+    font-weight:normal;
+    border-radius: 3px;
+    width: 175px; 
+    height: 20px;
+    cursor: pointer;
+    border-right: 2px solid #888888;
+    border-bottom: 2px solid #888888;
+    margin-top: 1px;
+}
+
+.AppSet-SelectButton:hover{
+    background-color:#DDDDDD;
+}
+
+.AppSet-SelectButton:active{ 
+    background: #F4F4F4 no-repeat scroll 6px 9px;
+    border-right: 1px solid #888888;
+    border-bottom:  1px solid #888888;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+.AppSet-MenuTdWidth{
+    width: 125px;
+    text-align: center;
+}

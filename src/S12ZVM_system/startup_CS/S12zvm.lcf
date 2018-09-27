@@ -1,0 +1,37 @@
+#	link command file for S12Z for test program
+#	Copyright (c) 2008 by COSMIC Software
+#
+
+# reset+interrupt vectors
++seg .vector -b 0xFFFE10 -k -n.vector
+
+# code and constants u24 access
+#+seg .text -b 0xFE0530  -n.text		# program start address
++seg .text -b 0xFE0000  -n.text		# program start address
++seg .const -a.text -r2 -n.const	# constants follow code
+
++seg .security -b 0xFFFE0F -k -n.security	# Flash security value 0xFE to address 0xFFFE0F
+
+# RAM with U14 access
+
++seg .adcLists	   -b 0x1000  		-r2	-n.adcLists  -id
++seg .ptuTrigE	   -a.adcLists    	-r2	-n.ptuTrigE -id
++seg .data 	   -a.ptuTrigE    	-r2	-n.data -id   		# initialized data
++seg .bss  	   -a.data    		-r2	-n.bss        		# uninitialized data
++seg .dump   	   -a.bss   		-r2 	-n.dump 		# Dump space
+
++seg .stack -b 0x2800     -n.stack      # stack
+
+
+# Put you startup file here
+@*
+
+#libd.z12	# double floating point Library
+#libf.z12	# single floating point Library
+libi.z12	# C Library
+libm.z12	# Machine Library
+
++def __sbss=start(.bss)	# start address of bss
++def __memory=end(.bss)	# symbol used by library
++def __stack=end(.stack)	# stack pointer initial value
+

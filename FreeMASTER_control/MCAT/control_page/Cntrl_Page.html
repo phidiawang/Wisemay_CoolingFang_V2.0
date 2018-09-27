@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html style="text-align: center;">
+    <head>
+        <title>PMSM Control Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="Cntrl_page.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="Control_page.js"></script>
+        <style type="text/css">
+           /* div         {border:0px solid black;}*/
+            .HeadBorder   {/*border:2px solid #FFF;border-style: groove;*/margin-bottom: 5px;}
+            .fontTitle {font-size:18px; font-family:Arial; text-align: center; font-weight: bold; padding: 5px 0px 5px 0px;   color:rgb(136,13,19);}
+            .fontSectionLable {font-size:14px; font-family:verdana; font-weight: normal;text-align: center; font-weight: bold;}
+            .error_on     {background: url("fault_on.png") no-repeat top; background-position: center; width: 100px; height: 30px;vertical-align:middle; text-align: center;font-size:9px; font-family: verdana; font-weight: bold}
+            .error_off    {background: url("fault_off.png") no-repeat top; background-position: center; width: 100px; height: 30px; text-align: center;font-size:9px; font-family: verdana; font-weight: bold; color: silver;}
+            .run_on       {background: url("red_run_on.png") no-repeat top; width: 25px;background-position: left; background-repeat: no-repeat; background-position: 10% 50%}
+            .run_off      {background: url("red_run_off.png") no-repeat top; width: 25px;background-position: left; background-repeat: no-repeat}
+            .fontFieldsetLegend {font-size:11px; font-family:verdana; font-weight: bold; padding-left: 0px; color:rgb(26,75,92);}
+        </style>
+    </head>
+  
+   <!-- <body id="control_page" onload="Init()" onunload="LeaveCntrPage()" style="padding-left: 5%; background-color:#EEEEEE; text-align: center;">-->
+    <body  id="control_page"  onload="Init()" onunload="LeaveCntrPage()" style="background-color:#EEEEEE;  display:inline-block; margin: 10px auto; text-align: center;">                                                  
+        <OBJECT id="MCB_PC_Master_Services1" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153" name="pcm">	     
+        </OBJECT>
+            <script language="VBScript">
+                Sub pcm_OnVariableChanged(a1,a2)
+                    Event_OnVariableChanged a1,a2
+                End Sub
+            </script>
+        <OBJECT style="display:none;" CLASSID = "clsid:5220cb21-c88d-11cf-b347-00aa00a28331">  
+            <PARAM NAME="LPKPath" VALUE="gmsctls.lpk"> 
+        </OBJECT>
+        
+       <div>
+                <table style="width: 700px;">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><div class="HeadBorder fontTitle" style="width: 680px;">PMSM Control Page</div></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                        <td> 
+                            <table style="width: 400px;">
+                                <tr>
+                                <td>
+                                <fieldset style="width: 95%; margin-bottom: 15px; ">
+                                <legend class="fontFieldsetLegend"><b>Application Faults</b></legend> 
+                                    <div id="errors_tab"></div>
+                                </fieldset> 
+                                
+                                <table style="width:100%;">
+                                    <tr style='vertical-align: top;'>
+                                        <td style="width:24%;" id="onOffLabel" class="controlPanelLabel">On/Off</td>
+                                        <td style="width:24%;" id="appStateLabel" class="controlPanelLabel">Application State</td>
+                                        <td style="width:24%;" class="controlPanelLabel">Default Settings</td>
+                                        <td style="width:24%;" class="controlPanelLabel">Sensor Option</td>
+                                    </tr>   
+                                    <tr >
+                                        <td>
+                                            <input type="button" class="OnOff_button_off" value="OFF" id="OnOff_button" onclick="powerClickOutput()"/> 
+                                        </td>
+                                        <td>
+                                            <input disabled="disabled" type="button" id="State_machine" class="State_machine_text" value="READY" onclick="ClearFault()" />
+                                        </td>
+                                        <td>
+                                            <input disabled="disabled" type="button" id="Load_button" class="Load_button_off" value="LOAD" onclick="loadClick()" />
+                                        </td>                                        
+                                        <td>
+                                           <script>
+                                            // Combo box - sensor types
+                                            document.write(build_PoSpe_selector("PoSpeSensorType"));
+                                            </script>
+                                        </td>
+                                    </tr>      
+                                </table>                                     
+                            </td></tr>
+                            </table>
+                        </td>
+                        <td> 
+                            <table>
+                                <tr><td>
+                                    <script language="VBScript">
+                                        loadVoltageGauge()                                 
+                                    </script>
+                                </td></tr>
+                                <tr><td>
+                                    <!-- VBScript recommended even for JScript events -->
+                                    <script language="VBScript">    
+                                        Sub gaugeSPEED_change()     'agauge Change event handled by VBScript 
+                                            Speed_Gauge_SetUp()     'JScript handler call
+                                        End Sub
+                                    
+                                        loadSpeedGauge() 
+                                    </script>
+                                </td></tr>
+                            </table>
+                        </td>
+
+                        </tr>    
+                        
+                    </tbody>
+                </table>
+
+        </div>
+    </body>
+</html>

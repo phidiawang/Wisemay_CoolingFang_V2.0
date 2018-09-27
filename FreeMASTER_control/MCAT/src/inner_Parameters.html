@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html style="text-align: center;">     
+  <head>       
+        <title>Current Control Page</title>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+       
+    <link href="style.css" rel="stylesheet" type="text/css" />      
+    <script type="text/javascript" src="JS_functions\mainInclude.js"></script>
+    <script LANGUAGE="JavaScript" type ="text/javascript">
+      includeJSfiles();
+    </script>
+   </head>
+        
+   <body id="Parameters" onload="initLoadFormParamValues()"  background="images/pozadi.png" style="background-color:#EEEEEE; display: inline-block; margin: 10px auto; text-align: center;">                                          
+   <!-- <OBJECT id="MCB_PC_Master_Services1" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153" name="pcm"></OBJECT>    -->
+    <OBJECT id="pcm" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153"></OBJECT> 
+    <OBJECT  CLASSID = "clsid:5220cb21-c88d-11cf-b347-00aa00a28331" style="display:none;">         
+        <PARAM NAME="LPKPath" VALUE="gmsctls.lpk">         
+    </OBJECT>  
+     <!-- Headline -->
+    <div class="HeadBorder fontTitle" style="width: 700px;">Input Application Parameters</div>   
+    <div>   
+       
+        <script>
+           // calc floating iFrame
+           document.write("<iframe id=\"calcFrame\" width=\"380\" frameborder=\"1\" scrolling=\"no\"  src=\"\" style=\" visibility:hidden; position:absolute; top:70px; left:200; \"></iframe>");
+        </script>
+        
+      <!-- header table-->             
+      <table style="width: 700px;" class="MainTab" >               
+        <tr>                 
+          <!--<form name="MainPage">      -->    
+            <td valign="top" style =" width:45%; padding-left: 5px;" >                      		                            
+              <!-- parameter table-->     
+              <fieldset  style="width: 100%;" class="ContBox">
+                <legend class="fontControlLabel">Motor Parameters</legend>        
+                <table id="parameterTable_1" width="100%"  class="ContBoxTab" >            
+              
+                  <script>
+                  // pole-pair number
+                  document.write( build_parameter_line( "pp","pp", "-", "Motor Pole-Pairs Number"));
+                  // stator resistance
+                  document.write( build_parameter_line( "Rs","Rs", "&#937", "Motor Phase Stator Resistance"));
+                  // direct axis inductance
+                  document.write( build_parameter_line( "Ld","Ld", "H", "Motor Phase Direct Axis Inductance" ));
+                  // quadrature axis inductance
+                  document.write( build_parameter_line( "Lq","Lq", "H", "Motor Phase Quadrature Axis Inductance"));
+                  // BEMF constant
+                  document.write( build_parameter_line( "ke","ke", "V.sec/rad", "Back-EMF Constant"));
+                  // motor intertia constant
+                  document.write( build_parameter_line( "J", "J","kg.m2", "Motor Inertia"));
+                  // motor nominal phase current
+                  document.write( build_parameter_line( "Iph&nbsp;nom","I_ph", "A", "Nominal Continous Phase Current"));
+                  // motor nominal phase voltage
+                  document.write( build_parameter_line( "Uph&nbsp;nom","U_ph", "V", "Nominal Phase Voltage"));
+                  // motor required maximal angular velocity
+                  document.write(build_parameter_line( "N&nbsp;nom","N_nom", "rpm", "Nominal Motor Speed"));
+                 
+                  </script>	
+                                    
+               </table>
+            </fieldset>     	                               
+            
+            <!-- parameter table-->     
+              <fieldset  style="width: 100%; "  class="ContBox">
+                <legend class="fontControlLabel">Hardware Scales</legend>        
+                <table id="parameterTable_2" width="100%" border="0" align="left" class="ContBoxTab">            
+             
+                  <script> 
+                  // phase current measurement scale
+                  document.write( build_parameter_line("I&nbsp;max","I_max", "A", "Phase Current Measurement Scale"));
+                  // DC-Bus voltage measurement scale
+                  document.write( build_parameter_line("U&nbsp;DCB&nbsp;max","UDC_max", "V", "DC-Bus Voltage Measurement Scale"));
+                  // temperature scale
+                  document.write( build_parameter_line( "Temp&nbsp;max","TEMP_max", "°C", "Temperature scale")); 
+                  </script>		                            
+               </table>
+            </fieldset>
+          </td>                              
+          <td valign="top"  style =" width:50%; padding-left: 5px; padding-right:  10px;" > 
+             <!-- application scales table-->   
+             <fieldset  style="width: 100%;"  class="ContBox" >
+             <legend class="fontControlLabel">SW Fault Triggers</legend>        
+                <table id="parameterTable" width="100%;" border="0" align="left" class="ContBoxTab">              
+             
+                  <script>
+                  // Trip DC-Bus voltage for braking into resistor
+                  document.write( build_parameter_line("U&nbsp;DCB&nbsp;trip","UDC_trip", "V", "Trip DC-Bus Voltage for Braking into Resistor"));
+                  // DC-Bus Undervoltage fault trigger
+                  document.write( build_parameter_line("U&nbsp;DCB&nbsp;under","UDC_under", "V", "DC-Bus Undervoltage fault trigger"));
+                  // DC-Bus Undervoltage fault trigger
+                  document.write( build_parameter_line("U&nbsp;DCB&nbsp;over","UDC_over", "V", "DC-Bus Overvoltage fault trigger"));
+                  // Phase over-current fault trigger
+                  document.write( build_parameter_line("I&nbsp;ph&nbsp;over","IPH_over", "A", "Phase Overcurrent fault trigger"));
+                  // Over temperature fault trigger
+                  document.write( build_parameter_line("Temp&nbsp;over","Temp_over", "°C", "Over temperature fault trigger"));
+                </script>		                            
+          
+               </table>	
+             </fieldset>
+             <!-- application scales table-->   
+             <fieldset  style="width: 100%;;"  class="ContBox">
+             <legend class="fontControlLabel">Application Scales</legend>        
+                <table id="parameterTable" width="100%;" border="0" align="left" class="ContBoxTab">              
+              
+                 <script>
+                  var aritType = parent.document.getElementById("Arithmetic").innerText;
+                  // torque constant
+                  document.write( build_parameter_line( "kt","kt", "Nm/A", "Torque Constant"));  
+                  // mechanical velocity measurement scale
+                  document.write( build_parameter_line("N&nbsp;max","N_max", "rpm", "Mechanical Speed Measurement Maximum Limit"));
+                  
+                  // Max phase voltage - 
+                 // document.write( build_parameter_line("U&nbsp;max","U_max", "V", "Phase Voltage Maximum"));
+                 // 
+                  // FOC BEMF scale - available only when FIX arithmetic selected and sensorless method
+                  if(aritType!=='Float')
+                    if(testActiveTab('Sensorless'))
+                        document.write( build_parameter_line("E&nbsp;max","E_max", "V", "FOC BEMF Maximum Limit"));
+ 
+                </script>		                            
+         
+               </table>	
+             </fieldset>  
+             <fieldset  id="Alignment" style="width: 100%;;"  class="ContBox">
+             <legend class="fontControlLabel">Alignment</legend>        
+                  <!-- Curr alignment table-->   
+                 <fieldset  id="Curr_align" style="border: none; padding: 0px 0px 0px 0px;">
+                    <table width="100%" class="ContBoxTab">              
+                    <script>
+                    // current  applied on D-axis for mechanical alignment
+                    document.write( build_parameter_line( "Align&nbsp;current","ALIGN_I", "A", "Current Applied on D-axis for Mechanical Rotor Alignment"));
+                  </script>		                            
+                    </table>	
+                </fieldset>
+                <!-- Voltage alignment table-->
+                <fieldset  id="Volt_align" style="border: none; padding: 0px 0px 0px 0px;">
+                  <table width="100%;" class="ContBoxTab">              
+                    <script>
+                      // voltage  applied on D-axis for mechanical alignment
+                      document.write( build_parameter_line( "Align&nbsp;voltage","ALIGN_U", "V", "Voltage Applied on D-axis for Mechanical Rotor Alignment"));
+                    </script>		                            
+                  </table>	
+                </fieldset>
+                <fieldset style="border: none;  padding: 0px 0px 0px 0px;">
+                <table width="100%;" class="ContBoxTab">              
+                    <script>
+                    // alignment duration
+                    document.write( build_parameter_line( "Align&nbsp;duration","ALIGN_T", "sec", "Time of rotor alignment"));
+                    </script>	
+
+                </table> 
+                </fieldset>
+             </fieldset>
+            </td>                     
+         <!-- </form> -->                                                   
+        </tr>         
+      </table>                      
+      <table class = "fButtonGroup">               
+        <tr>
+          <td><input type="button" class="fButtonsEnabled" value="Update Target" id="ParamsUpdateFrm" onmouseout="unmarkUpdateParamField()" onmouseover="markUpdateParamField()" onmouseup="clickUpdateParamFM()" /></td> 
+          <td><input type="button" class="fButtonsDisabled" value="Reload Data" id="ReloadData" onmouseover="reloadParamField()" onclick="clickReloadData(); initLoadFormParamValues();" disabled="disabled" /></td> 
+          <td><input type="button" class="fButtonsDisabled" value="Store Data" id="StoreData" onmouseover="storeParamField()" onclick="clickStoreData()" disabled="disabled" /></td>
+        </tr>            
+      </table>                 
+      <span style="visibility: hidden" face="sans-serif" id="txtErrMsg">.       
+      </span>          
+    </div>     
+  </body>
+</html>
+

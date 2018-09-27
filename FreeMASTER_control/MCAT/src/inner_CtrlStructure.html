@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html style="text-align: center;">     
+  <head>       
+    <!--<meta http-equiv="content-type" content="text/html; charset=windows-1250">       
+    <meta name="generator" content="PSPad editor, www.pspad.com">       -->
+    <title>ContrulStructureTab</title>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <link href="style.css" rel="stylesheet" type="text/css" />      
+    <script type="text/javascript" src="JS_functions\mainInclude.js"></script>
+    <script LANGUAGE="JavaScript" type ="text/javascript">
+      includeJSfiles();
+    </script>
+   </head>   
+   <!---->
+  <body id="ControlStructure" onload="innerHTMLonload(); initLoadFormCascade();" background="images/pozadi.png" style="display: inline-block; margin: 10px auto; text-align: center;">                                          
+    <OBJECT id="MCB_PC_Master_Services1" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153" name="pcm">	     
+    </OBJECT>	
+        <script language="VBScript">
+            Sub pcm_OnVariableChanged(a1,a2)
+            Event1_OnVariableChanged a1,a2
+            End Sub
+        </script>
+    <OBJECT style="display:none;" CLASSID = "clsid:5220cb21-c88d-11cf-b347-00aa00a28331">         
+      <PARAM NAME="LPKPath" VALUE="gmsctls.lpk">         
+    </OBJECT>   
+      
+    <div class="HeadBorder fontTitle" style="width: 700px;">Application Control Structure</div>   
+    <div>    
+              
+   
+     <script>
+        // iframes for control structure block diagram with close button
+        document.write("<iframe id=\"cntrStrucFrameImage\" frameborder=\"1\" marginheight=\"15px\" marginwidth=\"15px\" scrolling=\"no\" src=\"\" style=\"display: none; background-color:white; position:absolute; z-index:10;\"></iframe>");
+        document.write("<iframe id=\"cntrStrucFrameButton\" width=\"120\" height=\"25\" frameborder=\"0\" marginheight=\"1px\" marginwidth=\"0px\" scrolling=\"no\" src=\"\" style=\"display: none; position:absolute;z-index:10;\"></iframe>");
+     </script>
+                      
+      <!-- main application state table-->
+      <table id="ccsTable" style="width: 700px; height: 100px;" class="MainTab">
+          <tr>
+            <td width="30%" align="left" valign="top" style="padding-left: 5px;">
+            <fieldset id="stateControlField" style="width:100%; height:200%;" class="ContBox">
+              <legend class="fontControlLabel">State Control</legend> 
+              <table width="100%" border="0" >
+                <tr> <td width="200"><div class="fontControl">ON</div></td></tr>
+                <tr> <td class="appOff" id="sw_app_onoff" onClick="OnOff_Click()" ></td></tr>
+                <tr> <td width="200"><div class="fontControl">OFF</div></td></tr>
+                <tr> <td> </td></tr>            
+                <tr> <td><div id="appStateLabel" class="appStateLabel">Application State</div></td></tr>
+                 <tr> 
+                 <td align="center" >
+                   <input disabled="disabled" type="button" id="textApplicationState" class="appStateBox" value="READY" onclick="ClearFault()" />     
+                 </td>
+                 </tr> 
+              </table>
+             
+            </fieldset>
+            </td> 
+              
+                 
+            <td width="65%" align="right" valign="top" style="padding-right: 10px; padding-left: 5px;">
+                 
+              <fieldset id="ccsField" style="width: 100%; height: 100px; text-align: right;" class="ContBox" >
+              <legend class="fontControlLabel" style="margin-bottom: 0px;" >Cascade Control Structure Composition</legend> 
+                                  		                            
+            <!-- current controller input parameters-->     
+              <table id="ControlStructureTable" border="0"  style="width: 100%; text-align: left;" >
+                  <div>
+              <script>
+                  document.write(build_VHz_control_structure_line("scalar_ctrl","Scalar Control", "V/rpm_factor","[%]", "Speed_req","[rpm]", "Percentage value of a rated V/rpm rate", "Required mechanical speed"));
+                  // Voltage DQ control with position feedback
+                  document.write("<tr><td align=\"center\" colspan =\"5\"><div class=\"CtrlHLines\"></div></td></tr>");
+                  document.write(build_control_structure_line("volt_ctrl","Voltage FOC ",  "Ud_req","[V]", "Uq_req","[V]", "Required Ud voltage","Required Uq voltage"));
+                  // Current DQ control with position feedback
+                  document.write("<tr><td align=\"center\" colspan =\"5\"><div class=\"CtrlHLines\"></div></td></tr>");
+                  document.write(build_control_structure_line("current_ctrl","Current FOC ",  "Id_req","[A]", "Iq_req","[A]", "Required Id current","Required Iq current"));
+                  // Speed controller with limitation*/
+                  document.write("<tr><td align=\"center\" colspan =\"5\"><div class=\"CtrlHLines\"></div></td></tr>");
+                  
+                 // document.write(Marek_test_line("speed_ctrl","Speed FOC ","Speed_req","[rpm]", "Required Mechanical speed"));
+                  document.write(build_control_structure_line("speed_ctrl","Speed FOC ","Speed_req","[rpm]", "","","Required Mechanical speed",""));
+                  // Position / Speed feedback
+                 document.write("<tr><td align=\"center\" colspan =\"5\"><div class=\"CtrlHLines\"></div></td></tr>");
+                 document.write(build_control_structure_line_with_selector("pospe_ctrl","Position & Speed Feedback","Position & Speed","","Choose the type of Position/Speed feedback"));
+                 //*/
+              </script>
+              </div>
+              	                            
+              </table>	                               
+              </fieldset>
+
+         
+              </td>                             
+                                                            
+        </tr> 
+        </table>
+     <span style="visibility: hidden;" face="sans-serif" id="txtErrMsg">       
+      </span>          
+    </div>     
+  </body>
+</html>

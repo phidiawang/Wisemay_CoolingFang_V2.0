@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<control>
+  <appcontrol>
+    <M1_onoff>On/Off</M1_onoff>
+    <M2_onoff></M2_onoff>
+    <M1_swSensor></M1_swSensor>
+    <M2_swSensor></M2_swSensor> 
+    <M1_clrFltvar>Clear Faults</M1_clrFltvar>     
+    <M2_clrFltvar></M2_clrFltvar>
+    <M1_loadSetting>cntrState.usrControl.switchAppReset</M1_loadSetting>
+    <M2_loadSetting></M2_loadSetting>      
+    <M1_ControlStructureMethod>cntrState.usrControl.FOCcontrolMode</M1_ControlStructureMethod>
+    <M2_ControlStructureMethod></M2_ControlStructureMethod> 
+  </appcontrol>
+  <VoltageGauge>
+    <M1_ActualVoltage>Udcb Filt</M1_ActualVoltage>    
+  </VoltageGauge>  
+  <SpeedGauge>
+    <M1_ActualSpeed>drvFOC.pospeControl.wRotEl</M1_ActualSpeed>
+    <M2_ActualSpeed></M2_ActualSpeed>    
+    <M1_RequiredSpeed>Speed Required</M1_RequiredSpeed>
+    <M2_RequiredSpeed></M2_RequiredSpeed>    
+  </SpeedGauge>  
+  <M1_states FreemasterName="State">
+    <M1_state>INIT</M1_state>
+    <M1_state>FAULT</M1_state>
+    <M1_state>READY</M1_state>
+    <M1_state>CALIB</M1_state>
+    <M1_state>ALIGN</M1_state>
+    <M1_state>RUN</M1_state>
+    <M1_state>RESET</M1_state>
+  </M1_states>  
+  <M2_states FreemasterName="">
+    <M2_state></M2_state>
+  </M2_states>
+  <faultRegister>
+    <M1_faultID>M1.faultID.R</M1_faultID>
+    <M2_faultID></M2_faultID>
+    <M1_faultIDp>M1.faultIDp.R</M1_faultIDp>
+    <M2_faultIDp></M2_faultIDp>     
+  </faultRegister>   
+  <errors>
+    <error>
+      <errorname>Ia</errorname>
+      <M1_FMNAME>OverPhaseACurrent</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>OverPhaseACurrent - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>      
+    </error>
+    <error>
+      <errorname>Udcb HI</errorname>
+      <M1_FMNAME>OverDCBusVoltage</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>      
+      <M1_FMRUNNAME>OverDCBusVoltage - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>     
+    <error>
+      <errorname>ADC</errorname>
+      <M1_FMNAME>ADCFault</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>ADCFault</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>                               
+    <error>
+      <errorname>Ib</errorname>
+      <M1_FMNAME>OverPhaseBCurrent</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>OverPhaseBCurrent - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>      
+    </error>
+    <error>
+      <errorname>Udcb LO</errorname>
+      <M1_FMNAME>UnderDCBusVoltage</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>UnderDCBusVoltage - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>      
+    </error> 
+    <error>
+      <errorname>PTU</errorname>
+      <M1_FMNAME>PTUFault</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>PTUFault</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>    
+    <error>
+      <errorname>Ic</errorname>
+      <M1_FMNAME>OverPhaseCCurrent</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>OverPhaseCCurrent - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>
+    <error>
+      <errorname>GDU</errorname>
+      <M1_FMNAME>GDUFault</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>GDUFault</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>     
+    <error>
+      <errorname>FOC</errorname>
+      <M1_FMNAME>FOCFault</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>      
+      <M1_FMRUNNAME>FOCFault - trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>      
+    </error>         
+    <error>
+      <errorname>Idcb</errorname>
+      <M1_FMNAME>Over Current DCB p</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>      
+      <M1_FMRUNNAME>Over Current DCB</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>    
+    </error>      
+    <error>
+      <errorname>PMF</errorname>
+      <M1_FMNAME>PMFFault</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>PMFFault</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>  
+    <error>
+      <errorname>TEMP</errorname>
+      <M1_FMNAME>OverHeating</M1_FMNAME>
+      <M2_FMNAME></M2_FMNAME>
+      <M1_FMRUNNAME>OverHeating - Trip</M1_FMRUNNAME>
+      <M2_FMRUNNAME></M2_FMRUNNAME>
+    </error>  
+  </errors>  
+</control>

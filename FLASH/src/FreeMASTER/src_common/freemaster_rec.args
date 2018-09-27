@@ -1,0 +1,48 @@
+-allow_macro_redefs
+-DSWLIBS_DEFAULT_IMPLEMENTATION=SWLIBS_DEFAULT_IMPLEMENTATION_F16
+-nostdinc
+-nosyspath
+-i
+"$(ProjDirPath)/Config"
+-i
+"$(ProjDirPath)/src"
+-i
+"$(ProjDirPath)/src/FreeMASTER"
+-i
+"$(ProjDirPath)/src/FreeMASTER/S12ZVM"
+-i
+"$(ProjDirPath)/src/S12ZVM_system"
+-i
+"$(ProjDirPath)"
+-i
+"$(ProjDirPath)/src/S12ZVM_system/peripherals"
+-i
+"$(ProjDirPath)/src/S12ZVM_system/startup_CW"
+-i
+"$(ProjDirPath)/src/FreeMASTER/src_common"
+-i
+"$(MC9S12ZVM_AMMCLIB_V1_1_13)/include"
+-I-
+-I"$(MCUToolsBaseDirEnv)/S12lisa_Support/s12lisac/include"
+-I-
+-I"$(MCUToolsBaseDirEnv)/S12lisa_Support/s12lisac/src"
+-I-
+-I"$(MCUToolsBaseDirEnv)/S12lisa_Support/s12lisac/lib_small"
+-w possible
+-w extended
+-w extracomma
+-w emptydecl
+-w structclass
+-model small
+-bfield_lsbit_first
+-bfield_reduce_type
+-opt level=2
+-opt speed
+-requireprotos
+-lang c99
+-Cpp_Exceptions off
+-RTTI off
+-wchar_t off
+-char unsigned
+-msgstyle parseable
+-sym full

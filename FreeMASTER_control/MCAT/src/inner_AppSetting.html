@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>AppSetting</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="AppSettingStyle.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+        <script type="text/javascript" src="JS_functions\inner_AppSetting.js"></script>
+        <script type="text/javascript" src="JS_functions\fileProcessing.js"></script>        
+        <script type="text/javascript" src="JS_functions\config.js"></script>                
+        <script type="text/javascript" src="JS_functions\calculations.js"></script>                
+    </head>
+    <body id="settingTab"  onload="hideTabMenu(); initLoadSettings();" style="width: 702px; background-image:url('images/pozadi.png');  margin: 0px; text-align: center;">
+        
+    <OBJECT id="MCB_PC_Master_Services1" style="display:none;" classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153" name="pcm"></OBJECT>
+    <OBJECT style="display:none;" CLASSID = "clsid:5220cb21-c88d-11cf-b347-00aa00a28331">         
+    <PARAM NAME="LPKPath" VALUE="gmsctls.lpk"></OBJECT>
+    
+    <script>
+      // generates an iframe for path selector dialog
+      document.write("<iframe id=\"projectPathFrameSelect\" src=\"\" ></iframe>");
+    //browseDirectory();
+    </script>
+    
+    <div class="HeadBorder fontTitle" style="width: 100%px;" >Application Setting Page</div>   
+
+    <table style="border:none; width: 100%; background-color: #EEEEEE;" class="MainTab" valign="center"> 
+        <tr>
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->            
+            <!-- setting up the vertical menu on the left side -->
+            <td class="AppSet-menu" rowspan="2" style="vertical-align: top;" >
+                  <ul id="AppSet-menu-items">
+                    <li><a class="active" href="#" onfocus="blur(Choose_AppSet_menu_cont(0))">General</a></li>
+                    <li><a href="#" onfocus="blur(Choose_AppSet_menu_cont(1))">FOC</a></li>
+                    <li><a href="#" onfocus="blur(Choose_AppSet_menu_cont(2))">Sensors</a></li>             
+                    <li><a href="#" onfocus="blur(Choose_AppSet_menu_cont(3))">Tab menu</a></li>
+                    <li><a class="last" href="#" ></a></li>
+                  </ul>
+            </td>
+            
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->            
+            <!-- workspace of setting page - active according to selected item in the menu -->
+            <td style="vertical-align: top;" colspan="3">
+                
+                <!-- PAGE 1 of vertical menu -->
+                <div id="vert-menu-0" class="AppSet-box" style="display: ">
+                    <fieldset class="fieldset-style" >
+                    <legend class="fontControlLabel">General Settings</legend>
+                    <table>
+                        <tr>
+                            <td><div class = "AppSet-select">Number of motors</div></td>
+                            <td> 
+                                <select id="MotorsNo" class ="AppSet-option" onchange="dropdownChange(this.id, this.value);">
+                                    <option value="Single">Single motor</option>
+                                    <option value="Dual">Dual motor</option>                               
+                                    <option disabled value="Triple">Triple motor</option>
+                                </select>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class = "AppSet-select">Arithmetic</div></td>
+                            <td> 
+                                <select id="Arithmetic" class = "AppSet-option" onchange="dropdownChange(this.id, this.value);">
+                                <option value="Frac16">16-bit fixed-point</option>
+                                <option value="Frac32">32-bit fixed-point</option>                               
+                                <option value="Float">32-bit floating-point</option>                                
+                                </select>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class = "AppSet-select">Type of the motor</div></td>
+                            <td> 
+                                <select disabled id="M1type" size="1" onchange = "dropdownChange(this.id, this.value);" class = "AppSet-option">
+                                <option value="PMSM">PMSM</option>
+                                <option value="BLDC">BLDC</option>                               
+                                </select>  
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><div class = "AppSet-select">Browse for project path</div></td>
+                            <td>
+                                <input type="button" class="AppSet-ProjPathButton" value="Browse" id="browseDir" onclick="browseDirectory();"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class = "AppSet-select">Project path:</div></td>
+                            <td id = "projectPathWrite1" style="font-size:11px; font-family:arial; font-weight: normal;">
+                                c:\\
+                            </td>
+                        </tr>
+                        <tr id="secLineProjPath">
+                            <td></td>
+                            <td id = "projectPathWrite2" style="font-size:11px; font-family:arial; font-weight: normal;">
+                                c2:\\
+                            </td>
+                        </tr>                        
+                    </table>
+                    </fieldset>
+                </div>
+                
+                <!-- PAGE 2 of vertical menu -->                
+                <div id="vert-menu-1" class="AppSet-box" style="display: none">
+                    <fieldset class="fieldset-style" >
+                    <legend class="fontControlLabel">Field Oriented Control structure</legend>
+                        <script>
+                                document.write('<table id=\"FOC_table\">');
+                                document.write(build3MotHeadline());
+                                document.write(buildLineSeparator('Current Control Loop'));
+                                document.write(build3MotDropdown('PI controller','Ccontroller',['Parallel', 'Recurrent']));
+                                document.write(build3MotDropdown('Feedforward','FFw_CL',['None', 'Zero Cancellation']));
+                                document.write(buildLineSeparator('Speed Control Loop'));
+                                document.write(build3MotDropdown('PI controller','Scontroller',['Parallel', 'Recurrent']));
+                                document.write(build3MotDropdown('Feedforward','FFw_SL',['None','Incremental Ramp', 'Zero Cancellation']));                        
+                                document.write(buildLineSeparator('Startup Alignment'));
+                                document.write(build3MotDropdown('DC','Alignment',['Voltage', 'Current']));
+                                document.write('</table>');    
+                        </script>
+                    </fieldset>
+                </div>
+
+                <!-- PAGE 3 of vertical menu -->                                
+                <div id="vert-menu-2" class="AppSet-box" style="display: none">
+                    <fieldset class="fieldset-style" >
+                    <legend class="fontControlLabel">Sensors</legend>
+                        <script>
+                                document.write('<table id=\"Sensors_table\">');
+                                document.write(build3MotHeadline());
+                                document.write(buildLineSeparator('Position and speed sensing'));
+                                document.write(buildSensorField());     
+                                document.write(buildLineSeparator('Speed filtering'));                                
+                                document.write(build3MotDropdown('Filter','WFilt',['none','MA Filter (n-point)','MA Filter (lambda)','IIR Filter']));
+                                document.write(buildLineSeparator(''));
+                                document.write(buildLineSeparator('Issues'));
+                                document.write(buildLineSeparatorNormal('Tracking observer and DQ BackEMF observer are now AMMCLib functions. Both of them are\n\
+                                                                        implemented by utilizing the recurtent forms of PI controllers.'));
+                                document.write(buildLineSeparator('Due to this reason, MCAT does not offer a posibility to choose the PI controller type for\n\
+                                                                        Tracking Observer and DQ BackEMF observer.'))    
+                                document.write('</table>'); 
+                                
+                        </script>                    
+                    </fieldset>
+                </div>  
+
+                <!-- PAGE 4 of vertical menu -->                
+                <div id="vert-menu-3" class="AppSet-box" style="display: none">
+                    <fieldset class="fieldset-style" >
+                    <legend class="fontControlLabel">MCAT Tab menu manager</legend>
+                        <script>
+                                document.write('<table id=\"Tab_menu_table\">');
+                                document.write(build3MotHeadline());
+                                document.write(build3MotTabMenu());
+                                document.write('</table>');                                 
+                        </script>   
+                    </fieldset>
+                </div>
+              
+            </td>
+        </tr>
+        <tr>
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->            
+            <!-- button field on the bottom side of setting page-->
+                <td style=" padding-bottom: 6px;"><input type="button" class="fButtonsEnabled" value="OK" id="OK_button" onclick="clickSettingOK()" title="Save changes, return to MCAT" /></td>
+                <td style=" padding-bottom: 6px;"><input type="button" class="fButtonsEnabled" value="Cancel" id="Cancel_button" onclick="clickSettingCancel()" title="Cancel changes, return to MCAT"/></td>
+                <td style=" padding-bottom: 6px;"><input type="button" class="fButtonsDisabled" value="Apply" id="Apply_button" disabled onclick="clickStoreData(); lockApplyButton()" title="Save changes"/></td>
+        </tr>
+    </table>
+        
+   </body>
+</html>
