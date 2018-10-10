@@ -24,13 +24,13 @@
 <stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.memConfigPath" value=""/>
 <stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.simulator" value=""/>
 <booleanAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.smp" value="false"/>
-<stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.systemType" value="com.freescale.cw.system.s12z.S12ZVM.MC9S12ZVML32"/>
+<stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.systemType" value="com.freescale.cw.system.s12z.S12ZVM.MC9S12ZVMC256"/>
 <booleanAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.useInitFile" value="false"/>
 <booleanAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.useMemoryConfigFile" value="false"/>
-<stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.S12Z Debugger.processor" value="MC9S12ZVML32"/>
+<stringAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.S12Z Debugger.processor" value="MC9S12ZVMC256"/>
 <booleanAttribute key="com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.S12Z Interrupt.interrupt_disabled" value="false"/>
 <listAttribute key="com.freescale.cdt.debug.cw.CoreNameList">
-<listEntry value="MC9S12ZVML32#0"/>
+<listEntry value="MC9S12ZVMC256#0"/>
 </listAttribute>
 <listAttribute key="com.freescale.cdt.debug.cw.Debug"/>
 <booleanAttribute key="com.freescale.cdt.debug.cw.DebuggerTab.StopAtProgramEntryPoint" value="false"/>
@@ -154,17 +154,17 @@
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_Multilink_PowerDownDelay" value="250"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_Multilink_PowerUpDelay" value="1000"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_PCI_DELAY" value="0"/>
-<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_PORT" value="21"/>
-<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_PORT_NAME_STRING" value="PEMAFE6DF"/>
+<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_PORT" value="101"/>
+<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_PORT_NAME_STRING" value="Universal_PEMB80FD7"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_SPECIFY_IP" value="127.0.0.1"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_SPECIFY_IP_ENABLED" value="0"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_SPECIFY_NETWORKCARD" value="127.0.0.1"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_SPECIFY_NETWORKCARD_ENABLED" value="0"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_TraceLink_MaxBufferSize" value="1"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_USE_CYCLONEPRO_RELAYS" value="1"/>
-<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_interface_selection" value="0"/>
+<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_interface_selection" value="3"/>
 <stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.STARTUP_set_CLKSW_bit_on_reset" value="0"/>
-<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.UUID" value="e49e5485-fe44-4809-a279-ee46391ae198"/>
+<stringAttribute key="com.pemicro.mcu.debug.connections.pne.s12z.UUID" value="e195eb86-8754-476b-b508-204b28325810"/>
 <booleanAttribute key="forceShellDownload" value="false"/>
 <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.freescale.cdt.debug.cw.s12z.S12ZDebugger"/>

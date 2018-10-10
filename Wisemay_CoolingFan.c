@@ -71,6 +71,8 @@
 #define 100RPM_PERIOD		58594	//(SPEED_CALC_NUMERATOR/100RPM)
 #define CHECK_MIN_SPEED			(50)// 50 rpm;
 
+
+
 /*****************************************************************************
 *
 * Variables Definition
