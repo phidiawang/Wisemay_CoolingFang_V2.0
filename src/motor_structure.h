@@ -137,7 +137,8 @@ typedef enum
 {
 	force	 = 0,
 	tracking = 1,
-	sensorless1 = 2 	
+ 	linkup  = 2,   
+	sensorless1 = 3 	
 }tPos_mode;
 
 typedef enum CONTORL_MODE_e

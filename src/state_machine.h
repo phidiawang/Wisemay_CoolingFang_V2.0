@@ -47,7 +47,7 @@ typedef enum {
     align           = 4,
     run             = 5,
     reset			= 6,
-    checkrun		= 7,
+    checkM		    = 7,
     brake			= 8    
 }AppStates;         /* Application state identification user type*/
 
@@ -66,8 +66,8 @@ typedef enum {
     e_app_off       = 11,
     e_reset			= 12,
     e_reset_done    = 13,
-    e_checkrun	    = 14,   
-    e_checkrun_done	= 15, 
+    e_check	        = 14,   
+    e_check_done	= 15, 
     e_brake		    = 16,   
     e_brake_done	= 17    
 }AppEvents;         /* Application event identification user type*/
@@ -84,7 +84,8 @@ extern void stateCalib();
 extern void stateAlign();
 extern void stateRun();
 extern void stateReset();
-
+extern void stateCheckM();
+extern void stateBrake();
 extern PFCN_VOID_LED state_LED[7];
 
 /* LED application control*/

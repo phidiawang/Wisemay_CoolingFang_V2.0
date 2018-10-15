@@ -53,9 +53,9 @@
 #define LEVEL_COUNT         6
 #define FORWARDS            1
 #define BACKWARDS           0
-#define VPH_CH_RED     0x01
-#define VPH_CH_YELLOW  0x02
-#define VPH_CH_BLUE    0x03
+#define VPH_CH_RED      0x01
+#define VPH_CH_YELLOW   0x02
+#define VPH_CH_BLUE     0x03
 /***** High speed scaling *********************
  * For 4 pole-pairs motors
  * Boundary values for 1.28 us timer period:
@@ -120,6 +120,7 @@ volatile tFrac32    OL_SpeedRampInc = 0, CL_SpeedRampInc = 0, CL_SpeedRampDec = 
 ///////////////////////////////////////////////////////////////////////////////
 /////////for winding
 volatile tU16 BrakeLoopDuration;
+volatile tU16 LinkupDuration;
 volatile unsigned char brakeEnableFlags;
 volatile tU32 RunningChk_counter;
 volatile tU8 ADC_channel=2;
@@ -393,7 +394,9 @@ INTERRUPT void PMFreloadA_ISR(void)
         //User_Key_handle();        
         //cntrState.event   = (cntrState.usrControl.switchAppOnOff) ? e_app_on: e_app_off;
         if (BrakeLoopDuration >0) BrakeLoopDuration--;///add by phidia.wang 2018.09.26
-        if (cntrState.state == APP_CHECKMOTOR) RunningChk_counter++;///add by phidia.wang 2018.09.26 
+        if (LinkupDuration >0) LinkupDuration--;///add by phidia.wang 2018.09.26
+        if (cntrState.state == checkM) RunningChk_counter++;///add by phidia.wang 2018.09.26 
+
         
         // Fault detection routine, must be executed prior application state machine        
         getFcnStatus &= faultDetection();
@@ -704,8 +707,8 @@ void stateInit( )
     Application State Machine - state identification
     ----------------------------------------------------- */
     tBool InitFcnStatus;
-    cntrState.state                              = init;
-    cntrState.event								 = e_init;
+    cntrState.state = init;
+    cntrState.event = e_init;
 
     //Switch off PWM output, GDU output
     DisableOutput();
@@ -713,7 +716,7 @@ void stateInit( )
     /*------------------------------------
      * General use variables
      * ----------------------------------*/
-    InitFcnStatus                                         = false;
+    InitFcnStatus   = false;
 
     /*------------------------------------
      * Application state machine variables
@@ -724,17 +727,17 @@ void stateInit( )
     cntrState.usrControl.switchFaultClear                    = false;
     cntrState.usrControl.switchAppReset                      = false;
     
-    cntrState.usrControl.ledCounter							 = 0;
-    cntrState.usrControl.ledFlashing						 = 1250;
+    cntrState.usrControl.ledCounter = 0;
+    cntrState.usrControl.ledFlashing    = 1250;
 
 
-    drvFOC.pospeControl.speedLoopCntr                       = 0;
+    drvFOC.pospeControl.speedLoopCntr   = 0;
     
-    drvFOC.alignCntr								   	= drvFOC.alignCntrInit;
+    drvFOC.alignCntr    = drvFOC.alignCntrInit;
     
     InitFcnStatus = Meas_Clear(&meas);
-    meas.param.u16CalibSamples                         = 10;    // number of samples = 2^u16CalibSamples
-    meas.offset.f16Idcb.filtParam.u16NSamples		   = meas.param.u16CalibSamples;
+    meas.param.u16CalibSamples  = 10;    // number of samples = 2^u16CalibSamples
+    meas.offset.f16Idcb.filtParam.u16NSamples   = meas.param.u16CalibSamples;
  
     
     /*------------------------------------
@@ -838,6 +841,7 @@ void stateInit( )
     // Default mode of operation
     cntrState.usrControl.controlMode		= automatic;
     pos_mode								= force;
+    control_flags.INIT_ACQUIRE = FALSE;
 
     if (!InitFcnStatus)
     {
@@ -908,13 +912,16 @@ void stateCalib()
     drvFOC.pwm16.f16Arg3 = FRAC16(0.5);
 
     SetDutycycle(&drvFOC.pwm16, 2);
+    //RunningChk_counter = 0;
 
     // Exit the calibration state when DC calibration is done for all sectors
     if (CalibStatus)
     {
     	// Calibration sequence has successfully finished
-		cntrState.event               = e_calib_done;    
+		//cntrState.event               = e_calib_done;    
+        AppCalibToCheckMotor();
     }
+
 }
 
 /***************************************************************************//*!
@@ -1012,15 +1019,19 @@ void stateRun( )
      ----------------------------------------------------- */
     if(pos_mode!=sensorless1)   
     {
-    	CalcOpenLoop(&drvFOC.pospeOpenLoop,drvFOC.pospeControl.wRotElReqRamp);   	
+    	if(pos_mode==linkup)
+        {
+             drvFOC.pospeControl.wRotElReqRamp = FRAC16(actualSpeed/N_MAX);           
+        }    
+
+        CalcOpenLoop(&drvFOC.pospeOpenLoop,drvFOC.pospeControl.wRotElReqRamp);   	
     }
 
 	
     // Start calculation of the Bemf Observer in tracking mode 
     if(pos_mode!=force)
     {
-    	
-    	drvFOC.pospeSensorless.DQtoGaDeError=AMCLIB_BemfObsrvDQ_F16(&drvFOC.iAlBeFbck, &drvFOC.uAlBeReq, drvFOC.pospeSensorless.wRotEl, drvFOC.pospeSensorless.thRotEl, &drvFOC.pospeSensorless.bEMFObs);	
+        drvFOC.pospeSensorless.DQtoGaDeError=AMCLIB_BemfObsrvDQ_F16(&drvFOC.iAlBeFbck, &drvFOC.uAlBeReq, drvFOC.pospeSensorless.wRotEl, drvFOC.pospeSensorless.thRotEl, &drvFOC.pospeSensorless.bEMFObs);	
     	AMCLIB_TrackObsrv_F16(drvFOC.pospeSensorless.DQtoGaDeError, &drvFOC.pospeSensorless.thRotEl,  &drvFOC.pospeSensorless.wRotEl, &drvFOC.pospeSensorless.TrackObsrv );
     	drvFOC.pospeSensorless.wRotEl=GDFLIB_FilterMA_F16(drvFOC.pospeSensorless.wRotEl, &drvFOC.pospeSensorless.filterMA);
     }
@@ -1040,7 +1051,18 @@ void stateRun( )
 	// where user decide whether to switch to force mode, tracking mode, sensorless mode
 	if (cntrState.usrControl.controlMode == automatic)
 	{
-		automaticMode();
+		if(pos_mode==linkup)
+        {
+            if(LinkupDuration == 0)       
+            {
+                pos_mode = sensorless1;
+            }                 
+        }
+        else
+        {
+            automaticMode();           
+        }
+
 	}
 	
 	// user decide whether to switch to force mode, tracking mode, sensorless mode
@@ -1113,6 +1135,30 @@ void stateRun( )
 			drvFOC.speedRampNeg.f32RampUp             = OL_SpeedRampInc;
 			drvFOC.speedRampNeg.f32RampDown           = OL_SpeedRampInc;
 		break;
+		case linkup://waiting calculation of the Bemf Observer 
+			drvFOC.speedPI.f16UpperLimit = drvFOC.pospeOpenLoop.iQUpperLimit;
+			drvFOC.speedPI.f16LowerLimit = MLIB_Neg_F16(drvFOC.speedPI.f16UpperLimit);
+			
+			drvFOC.pospeControl.thRotEl = drvFOC.pospeOpenLoop.thRotEl;
+			drvFOC.pospeControl.wRotEl	= 0;	
+			
+			////+ by phidia.wang 20180920
+		    drvFOC.speedPI.f16PropGain             = SPEED_PI_PROP_GAIN;
+		    drvFOC.speedPI.s16PropGainShift        = SPEED_PI_PROP_SHIFT;
+		    drvFOC.speedPI.f16IntegGain            = SPEED_PI_INTEG_GAIN;
+		    drvFOC.speedPI.s16IntegGainShift       = SPEED_PI_INTEG_SHIFT;
+		    //drvFOC.speedPI.f32IntegPartK_1         = 0;
+		    //drvFOC.speedPI.f16UpperLimit           = SPEED_LOOP_HIGH_LIMIT;
+		    //drvFOC.speedPI.f16LowerLimit           = SPEED_LOOP_LOW_LIMIT;
+		    
+			OL_SpeedRampInc = OL_START_RAMP_INC;//+ by phidia.wang 201801015
+			////////////////////////////////////////////////////
+			drvFOC.speedRampPos.f32RampUp             = OL_SpeedRampInc;
+			drvFOC.speedRampPos.f32RampDown           = OL_SpeedRampInc;
+			
+			drvFOC.speedRampNeg.f32RampUp             = OL_SpeedRampInc;
+			drvFOC.speedRampNeg.f32RampDown           = OL_SpeedRampInc;
+		break;        
 		case sensorless1:
 			drvFOC.speedPI.f16UpperLimit = drvFOC.pospeSensorless.iQUpperLimit;
 			drvFOC.speedPI.f16LowerLimit = drvFOC.pospeSensorless.iQLowerLimit;
@@ -1173,13 +1219,19 @@ void stateRun( )
 
 /*****************************************************************************
 *
-* Function: void AppCheckMotorRunning(void)
+* Function: void stateCheckM(void)
 *
-* Description:  function
+* Description:  pCheckMotorRunning
 *
 *****************************************************************************/
-void stateCheckMotorRunning(void)
+void stateCheckM()
 {
+    //static tBool stateCheckStatus;
+    //stateCheckStatus = false;
+
+    cntrState.state    = checkM;
+    cntrState.event    = e_check;  
+   
     if(RunningChk_counter > 500)///500ms
     {
     	if(control_flags.ROTATION_CHECK == FALSE)////如果500ms还没检测到旋转，则进入静止启动程序
@@ -1203,13 +1255,12 @@ void stateCheckMotorRunning(void)
 * @return  none
 *
 ******************************************************************************/
-void stateBrake(void)
+void stateBrake()
 {
-	//tU16 tDuty;
-	
+    cntrState.state    = brake;
+    cntrState.event    = e_brake; 	
 	//DCBusCurrentFiltered = (tFrac16)((long) ((long)DCBusCurrentFiltered + (long)DCBusCurrentFiltered + (long)DCBusCurrentFiltered + (long)DCBusCurrent) >> 2);
-    
-	/* save the max phase current */
+  	/* save the max phase current */
 	//if (DCBusCurrentMAX < DCBusCurrentFiltered) 
 		//DCBusCurrentMAX = DCBusCurrentFiltered;      
 	
@@ -1637,14 +1688,24 @@ void stateLedFLASHING_FAST()
 	}
 }
 
+
+/***************************************************************************//*!
+*
+* @brief   measure motor BEMF,and check motor running 
+*
+* @param    
+*
+* @return  none
+*
+******************************************************************************/
 void Motor_TailWind(void)
 {
 	//cntrState.state = APP_CHECKMOTOR;
-	if((cntrState.state == APP_CHECKMOTOR))//||(cntrState.state == APP_STOP)
+	if((cntrState.state == checkM))//||(cntrState.state == APP_STOP)
 	{
 		timeBEMF = TIM0TCNT;
-		phaseVoltage = ADC1ResultList[0][2]>>1;
-		switch(ADC_channel)
+		phaseVoltage = ADC1ResultList[0][2]>>1;//measure motor bemf
+		switch(ADC_channel)//read result and change ADC_CH
 		{
 			case VPH_CH_RED :  
 			    vph_red = phaseVoltage;
@@ -1669,7 +1730,7 @@ void Motor_TailWind(void)
 		//PTUTriggerEventList[1][0][0] = MIN_ADC_TRIGGER_SECOND;// ADC1 - phase voltage
 		GDUPHMUX_GPHMX =ADC_channel;	// will be applied at the next PMF Reload
 		PTUC_PTULDOK = 1;
-		CheckMotorRunning();//
+		CheckMotorRunning();//check motor running
 	  
 	}	
 }
@@ -1823,7 +1884,7 @@ void CheckMotorRunning(void)
                 // to enevitable error in threshold detection and because there may
                 // not be time for sufficient samples of VPH to catch the zero crossing
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK to run sensorless
+                if (actualSpeed < (CHECK_MIN_SPEED*30)) // If OK to run sensorless//REACQUIRE_THRESHOLD
                 {   
                     // To ensure sensorless can pick straight up need to
                     // extrapolate backwards in time and set up previous timestamps
@@ -1870,11 +1931,11 @@ void CheckMotorRunning(void)
                     return;
                 }
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK, to run sensorless
+                if (actualSpeed <  (CHECK_MIN_SPEED*30)) // If OK, to run sensorless
                 {   
                     NextCmtPeriod = one_twenty_deg/2;
                     duty_cycle = 0;///duty = 10%;
-                    AppFreewheelToRun();
+                    //AppFreewheelToRun();
                 }
                 else
                 {
@@ -1941,11 +2002,11 @@ void CheckMotorRunning(void)
                     return;
                 }
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK to run sensorless
+                if (actualSpeed <  (CHECK_MIN_SPEED*30)) // If OK to run sensorless
                 {
                     NextCmtPeriod = one_twenty_deg/2;
-                    duty_cycle = 0;///duty = 10%;
-                    AppFreewheelToRun();
+                    //duty_cycle = 0;///duty = 10%;
+                    //AppFreewheelToRun();
                 }
                 else
                 {
@@ -1980,11 +2041,11 @@ void CheckMotorRunning(void)
                     return;
                 }
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK to run sensorless
+                if (actualSpeed <  (CHECK_MIN_SPEED*30)) // If OK to run sensorless
                 {
                     NextCmtPeriod = one_twenty_deg/2;
                     duty_cycle = 0;///duty = 10%;
-                    AppFreewheelToRun();
+                    //AppFreewheelToRun();
                 }
                 else
                 {
@@ -2050,11 +2111,11 @@ void CheckMotorRunning(void)
                     return;
                 }
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK to run sensorless
+                if (actualSpeed <  (CHECK_MIN_SPEED*30)) // If OK to run sensorless
                 {
                     NextCmtPeriod = one_twenty_deg/2;
                     duty_cycle = 0;///duty = 10%;
-                    AppFreewheelToRun();
+                    //AppFreewheelToRun();
                 }
                 else
                 {
@@ -2090,11 +2151,11 @@ void CheckMotorRunning(void)
                     return;
                 }
 
-                if (actualSpeed < REACQUIRE_THRESHOLD) // If OK to run sensorless
+                if (actualSpeed <  (CHECK_MIN_SPEED*30)) // If OK to run sensorless
                 {
                     NextCmtPeriod = one_twenty_deg/2;
                     duty_cycle = 0;///duty = 10%;
-                    AppFreewheelToRun();
+                    //AppFreewheelToRun();
                 }
                 else
                 {
@@ -2130,23 +2191,93 @@ void CheckMotorRunning(void)
 *****************************************************************************/
 void AppTranToBrake(void)
 {
-	
-	
+	control_flags.DIR = FORWARDS;	
+   // Turn on Actuator output on (PWM,GDU)
+    EnableOutput();
+ 
+    drvFOC.uDQReq.f16Arg1      = drvFOC.alignVoltage;
+    drvFOC.uDQReq.f16Arg2      = FRAC16(0);
 
+    drvFOC.thTransform.f16Arg1 = GFLIB_Sin(0);
+    drvFOC.thTransform.f16Arg2 = GFLIB_Cos(0);
+
+    GMCLIB_ParkInv(&(drvFOC.uAlBeReq),&(drvFOC.thTransform),&(drvFOC.uDQReq));
+    drvFOC.svmSector = GMCLIB_SvmStd(&(drvFOC.pwm16),&(drvFOC.uAlBeReq));	
+    SetDutycycle(&drvFOC.pwm16, drvFOC.svmSector);
+
+    cntrState.state    = brake;
+    cntrState.event    = e_brake;     
+}
+
+
+void AppBrakeToAlignment(void)
+{
+    drvFOC.iDQReq.f16Arg1 = FRAC16(0.0);
+    drvFOC.iDQReq.f16Arg2 = FRAC16(0.0);
+
+    drvFOC.uDQReq.f16Arg1 = 0;
+    drvFOC.uDQReq.f16Arg2 = 0;
+
+    drvFOC.dAxisPI.f16InErrK1  = 0;
+    drvFOC.dAxisPI.f32Acc      = 0;
+
+    drvFOC.qAxisPI.f16InErrK1  = 0;
+    drvFOC.qAxisPI.f32Acc      = 0;
+
+    drvFOC.pwm16.f16Arg1 = FRAC16(0.5);
+    drvFOC.pwm16.f16Arg2 = FRAC16(0.5);
+    drvFOC.pwm16.f16Arg3 = FRAC16(0.5);
+    
+    drvFOC.svmSector = 2;	
+
+    cntrState.state    = align;
+    cntrState.event    = e_align;      
+}
+
+void AppCalibToCheckMotor(void)
+{
+    // Turn off actuator output
+    DisableOutput();
+
+    RunningChk_counter = 0;
+    actualSpeed = 0;
+	control_flags.INIT_ACQUIRE = TRUE;
+	control_flags.RETRY_FLAG = FALSE;
+	control_flags.DIR = FORWARDS;	
+
+	vph_red = 0;
+	vph_yellow = 0;
+	vph_blue = 0;
+
+    NextCmtSector = 0;	
+	ADC_channel = 3;    
+    GDUPHMUX_GPHMX = ADC_channel; // will be applied at the next PMF Reload
+	PTUC_PTULDOK = 1;
+
+    cntrState.state    = checkM;
+    cntrState.event    = e_check;  
 }
 
 void AppFreewheelToRun (void)
 {
-	
-}
+    //drvFOC.svmSector = NextCmtSector; 
 
-void AppBrakeToAlignment(void)
-{
-	
-}
+    drvFOC.pospeOpenLoop.wRotEl   = FRAC16(actualSpeed/N_MAX); 
+    drvFOC.pospeOpenLoop.thRotEl    = 0;  
+    drvFOC.pospeSensorless.wRotEl   = 0;
+    drvFOC.pospeSensorless.thRotEl  = 0;
+    drvFOC.speedPI.f16UpperLimit = drvFOC.pospeOpenLoop.iQUpperLimit;
+    drvFOC.speedPI.f16LowerLimit = MLIB_Neg_F16(drvFOC.speedPI.f16UpperLimit);
 
-void AppStopToCheckMotor(void)
-{
-	
-}
+    AMCLIB_BemfObsrvDQInit_F16 (&drvFOC.pospeSensorless.bEMFObs);
+                
+    drvFOC.pospeSensorless.TrackObsrv.pParamPI.f32Acc = ((tFrac32)drvFOC.pospeOpenLoop.wRotEl << (16 + drvFOC.pospeSensorless.TrackObsrv.pParamPI.u16NShift));
+    drvFOC.pospeSensorless.filterMA.f32Acc = ((tFrac32)drvFOC.pospeOpenLoop.wRotEl << (16 + drvFOC.pospeSensorless.TrackObsrv.pParamPI.u16NShift));
+    drvFOC.pospeSensorless.TrackObsrv.pParamInteg.f32State = ((tFrac32)(drvFOC.pospeOpenLoop.thRotEl) << (16 + drvFOC.pospeSensorless.TrackObsrv.pParamInteg.u16NShift));   
 
+    LinkupDuration = 500;   
+    pos_mode = linkup;
+    cntrState.state    = run;
+    cntrState.event    = e_run;  
+
+}
