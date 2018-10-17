@@ -55,23 +55,24 @@
 -----------------------------------------------------------------------------*/
 
 
-// extern PFCN_VOID_STATES state_table[14][7]={
-//     /* Actual state ->         'Init'           'Fault'         'Ready'         'Calib'         'Align'         'Run'		'Reset' */
-//     /* e_fault          */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_fault_clear    */ { stateFault,     stateInit,      stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_init          	*/ { stateInit,      stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_init_done      */ { stateReady,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_ready          */ { stateFault,     stateFault,     stateReady,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_app_on         */ { stateFault,     stateFault,     stateCalib,     stateFault,     stateFault,     stateFault,	stateFault},
-//     /* e_calib          */ { stateFault,     stateFault,     stateFault,     stateCalib,     stateFault,     stateFault,	stateFault},
-//     /* e_calib_done     */ { stateFault,     stateFault,     stateFault,     stateAlign,     stateFault,     stateFault,	stateFault},
-//     /* e_align          */ { stateFault,     stateFault,     stateFault,     stateFault,     stateAlign,     stateFault,	stateFault},
-//     /* e_align_done     */ { stateFault,     stateFault,     stateFault,     stateFault,     stateRun,       stateFault,	stateFault},
-//     /* e_run            */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateRun,		stateFault},
-//     /* e_app_off        */ { stateFault,     stateFault,     stateReady,     stateInit,      stateInit,      stateInit,		stateFault},
-//     /* e_reset          */ { stateFault,     stateFault,     stateReset,     stateFault,     stateFault,     stateFault,	stateReset},
-//     /* e_reset_done     */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateInit}
-// };
+//extern PFCN_VOID_STATES state_table[14][7]={
+//    /* Actual state ->         'Init'           'Fault'         'Ready'         'Calib'         'Align'         'Run'		'Reset' */
+//    /* e_fault          */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_fault_clear    */ { stateFault,     stateInit,      stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_init          	*/ { stateInit,      stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_init_done      */ { stateReady,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_ready          */ { stateFault,     stateFault,     stateReady,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_app_on         */ { stateFault,     stateFault,     stateCalib,     stateFault,     stateFault,     stateFault,	stateFault},
+//    /* e_calib          */ { stateFault,     stateFault,     stateFault,     stateCalib,     stateFault,     stateFault,	stateFault},
+//    /* e_calib_done     */ { stateFault,     stateFault,     stateFault,     stateAlign,     stateFault,     stateFault,	stateFault},
+//    /* e_align          */ { stateFault,     stateFault,     stateFault,     stateFault,     stateAlign,     stateFault,	stateFault},
+//    /* e_align_done     */ { stateFault,     stateFault,     stateFault,     stateFault,     stateRun,       stateFault,	stateFault},
+//    /* e_run            */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateRun,		stateFault},
+//    /* e_app_off        */ { stateFault,     stateFault,     stateReady,     stateInit,      stateInit,      stateInit,		stateFault},
+//    /* e_reset          */ { stateFault,     stateFault,     stateReset,     stateFault,     stateFault,     stateFault,	stateReset},
+//    /* e_reset_done     */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,     stateFault,	stateInit}
+//};
+
 
 
 
@@ -87,7 +88,7 @@ extern PFCN_VOID_STATES state_table[18][9]={
     /* e_ready          */ { stateFault,     stateFault,     stateReady,     stateFault,     stateFault,    stateFault,     stateFault,     stateFault,	    stateFault},
     /* e_app_on         */ { stateFault,     stateFault,     stateCalib,     stateFault,     stateFault,    stateFault,     stateFault,     stateFault,	    stateFault},
     /* e_calib          */ { stateFault,     stateFault,     stateFault,     stateCalib,     stateFault,    stateFault,     stateFault,     stateFault,	    stateFault},
-    /* e_calib_done     */ { stateFault,     stateFault,     stateFault,     stateCheckM,   stateFault,    stateFault,     stateFault,     stateFault,    stateFault},
+    /* e_calib_done     */ { stateFault,     stateFault,     stateFault,     stateAlign,   stateFault,    stateFault,     stateFault,     stateFault,    stateFault},
     /* e_align          */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,    stateFault,     stateAlign,     stateFault,	    stateFault},
     /* e_align_done     */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,    stateFault,     stateRun,       stateFault,	    stateFault},
     /* e_run            */ { stateFault,     stateFault,     stateFault,     stateFault,     stateFault,    stateFault,     stateFault,     stateRun,		stateFault},

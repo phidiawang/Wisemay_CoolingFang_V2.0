@@ -64,7 +64,7 @@
 
 PR_SECTION(ptuTrigE)
 volatile short ptuTriggerList0[PTU_LISTS_NO][PTU_COMMANDS] =  {{125,250,375,500,0x0000},{200,400,600,800,0x0000}}; // !_! for 50 MHz bus clock
-volatile short ptuTriggerList1[PTU_LISTS_NO][PTU_COMMANDS] =  {{150,300,500,0x0000,0x0000},{150,300,500,0x0000,0x0000}};
+volatile short ptuTriggerList1[PTU_LISTS_NO][PTU_COMMANDS] =  {{150,500,0,0x0000,0x0000},{150,500,0,0x0000,0x0000}};
  PR_SECTION(DEFAULT_SEC)
 /******************************************************************************
 * ptu MACRO definitions

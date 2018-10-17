@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "Wisemay_CoolingFan.elf"
+PROGRAM "Wisemay_CoolingFan_2.0.elf"
 
 *********************************************************************************************
 TARGET SECTION
@@ -32,7 +32,7 @@ freemaster_rec_c.obj                    Model: SMALL,         Lang: ANSI-C,     
 freemaster_scope_c.obj                  Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.43 build 17241
 freemaster_serial_c.obj                 Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.43 build 17241
 freemaster_HC12_c.obj                   Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.43 build 17241
-Wisemay_CoolingFan_c.obj                Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.43 build 17241
+Wisemay_CoolingFan_V2_0_c.obj           Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.43 build 17241
 AMCLIB_BemfObsrvDQ_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.39 build 15062
 AMCLIB_TrackObsrv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.39 build 15062
 GDFLIB_FilterIIR1_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)Model: SMALL,         Lang: ANSI-C,        Compiler Version: C/C++ Compiler for S12/L-ISA v-5.0.39 build 15062
@@ -60,8 +60,8 @@ Entry point: 0xFF802E (_Startup)
 _startupData is allocated at 0xFF803E and uses 20 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x1500     2408
-  _Copy    *toCopyDownBeg 0xFFB064
+  _Range   pZeroOut       0x1500     2660
+  _Copy    *toCopyDownBeg 0xFFB5D5
   int      nofInitBodies  0
   _Cpp     *initBodies    0xFF8059
   int      nofFiniBodies  0
@@ -75,12 +75,12 @@ Section Name                    Size  Type     From       To       Segment
 .init                             62     R   0xFF8000   0xFF803D   ROM
 .startData                        27     R   0xFF803E   0xFF8058   ROM
 .rodata                           72     R   0xFF805C   0xFF80A3   ROM
-.text                          12224     R   0xFF80A4   0xFFB063   ROM
-.copy                            463     R   0xFFB064   0xFFB232   ROM
+.text                          13617     R   0xFF80A4   0xFFB5D4   ROM
+.copy                            657     R   0xFFB5D5   0xFFB865   ROM
 .stack                          1280   R/W     0x1000     0x14FF   RAM
 ptuTrigE                          40   R/W     0x1500     0x1527   RAM
 adcLists                         128   R/W     0x1528     0x15A7   RAM
-.data                            338   R/W     0x15A8     0x16F9   RAM
+.data                            532   R/W     0x15A8     0x17BB   RAM
 vector                           496     R   0xFFFE10   0xFFFFFF   OSVECTORS
 .__absdata_ADC1RBP__               3   N/I      0x661      0x663   .absSeg0
 .__absdata_ADC1CBP__               3   N/I      0x65D      0x65F   .absSeg1
@@ -482,11 +482,11 @@ vector                           496     R   0xFFFE10   0xFFFFFF   OSVECTORS
 .__absdata__INT_CFDATA1__          1   N/I       0x19       0x19   .absSeg397
 .__absdata__INT_CFDATA0__          1   N/I       0x18       0x18   .absSeg398
 .__absdata__INT_CFADDR__           1   N/I       0x17       0x17   .absSeg399
-.common                         1902   R/W     0x16FA     0x1E67   RAM
+.common                         1960   R/W     0x17BC     0x1F63   RAM
 
 Summary of section sizes per section type:
-READ_ONLY (R):        3420 (dec:    13344)
-READ_WRITE (R/W):      E68 (dec:     3688)
+READ_ONLY (R):        3A53 (dec:    14931)
+READ_WRITE (R/W):      F64 (dec:     3940)
 NO_INIT (N/I):         1E5 (dec:      485)
 
 *********************************************************************************************
@@ -501,30 +501,30 @@ OBJECT-ALLOCATION SECTION
 MODULE:                 -- AddFunction_c.obj --
 - PROCEDURES:
      FaultVariablesInit                      FF80A4      A8     168       1   .text       
-     FaultProcess                            FF814C       8       8      10   .text       
+     FaultProcess                            FF814C       8       8       7   .text       
      Fault_OverVoltage                       FF8154      AC     172       1   .text       
      Fault_Overcurrent                       FF8200      B4     180       1   .text       
      Fault_Stall                             FF82B4     1D5     469       1   .text       
-     Fault_Start                             FF8489      FE     254       1   .text       
-     User_Fault_Detection                    FF8587      46      70       1   .text       
+     User_Fault_Detection                    FF8489      3E      62       1   .text       
 - VARIABLES:
-     mcEsValue                                 16FA       2       2       5   .common     
-     mcSpeedFlt                                16FC       2       2       5   .common     
-     mcTempDecFlt                              16FE       2       2       1   .common     
-     mcDcbusFlt                                1700       2       2       3   .common     
-     segmentstate                              1702       2       2       8   .common     
-     mcFaultDect                               1704      70     112      52   .common     
-     mcFaultSource                             1774       1       1      16   .common     
+     mcEsValue                                 17BC       2       2       4   .common     
+     mcSpeedFlt                                17BE       2       2       3   .common     
+     mcTempDecFlt                              17C0       2       2       1   .common     
+     mcDcbusFlt                                17C2       2       2       3   .common     
+     segmentstate                              17C4       2       2       8   .common     
+     control_flags                             17C8       A      10      47   .common     
+     mcFaultDect                               17D4      70     112      51   .common     
+     mcFaultSource                             1844       1       1      13   .common     
 MODULE:                 -- actuate_s12zvm_c.obj --
 - PROCEDURES:
-     EnableOutput                            FF85CD      20      32       1   .text       
-     DisableOutput                           FF85ED      21      33       4   .text       
-     SetDutycycle                            FF860E     3C4     964       5   .text       
-     SetPtuTriggers                          FF89D2      5B      91       1   .text       
-     CalcEdges                               FF8A2D      C4     196       6   .text       
-     SetPmfValReg                            FF8AF1      68     104       1   .text       
-     GetDriverError                          FF8B59       B      11       1   .text       
-     ClearDriverError                        FF8B64      20      32       1   .text       
+     EnableOutput                            FF84C7      20      32       2   .text       
+     DisableOutput                           FF84E7      21      33       5   .text       
+     SetDutycycle                            FF8508     3C4     964       6   .text       
+     SetPtuTriggers                          FF88CC      5B      91       1   .text       
+     CalcEdges                               FF8927      C4     196       6   .text       
+     SetPmfValReg                            FF89EB      68     104       1   .text       
+     GetDriverError                          FF8A53       B      11       1   .text       
+     ClearDriverError                        FF8A5E      20      32       1   .text       
 - VARIABLES:
      minZeroPulse                              15A8       2       2       1   .data       
      minSamplingPulse                          15AA       2       2       2   .data       
@@ -532,24 +532,24 @@ MODULE:                 -- actuate_s12zvm_c.obj --
      triggerOffset2                            15AE       2       2       1   .data       
      triggerOffset3                            15B0       2       2       1   .data       
      triggerOffset4                            15B2       2       2       1   .data       
-     writeToList                               1775       1       1       7   .common     
+     writeToList                               1845       1       1       7   .common     
 MODULE:                 -- meas_s12zvm_c.obj --
 - PROCEDURES:
-     Meas_Clear                              FF8B84      58      88       1   .text       
-     Meas_CalibCurrentSense                  FF8BDC      8D     141       1   .text       
-     Meas_Get3PhCurrent                      FF8C69     160     352       1   .text       
-     GetAdcRawValues                         FF8DC9      69     105       2   .text       
-     Meas_GetUdcVoltage                      FF8E32      20      32       1   .text       
-     Meas_GetTemperature                     FF8E52      24      36       1   .text       
+     Meas_Clear                              FF8A7E      58      88       1   .text       
+     Meas_CalibCurrentSense                  FF8AD6      8D     141       1   .text       
+     Meas_Get3PhCurrent                      FF8B63     160     352       1   .text       
+     GetAdcRawValues                         FF8CC3      69     105       2   .text       
+     Meas_GetUdcVoltage                      FF8D2C      20      32       1   .text       
+     Meas_GetTemperature                     FF8D4C      24      36       1   .text       
 - VARIABLES:
      _ZZ18Meas_Get3PhCurrentP6structP6structtE9sectorK_1       15B4       2       2       2   .data       
 MODULE:                 -- state_machine_c.obj --
 - PROCEDURES:
 - VARIABLES:
-     state_table                               15B8     126     294       1   .data       
+     state_table                               15B8     1E6     486       1   .data       
 MODULE:                 -- vector_c.obj --
 - PROCEDURES:
-     dummy                                   FF8E76       1       1     118   .text       
+     dummy                                   FF8D70       1       1     118   .text       
 - VARIABLES:
      _vectab                                 FFFE10     1F0     496       0   vector      
 MODULE:                 -- mc9s12zvml32_c.obj --
@@ -966,283 +966,314 @@ MODULE:                 -- startup_c.obj --
      __SEG_END_SSTACK                          1500       0       0       1               
 MODULE:                 -- adc_c.obj --
 - PROCEDURES:
-     adc0_init                               FF8E77      53      83       1   .text       
-     adc1_init                               FF8ECA      3E      62       1   .text       
+     adc0_init                               FF8D71      53      83       1   .text       
+     adc1_init                               FF8DC4      3E      62       1   .text       
 - VARIABLES:
      ADC0CommandList                           1528      20      32       1   adcLists    
      ADC1CommandList                           1548      20      32       1   adcLists    
      ADC0ResultList                            1568      20      32       7   adcLists    
-     ADC1ResultList                            1588      20      32       3   adcLists    
+     ADC1ResultList                            1588      20      32       4   adcLists    
 MODULE:                 -- cpmu_c.obj --
 - PROCEDURES:
-     cpmu_init                               FF8F08      52      82       1   .text       
+     cpmu_init                               FF8E02      52      82       1   .text       
 - VARIABLES:
 MODULE:                 -- gdu_c.obj --
 - PROCEDURES:
-     gdu_init                                FF8F5A      39      57       1   .text       
+     gdu_init                                FF8E54      39      57       1   .text       
 - VARIABLES:
 MODULE:                 -- pim_c.obj --
 - PROCEDURES:
-     pim_init                                FF8F93       9       9       1   .text       
+     pim_init                                FF8E8D       9       9       1   .text       
 - VARIABLES:
 MODULE:                 -- pmf_c.obj --
 - PROCEDURES:
-     pmf_init                                FF8F9C      54      84       1   .text       
-     GetPMF_Faults                           FF8FF0       4       4       1   .text       
-     ClearPMF_Faults                         FF8FF4      16      22       1   .text       
+     pmf_init                                FF8E96      54      84       1   .text       
+     GetPMF_Faults                           FF8EEA       4       4       1   .text       
+     ClearPMF_Faults                         FF8EEE      16      22       1   .text       
 - VARIABLES:
 MODULE:                 -- ptu_c.obj --
 - PROCEDURES:
-     ptu_init                                FF900A      47      71       1   .text       
-     GetPTU_Errors                           FF9051       6       6       1   .text       
-     ClearPTU_Errors                         FF9057      16      22       1   .text       
+     ptu_init                                FF8F04      47      71       1   .text       
+     GetPTU_Errors                           FF8F4B       6       6       1   .text       
+     ClearPTU_Errors                         FF8F51      16      22       1   .text       
 - VARIABLES:
      ptuTriggerList0                           1500      14      20       8   ptuTrigE    
      ptuTriggerList1                           1514      14      20       1   ptuTrigE    
 MODULE:                 -- sci_c.obj --
 - PROCEDURES:
-     sci1_init                               FF906D       E      14       1   .text       
+     sci1_init                               FF8F67       E      14       1   .text       
 - VARIABLES:
 MODULE:                 -- freemaster_appcmd_c.obj --
 - PROCEDURES:
-     FMSTR_InitAppCmds                       FF907B      34      52       1   .text       
-     FMSTR_StoreAppCmd                       FF90AF      61      97       1   .text       
-     FMSTR_GetAppCmdStatus                   FF9110      43      67       1   .text       
-     FMSTR_GetAppCmdRespData                 FF9153      5D      93       1   .text       
-     FMSTR_FindAppCmdCallIndex               FF91B0      1C      28       1   .text       
+     FMSTR_InitAppCmds                       FF8F75      34      52       1   .text       
+     FMSTR_StoreAppCmd                       FF8FA9      61      97       1   .text       
+     FMSTR_GetAppCmdStatus                   FF900A      43      67       1   .text       
+     FMSTR_GetAppCmdRespData                 FF904D      5D      93       1   .text       
+     FMSTR_FindAppCmdCallIndex               FF90AA      1C      28       1   .text       
 - VARIABLES:
-     pcm_pAppCmdCallFunc                       1778       C      12       2   .common     
-     pcm_pAppCmdCallId                         1784       4       4       2   .common     
-     pcm_nAppCmdResultDataLen                  1788       1       1       2   .common     
-     pcm_nAppCmdResult                         1789       1       1       4   .common     
-     pcm_nAppCmdLen                            178A       2       2       2   .common     
-     pcm_pAppCmdBuff                           178C      20      32       3   .common     
-     pcm_nAppCmd                               17AC       1       1       7   .common     
+     pcm_pAppCmdCallFunc                       1848       C      12       2   .common     
+     pcm_pAppCmdCallId                         1854       4       4       2   .common     
+     pcm_nAppCmdResultDataLen                  1858       1       1       2   .common     
+     pcm_nAppCmdResult                         1859       1       1       4   .common     
+     pcm_nAppCmdLen                            185A       2       2       2   .common     
+     pcm_pAppCmdBuff                           185C      20      32       3   .common     
+     pcm_nAppCmd                               187C       1       1       7   .common     
 MODULE:                 -- freemaster_protocol_c.obj --
 - PROCEDURES:
-     FMSTR_Init                              FF91CC      1F      31       1   .text       
-     FMSTR_ProtocolDecoder                   FF91EB      FE     254       1   .text       
-     FMSTR_GetBoardInfo                      FF92E9      65     101       1   .text       
-     FMSTR_ReadMem                           FF934E      3B      59       1   .text       
-     FMSTR_WriteMem                          FF9389      2E      46       1   .text       
-     FMSTR_WriteMemMask                      FF93B7      2E      46       1   .text       
+     FMSTR_Init                              FF90C6      1F      31       1   .text       
+     FMSTR_ProtocolDecoder                   FF90E5      FE     254       1   .text       
+     FMSTR_GetBoardInfo                      FF91E3      65     101       1   .text       
+     FMSTR_ReadMem                           FF9248      3B      59       1   .text       
+     FMSTR_WriteMem                          FF9283      2E      46       1   .text       
+     FMSTR_WriteMemMask                      FF92B1      2E      46       1   .text       
 - VARIABLES:
-     @144                                      16E0      16      22       1   .data       
+     @144                                      17A0      16      22       1   .data       
 MODULE:                 -- freemaster_rec_c.obj --
 - PROCEDURES:
-     FMSTR_InitRec                           FF93E5       A      10       1   .text       
-     FMSTR_AbortRec                          FF93EF       4       4       1   .text       
-     FMSTR_SetUpRec                          FF93F3     13A     314       1   .text       
-     FMSTR_TriggerRec                        FF952D      10      16       2   .text       
-     FMSTR_StartRec                          FF953D      41      65       1   .text       
-     FMSTR_StopRec                           FF957E      28      40       1   .text       
-     FMSTR_GetRecStatus                      FF95A6      2A      42       1   .text       
-     FMSTR_GetRecBuffSize                    FF95D0       4       4       2   .text       
-     FMSTR_GetRecBuff                        FF95D4      46      70       1   .text       
-     FMSTR_Compare8S                         FF961A      18      24       1   .text       
-     FMSTR_Compare8U                         FF9632      16      22       1   .text       
-     FMSTR_Compare16S                        FF9648      12      18       1   .text       
-     FMSTR_Compare16U                        FF965A      12      18       1   .text       
-     FMSTR_Compare32S                        FF966C      12      18       1   .text       
-     FMSTR_Compare32U                        FF967E      12      18       1   .text       
-     FMSTR_Recorder                          FF9690       A      10       1   .text       
-     FMSTR_Recorder2                         FF969A      C6     198       1   .text       
+     FMSTR_InitRec                           FF92DF       A      10       1   .text       
+     FMSTR_AbortRec                          FF92E9       4       4       1   .text       
+     FMSTR_SetUpRec                          FF92ED     13A     314       1   .text       
+     FMSTR_TriggerRec                        FF9427      10      16       2   .text       
+     FMSTR_StartRec                          FF9437      41      65       1   .text       
+     FMSTR_StopRec                           FF9478      28      40       1   .text       
+     FMSTR_GetRecStatus                      FF94A0      2A      42       1   .text       
+     FMSTR_GetRecBuffSize                    FF94CA       4       4       2   .text       
+     FMSTR_GetRecBuff                        FF94CE      46      70       1   .text       
+     FMSTR_Compare8S                         FF9514      18      24       1   .text       
+     FMSTR_Compare8U                         FF952C      16      22       1   .text       
+     FMSTR_Compare16S                        FF9542      12      18       1   .text       
+     FMSTR_Compare16U                        FF9554      12      18       1   .text       
+     FMSTR_Compare32S                        FF9566      12      18       1   .text       
+     FMSTR_Compare32U                        FF9578      12      18       1   .text       
+     FMSTR_Recorder                          FF958A       A      10       1   .text       
+     FMSTR_Recorder2                         FF9594      C6     198       1   .text       
 - VARIABLES:
-     pcm_pOwnRecBuffer                         17B0     400    1024       2   .common     
-     pcm_pCompareFunc                          1BB0       3       3       3   .common     
-     pcm_nRecBuffAddr                          1BB4       3       3       6   .common     
-     pcm_uTrgThreshold                         1BB8       4       4       7   .common     
-     pcm_bTrgVarSigned                         1BBC       1       1       2   .common     
-     pcm_nTrgVarSize                           1BBD       1       1       2   .common     
-     pcm_nTrgVarAddr                           1BC0       3       3       7   .common     
-     pcm_dwRecEndBuffPtr                       1BC4       3       3       2   .common     
-     pcm_dwRecWritePtr                         1BC8       3       3       5   .common     
-     pcm_wRecBuffStartIx                       1BCC       2       2       4   .common     
-     pcm_wRecFlags                             1BCE       1       1      25   .common     
-     pcm_wStoprecCountDown                     1BD0       2       2       3   .common     
-     pcm_wRecTimeDivCtr                        1BD2       2       2       4   .common     
-     pcm_pRecVarSize                           1BD4       8       8       2   .common     
-     pcm_pRecVarAddr                           1BDC      18      24       2   .common     
-     pcm_nRecVarCount                          1BF4       1       1       4   .common     
-     pcm_wRecTimeDiv                           1BF6       2       2       2   .common     
-     pcm_nRecTriggerMode                       1BF8       1       1       3   .common     
-     pcm_wRecPostTrigger                       1BFA       2       2       2   .common     
-     pcm_wRecTotalSmps                         1BFC       2       2       2   .common     
+     pcm_pOwnRecBuffer                         1880     400    1024       2   .common     
+     pcm_pCompareFunc                          1C80       3       3       3   .common     
+     pcm_nRecBuffAddr                          1C84       3       3       6   .common     
+     pcm_uTrgThreshold                         1C88       4       4       7   .common     
+     pcm_bTrgVarSigned                         1C8C       1       1       2   .common     
+     pcm_nTrgVarSize                           1C8D       1       1       2   .common     
+     pcm_nTrgVarAddr                           1C90       3       3       7   .common     
+     pcm_dwRecEndBuffPtr                       1C94       3       3       2   .common     
+     pcm_dwRecWritePtr                         1C98       3       3       5   .common     
+     pcm_wRecBuffStartIx                       1C9C       2       2       4   .common     
+     pcm_wRecFlags                             1C9E       1       1      25   .common     
+     pcm_wStoprecCountDown                     1CA0       2       2       3   .common     
+     pcm_wRecTimeDivCtr                        1CA2       2       2       4   .common     
+     pcm_pRecVarSize                           1CA4       8       8       2   .common     
+     pcm_pRecVarAddr                           1CAC      18      24       2   .common     
+     pcm_nRecVarCount                          1CC4       1       1       4   .common     
+     pcm_wRecTimeDiv                           1CC6       2       2       2   .common     
+     pcm_nRecTriggerMode                       1CC8       1       1       3   .common     
+     pcm_wRecPostTrigger                       1CCA       2       2       2   .common     
+     pcm_wRecTotalSmps                         1CCC       2       2       2   .common     
 MODULE:                 -- freemaster_scope_c.obj --
 - PROCEDURES:
-     FMSTR_InitScope                         FF9760       1       1       1   .text       
-     FMSTR_SetUpScope                        FF9761      6E     110       1   .text       
-     FMSTR_ReadScope                         FF97CF      4F      79       1   .text       
+     FMSTR_InitScope                         FF965A       1       1       1   .text       
+     FMSTR_SetUpScope                        FF965B      6E     110       1   .text       
+     FMSTR_ReadScope                         FF96C9      4F      79       1   .text       
 - VARIABLES:
-     pcm_pScopeVarSize                         1C00       8       8       2   .common     
-     pcm_pScopeVarAddr                         1C08      18      24       2   .common     
-     pcm_nScopeVarCount                        1C20       1       1       5   .common     
+     pcm_pScopeVarSize                         1CD0       8       8       2   .common     
+     pcm_pScopeVarAddr                         1CD8      18      24       2   .common     
+     pcm_nScopeVarCount                        1CF0       1       1       5   .common     
 MODULE:                 -- freemaster_serial_c.obj --
 - PROCEDURES:
-     FMSTR_ProcessSCI                        FF981E      3C      60       1   .text       
-     FMSTR_Listen                            FF985A      1C      28       2   .text       
-     FMSTR_SendError                         FF9876      14      20       1   .text       
-     FMSTR_SendResponse                      FF988A      68     104       2   .text       
-     FMSTR_Tx                                FF98F2      49      73       1   .text       
-     FMSTR_Rx                                FF993B      E1     225       1   .text       
-     FMSTR_InitSerial                        FF9A1C       C      12       1   .text       
-     FMSTR_Poll                              FF9A28       4       4       1   .text       
+     FMSTR_ProcessSCI                        FF9718      3C      60       1   .text       
+     FMSTR_Listen                            FF9754      1C      28       2   .text       
+     FMSTR_SendError                         FF9770      14      20       1   .text       
+     FMSTR_SendResponse                      FF9784      68     104       2   .text       
+     FMSTR_Tx                                FF97EC      49      73       1   .text       
+     FMSTR_Rx                                FF9835      E1     225       1   .text       
+     FMSTR_InitSerial                        FF9916       C      12       1   .text       
+     FMSTR_Poll                              FF9922       4       4       1   .text       
 - VARIABLES:
-     pcm_nRxCheckSum                           1C24       1       1       3   .common     
-     pcm_pRxBuff                               1C28       3       3       5   .common     
-     pcm_pTxBuff                               1C2C       3       3       4   .common     
-     pcm_nRxTodo                               1C2F       1       1       6   .common     
-     pcm_nTxTodo                               1C30       1       1       4   .common     
-     pcm_wFlags                                1C31       1       1      19   .common     
-     pcm_pCommBuffer                           1C34      3D      61       6   .common     
+     pcm_nRxCheckSum                           1CF4       1       1       3   .common     
+     pcm_pRxBuff                               1CF8       3       3       5   .common     
+     pcm_pTxBuff                               1CFC       3       3       4   .common     
+     pcm_nRxTodo                               1CFF       1       1       6   .common     
+     pcm_nTxTodo                               1D00       1       1       4   .common     
+     pcm_wFlags                                1D01       1       1      19   .common     
+     pcm_pCommBuffer                           1D04      3D      61       6   .common     
 MODULE:                 -- freemaster_HC12_c.obj --
 - PROCEDURES:
-     FMSTR_CopyMemory                        FF9A2C      38      56       1   .text       
-     FMSTR_CopyToBuffer                      FF9A64      45      69       3   .text       
-     FMSTR_CopyFromBuffer                    FF9AA9      47      71       2   .text       
-     FMSTR_CopyFromBufferWithMask            FF9AF0      66     102       1   .text       
-     FMSTR_AddressToBuffer                   FF9B56      11      17       1   .text       
-     FMSTR_AddressFromBuffer                 FF9B67      2F      47       6   .text       
+     FMSTR_CopyMemory                        FF9926      38      56       1   .text       
+     FMSTR_CopyToBuffer                      FF995E      45      69       3   .text       
+     FMSTR_CopyFromBuffer                    FF99A3      47      71       2   .text       
+     FMSTR_CopyFromBufferWithMask            FF99EA      66     102       1   .text       
+     FMSTR_AddressToBuffer                   FF9A50      11      17       1   .text       
+     FMSTR_AddressFromBuffer                 FF9A61      2F      47       6   .text       
 - VARIABLES:
-MODULE:                 -- Wisemay_CoolingFan_c.obj --
+MODULE:                 -- Wisemay_CoolingFan_V2_0_c.obj --
 - PROCEDURES:
-     main                                    FF9B96      42      66       1   .text       
-     ADC0error_ISR                           FF9BD8      57      87       1   .text       
-     ADC1error_ISR                           FF9C2F      57      87       1   .text       
-     ADC0done_ISR                            FF9C86       8       8       1   .text       
-     ADC1done_ISR                            FF9C8E       8       8       1   .text       
-     PMFreloadA_ISR                          FF9C96     11A     282       1   .text       
-     stateReset                              FF9DB0     235     565       2   .text       
-     stateFault                              FF9FE5      6C     108      81   .text       
-     stateInit                               FFA051     124     292       6   .text       
-     stateReady                              FFA175      28      40       3   .text       
-     stateCalib                              FFA19D      4A      74       2   .text       
-     stateAlign                              FFA1E7      C2     194       2   .text       
-     stateRun                                FFA2A9     253     595       2   .text       
-     focSlowLoop                             FFA4FC      BA     186       1   .text       
-     focFastLoop                             FFA5B6     278     632       1   .text       
-     faultDetection                          FFA82E      82     130       1   .text       
-     CalcOpenLoop                            FFA8B0      18      24       1   .text       
-     automaticMode                           FFA8C8      45      69       1   .text       
+     tim_init                                FF9A90      3A      58       1   .text       
+     main                                    FF9ACA      45      69       1   .text       
+     ADC0error_ISR                           FF9B0F      57      87       1   .text       
+     ADC1error_ISR                           FF9B66      57      87       1   .text       
+     ADC0done_ISR                            FF9BBD       8       8       1   .text       
+     ADC1done_ISR                            FF9BC5       8       8       1   .text       
+     PMFreloadA_ISR                          FF9BCD     107     263       1   .text       
+     stateReset                              FF9CD4     235     565       2   .text       
+     stateFault                              FF9F09      6C     108     140   .text       
+     stateInit                               FF9F75     127     295       7   .text       
+     stateReady                              FFA09C      28      40       3   .text       
+     stateCalib                              FFA0C4      45      69       2   .text       
+     stateAlign                              FFA109      C2     194       3   .text       
+     stateRun                                FFA1CB     2E5     741       2   .text       
+     stateCheckM                             FFA4B0      2E      46       2   .text       
+     stateBrake                              FFA4DE      17      23       1   .text       
+     focSlowLoop                             FFA4F5      BA     186       1   .text       
+     focFastLoop                             FFA5AF     278     632       1   .text       
+     faultDetection                          FFA827      82     130       1   .text       
+     CalcOpenLoop                            FFA8A9      18      24       1   .text       
+     automaticMode                           FFA8C1      45      69       1   .text       
+     Motor_TailWind                          FFA906      59      89       1   .text       
+     CheckMotorRunning                       FFA95F     443    1091       1   .text       
+     AppTranToBrake                          FFADA2      6D     109       1   .text       
+     AppBrakeToAlignment                     FFAE0F      34      52       1   .text       
+     AppCalibToCheckMotor                    FFAE43      3B      59       1   .text       
 - VARIABLES:
-     OL_SpeedRampInc                           1C74       4       4      22   .common     
-     CL_SpeedRampInc                           1C78       4       4       3   .common     
-     CL_SpeedRampDec                           1C7C       4       4       3   .common     
-     _ZZ14PMFreloadA_ISRvE12getFcnStatus       1C80       1       1       8   .common     
-     _ZZ8stateRunvE14stateRunStatus            1C81       1       1       3   .common     
-     TimerOLRampCNT                            1C82       2       2       2   .common     
-     Timer10msCNT                              1C84       2       2       2   .common     
-     Timer1msCNT                               1C86       2       2       3   .common     
-     AdcError1                                 1C88       2       2       1   .common     
-     AdcError0                                 1C8A       2       2       1   .common     
-     AdcErrorIA                                1C8C       2       2       2   .common     
-     AdcErrorCMD                               1C8E       2       2       2   .common     
-     AdcErrorEOL                               1C90       2       2       2   .common     
-     AdcErrorTRIG                              1C92       2       2       2   .common     
-     AdcErrorRSTAR                             1C94       2       2       2   .common     
-     AdcErrorLDOK                              1C96       2       2       2   .common     
-     pos_mode                                  1C98       1       1      15   .common     
-     meas                                      1C9C      4E      78       9   .common     
-     fmScale                                   1CEC      1C      28       6   .common     
-     permFaults                                1D08       6       6      24   .common     
-     tempfaults                                1D10       6       6       3   .common     
-     cntrState                                 1D18      15      21      55   .common     
-     drvFOC                                    1D30     138     312     319   .common     
-     dPI                                       16F6       2       2       1   .data       
-     qPI                                       16F8       2       2       1   .data       
+     OL_SpeedRampInc                           1D44       4       4      23   .common     
+     CL_SpeedRampInc                           1D48       4       4       3   .common     
+     CL_SpeedRampDec                           1D4C       4       4       3   .common     
+     _ZZ14PMFreloadA_ISRvE12getFcnStatus       1D50       1       1       8   .common     
+     _ZZ8stateRunvE14stateRunStatus            1D51       1       1       3   .common     
+     _ZZ17CheckMotorRunningvE16previous_vph_red       1D52       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE19previous_vph_yellow_0       1D54       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE17previous_vph_blue_1       1D56       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE15level_count_red_2       1D58       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE18level_count_yellow_3       1D59       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE16level_count_blue_4       1D5A       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE18previous_edge_time_5       1D5C       2       2      10   .common     
+     _ZZ17CheckMotorRunningvE13retry_counter_6       1D5E       1       1       3   .common     
+     phaseVoltage                              1D60       2       2       4   .common     
+     duty_cycle                                1D62       2       2       2   .common     
+     NextCmtPeriod                             1D64       2       2       3   .common     
+     actualSpeed                               1D66       2       2      20   .common     
+     ActualCmtSector                           1D68       2       2       6   .common     
+     NextCmtSector                             1D6A       2       2      13   .common     
+     timeBEMF                                  1D6C       2       2       4   .common     
+     vph_blue                                  1D6E       2       2       5   .common     
+     vph_yellow                                1D70       2       2       5   .common     
+     vph_red                                   1D72       2       2       8   .common     
+     RunningChk_counter                        1D74       4       4       4   .common     
+     brakeEnableFlags                          1D78       1       1       1   .common     
+     LinkupDuration                            1D7A       2       2       4   .common     
+     BrakeLoopDuration                         1D7C       2       2      18   .common     
+     TimerOLRampCNT                            1D7E       2       2       2   .common     
+     Timer10msCNT                              1D80       2       2       2   .common     
+     Timer1msCNT                               1D82       2       2       3   .common     
+     AdcError1                                 1D84       2       2       1   .common     
+     AdcError0                                 1D86       2       2       1   .common     
+     AdcErrorIA                                1D88       2       2       2   .common     
+     AdcErrorCMD                               1D8A       2       2       2   .common     
+     AdcErrorEOL                               1D8C       2       2       2   .common     
+     AdcErrorTRIG                              1D8E       2       2       2   .common     
+     AdcErrorRSTAR                             1D90       2       2       2   .common     
+     AdcErrorLDOK                              1D92       2       2       2   .common     
+     pos_mode                                  1D94       1       1      14   .common     
+     meas                                      1D98      4E      78       9   .common     
+     fmScale                                   1DE8      1C      28       6   .common     
+     permFaults                                1E04       6       6      22   .common     
+     tempfaults                                1E0C       6       6       3   .common     
+     cntrState                                 1E14      15      21      56   .common     
+     drvFOC                                    1E2C     138     312     349   .common     
+     ADC_channel                               17B6       1       1       7   .data       
+     dPI                                       17B8       2       2       1   .data       
+     qPI                                       17BA       2       2       1   .data       
 MODULE:                 -- AMCLIB_BemfObsrvDQ_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     AMCLIB_BemfObsrvDQInit_F16              FFA90D      1D      29       3   .text       
-     AMCLIB_BemfObsrvDQ_F16                  FFA92A     1C0     448       1   .text       
+     AMCLIB_BemfObsrvDQInit_F16              FFAE7E      1D      29       3   .text       
+     AMCLIB_BemfObsrvDQ_F16                  FFAE9B     1C0     448       1   .text       
 - VARIABLES:
 MODULE:                 -- AMCLIB_TrackObsrv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     AMCLIB_TrackObsrvInit_F16               FFAAEA       B      11       2   .text       
-     AMCLIB_TrackObsrv_F16                   FFAAF5      82     130       1   .text       
+     AMCLIB_TrackObsrvInit_F16               FFB05B       B      11       2   .text       
+     AMCLIB_TrackObsrv_F16                   FFB066      82     130       1   .text       
 - VARIABLES:
 MODULE:                 -- GDFLIB_FilterIIR1_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GDFLIB_FilterIIR1Init_F16               FFAB77       5       5       2   .text       
-     GDFLIB_FilterIIR1_F16                   FFAB7C      2A      42       1   .text       
+     GDFLIB_FilterIIR1Init_F16               FFB0E8       5       5       2   .text       
+     GDFLIB_FilterIIR1_F16                   FFB0ED      2A      42       1   .text       
 - VARIABLES:
 MODULE:                 -- GDFLIB_FilterMA_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GDFLIB_FilterMAInit_F16                 FFABA6       3       3       2   .text       
-     GDFLIB_FilterMA_F16                     FFABA9      14      20       4   .text       
+     GDFLIB_FilterMAInit_F16                 FFB117       3       3       2   .text       
+     GDFLIB_FilterMA_F16                     FFB11A      14      20       4   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_Atan_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Atan_F16                          FFABBD      4B      75       1   .text       
+     GFLIB_Atan_F16                          FFB12E      4B      75       1   .text       
 - VARIABLES:
      f16gflibAtanCoef                        FF805C      30      48       1   .rodata     
 MODULE:                 -- GFLIB_ControllerPIpAW_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_ControllerPIpAW_F16               FFAC08      92     146       1   .text       
+     GFLIB_ControllerPIpAW_F16               FFB179      92     146       1   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_ControllerPIrAW_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_ControllerPIrAW_F16               FFAC9A      51      81       4   .text       
+     GFLIB_ControllerPIrAW_F16               FFB20B      51      81       4   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_Cos_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Cos_F16                           FFACEB      57      87       5   .text       
+     GFLIB_Cos_F16                           FFB25C      57      87       6   .text       
 - VARIABLES:
-     f16gflibCosCoef                         FF808C       8       8       5   .rodata     
+     f16gflibCosCoef                         FF808C       8       8       6   .rodata     
 MODULE:                 -- GFLIB_IntegratorTR_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_IntegratorTR_F16                  FFAD42      29      41       1   .text       
+     GFLIB_IntegratorTR_F16                  FFB2B3      29      41       1   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_Limit_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Limit_F16                         FFAD6B      11      17       2   .text       
+     GFLIB_Limit_F16                         FFB2DC      11      17       2   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_Ramp_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Ramp_F32                          FFAD7C      16      22       1   .text       
+     GFLIB_Ramp_F32                          FFB2ED      16      22       1   .text       
 - VARIABLES:
 MODULE:                 -- GFLIB_SinCos_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_SinCos_F16                        FFAD92      85     133       1   .text       
+     GFLIB_SinCos_F16                        FFB303      85     133       1   .text       
 - VARIABLES:
      f16gflibSinCosCoef                      FF8094       8       8       1   .rodata     
 MODULE:                 -- GFLIB_Sin_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Sin_F16                           FFAE17      54      84       5   .text       
+     GFLIB_Sin_F16                           FFB388      54      84       6   .text       
 - VARIABLES:
-     f16gflibSinCoef                         FF809C       8       8       5   .rodata     
+     f16gflibSinCoef                         FF809C       8       8       6   .rodata     
 MODULE:                 -- GFLIB_Sqrt_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GFLIB_Sqrt_F16                          FFAE6B      B2     178       1   .text       
+     GFLIB_Sqrt_F16                          FFB3DC      B2     178       1   .text       
 - VARIABLES:
 MODULE:                 -- GMCLIB_Clark_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GMCLIB_Clark_F16                        FFAF1D      23      35       1   .text       
+     GMCLIB_Clark_F16                        FFB48E      23      35       1   .text       
 - VARIABLES:
 MODULE:                 -- GMCLIB_ElimDcBusRip_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GMCLIB_ElimDcBusRip_F16                 FFAF40      36      54       1   .text       
+     GMCLIB_ElimDcBusRip_F16                 FFB4B1      36      54       1   .text       
 - VARIABLES:
 MODULE:                 -- GMCLIB_ParkInv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GMCLIB_ParkInv_F16                      FFAF76      2F      47       2   .text       
+     GMCLIB_ParkInv_F16                      FFB4E7      2F      47       3   .text       
 - VARIABLES:
 MODULE:                 -- GMCLIB_Park_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GMCLIB_Park_F16                         FFAFA5      37      55       2   .text       
+     GMCLIB_Park_F16                         FFB516      37      55       2   .text       
 - VARIABLES:
 MODULE:                 -- GMCLIB_SvmStd_cUC.o (MC9S12ZVM_AMMCLIB.UC.a) --
 - PROCEDURES:
-     GMCLIB_SvmStd_F16                       FFAFDC      88     136       2   .text       
+     GMCLIB_SvmStd_F16                       FFB54D      88     136       3   .text       
 - VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  AddFunction_c.obj                          123   1321      0
+  AddFunction_c.obj                          133   1059      0
   actuate_s12zvm_c.obj                        13   1463      0
   meas_s12zvm_c.obj                            2    754      0
-  state_machine_c.obj                        294      0      0
+  state_machine_c.obj                        486      0      0
   vector_c.obj                                 0      1    496
   mc9s12zvml32_c.obj                         485      0      0
   startup_c.obj                                0     62      0
@@ -1259,7 +1290,7 @@ MODULE STATISTIC
   freemaster_scope_c.obj                      33    190      0
   freemaster_serial_c.obj                     71    526      0
   freemaster_HC12_c.obj                        0    362      0
-  Wisemay_CoolingFan_c.obj                   492   3447      0
+  Wisemay_CoolingFan_V2_0_c.obj              534   5102      0
   AMCLIB_BemfObsrvDQ_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0    477      0
   AMCLIB_TrackObsrv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0    141      0
   GDFLIB_FilterIIR1_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0     47      0
@@ -1279,33 +1310,35 @@ MODULE STATISTIC
   GMCLIB_ParkInv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0     47      0
   GMCLIB_Park_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0     55      0
   GMCLIB_SvmStd_cUC.o (MC9S12ZVM_AMMCLIB.UC.a)     0    136      0
-  other                                     1280     27    463
+  other                                     1280     27    657
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
   FaultVariablesInit FaultProcess Fault_OverVoltage Fault_Overcurrent 
-  Fault_Stall Fault_Start User_Fault_Detection EnableOutput DisableOutput 
-  SetDutycycle SetPtuTriggers CalcEdges SetPmfValReg GetDriverError 
-  ClearDriverError Meas_Clear Meas_CalibCurrentSense Meas_Get3PhCurrent 
-  GetAdcRawValues Meas_GetUdcVoltage Meas_GetTemperature dummy adc0_init 
-  adc1_init cpmu_init gdu_init pim_init pmf_init GetPMF_Faults ClearPMF_Faults 
-  ptu_init GetPTU_Errors ClearPTU_Errors sci1_init FMSTR_InitAppCmds 
-  FMSTR_StoreAppCmd FMSTR_GetAppCmdStatus FMSTR_GetAppCmdRespData 
-  FMSTR_FindAppCmdCallIndex FMSTR_Init FMSTR_ProtocolDecoder FMSTR_GetBoardInfo 
-  FMSTR_ReadMem FMSTR_WriteMem FMSTR_WriteMemMask FMSTR_InitRec FMSTR_AbortRec 
-  FMSTR_SetUpRec FMSTR_TriggerRec FMSTR_StartRec FMSTR_StopRec 
-  FMSTR_GetRecStatus FMSTR_GetRecBuffSize FMSTR_GetRecBuff FMSTR_Compare8S 
-  FMSTR_Compare8U FMSTR_Compare16S FMSTR_Compare16U FMSTR_Compare32S 
-  FMSTR_Compare32U FMSTR_Recorder FMSTR_Recorder2 FMSTR_InitScope 
-  FMSTR_SetUpScope FMSTR_ReadScope FMSTR_ProcessSCI FMSTR_Listen 
-  FMSTR_SendError FMSTR_SendResponse FMSTR_Tx FMSTR_Rx FMSTR_InitSerial 
-  FMSTR_Poll FMSTR_CopyMemory FMSTR_CopyToBuffer FMSTR_CopyFromBuffer 
+  Fault_Stall User_Fault_Detection EnableOutput DisableOutput SetDutycycle 
+  SetPtuTriggers CalcEdges SetPmfValReg GetDriverError ClearDriverError 
+  Meas_Clear Meas_CalibCurrentSense Meas_Get3PhCurrent GetAdcRawValues 
+  Meas_GetUdcVoltage Meas_GetTemperature dummy adc0_init adc1_init cpmu_init 
+  gdu_init pim_init pmf_init GetPMF_Faults ClearPMF_Faults ptu_init 
+  GetPTU_Errors ClearPTU_Errors sci1_init FMSTR_InitAppCmds FMSTR_StoreAppCmd 
+  FMSTR_GetAppCmdStatus FMSTR_GetAppCmdRespData FMSTR_FindAppCmdCallIndex 
+  FMSTR_Init FMSTR_ProtocolDecoder FMSTR_GetBoardInfo FMSTR_ReadMem 
+  FMSTR_WriteMem FMSTR_WriteMemMask FMSTR_InitRec FMSTR_AbortRec FMSTR_SetUpRec 
+  FMSTR_TriggerRec FMSTR_StartRec FMSTR_StopRec FMSTR_GetRecStatus 
+  FMSTR_GetRecBuffSize FMSTR_GetRecBuff FMSTR_Compare8S FMSTR_Compare8U 
+  FMSTR_Compare16S FMSTR_Compare16U FMSTR_Compare32S FMSTR_Compare32U 
+  FMSTR_Recorder FMSTR_Recorder2 FMSTR_InitScope FMSTR_SetUpScope 
+  FMSTR_ReadScope FMSTR_ProcessSCI FMSTR_Listen FMSTR_SendError 
+  FMSTR_SendResponse FMSTR_Tx FMSTR_Rx FMSTR_InitSerial FMSTR_Poll 
+  FMSTR_CopyMemory FMSTR_CopyToBuffer FMSTR_CopyFromBuffer 
   FMSTR_CopyFromBufferWithMask FMSTR_AddressToBuffer FMSTR_AddressFromBuffer 
-  main ADC0error_ISR ADC1error_ISR ADC0done_ISR ADC1done_ISR PMFreloadA_ISR 
-  stateReset stateFault stateInit stateReady stateCalib stateAlign stateRun 
-  focSlowLoop focFastLoop faultDetection CalcOpenLoop automaticMode 
+  tim_init main ADC0error_ISR ADC1error_ISR ADC0done_ISR ADC1done_ISR 
+  PMFreloadA_ISR stateReset stateFault stateInit stateReady stateCalib 
+  stateAlign stateRun stateCheckM stateBrake focSlowLoop focFastLoop 
+  faultDetection CalcOpenLoop automaticMode Motor_TailWind CheckMotorRunning 
+  AppTranToBrake AppBrakeToAlignment AppCalibToCheckMotor 
   AMCLIB_BemfObsrvDQInit_F16 AMCLIB_BemfObsrvDQ_F16 AMCLIB_TrackObsrvInit_F16 
   AMCLIB_TrackObsrv_F16 GDFLIB_FilterIIR1Init_F16 GDFLIB_FilterIIR1_F16 
   GDFLIB_FilterMAInit_F16 GDFLIB_FilterMA_F16 GFLIB_Atan_F16 
@@ -1316,7 +1349,7 @@ SECTION: ".text"
 SECTION: ".data"
   minZeroPulse minSamplingPulse triggerOffset1 triggerOffset2 triggerOffset3 
   triggerOffset4 _ZZ18Meas_Get3PhCurrentP6structP6structtE9sectorK_1 
-  state_table @144 dPI qPI 
+  state_table @144 ADC_channel dPI qPI 
 SECTION: ".init"
   DoZeroOut DoCopyDown _Startup 
 SECTION: ".rodata"
@@ -1328,8 +1361,8 @@ SECTION: "adcLists"
 SECTION: "vector"
   _vectab 
 SECTION: ".common"
-  mcEsValue mcSpeedFlt mcTempDecFlt mcDcbusFlt segmentstate mcFaultDect 
-  mcFaultSource writeToList pcm_pAppCmdCallFunc pcm_pAppCmdCallId 
+  mcEsValue mcSpeedFlt mcTempDecFlt mcDcbusFlt segmentstate control_flags 
+  mcFaultDect mcFaultSource writeToList pcm_pAppCmdCallFunc pcm_pAppCmdCallId 
   pcm_nAppCmdResultDataLen pcm_nAppCmdResult pcm_nAppCmdLen pcm_pAppCmdBuff 
   pcm_nAppCmd pcm_pOwnRecBuffer pcm_pCompareFunc pcm_nRecBuffAddr 
   pcm_uTrgThreshold pcm_bTrgVarSigned pcm_nTrgVarSize pcm_nTrgVarAddr 
@@ -1340,9 +1373,19 @@ SECTION: ".common"
   pcm_nRxCheckSum pcm_pRxBuff pcm_pTxBuff pcm_nRxTodo pcm_nTxTodo pcm_wFlags 
   pcm_pCommBuffer OL_SpeedRampInc CL_SpeedRampInc CL_SpeedRampDec 
   _ZZ14PMFreloadA_ISRvE12getFcnStatus _ZZ8stateRunvE14stateRunStatus 
-  TimerOLRampCNT Timer10msCNT Timer1msCNT AdcError1 AdcError0 AdcErrorIA 
-  AdcErrorCMD AdcErrorEOL AdcErrorTRIG AdcErrorRSTAR AdcErrorLDOK pos_mode meas 
-  fmScale permFaults tempfaults cntrState drvFOC 
+  _ZZ17CheckMotorRunningvE16previous_vph_red 
+  _ZZ17CheckMotorRunningvE19previous_vph_yellow_0 
+  _ZZ17CheckMotorRunningvE17previous_vph_blue_1 
+  _ZZ17CheckMotorRunningvE15level_count_red_2 
+  _ZZ17CheckMotorRunningvE18level_count_yellow_3 
+  _ZZ17CheckMotorRunningvE16level_count_blue_4 
+  _ZZ17CheckMotorRunningvE18previous_edge_time_5 
+  _ZZ17CheckMotorRunningvE13retry_counter_6 phaseVoltage duty_cycle 
+  NextCmtPeriod actualSpeed ActualCmtSector NextCmtSector timeBEMF vph_blue 
+  vph_yellow vph_red RunningChk_counter brakeEnableFlags LinkupDuration 
+  BrakeLoopDuration TimerOLRampCNT Timer10msCNT Timer1msCNT AdcError1 AdcError0 
+  AdcErrorIA AdcErrorCMD AdcErrorEOL AdcErrorTRIG AdcErrorRSTAR AdcErrorLDOK 
+  pos_mode meas fmScale permFaults tempfaults cntrState drvFOC 
 SECTION: ".__absdata_ADC1RBP__"
   ADC1RBP 
 SECTION: ".__absdata_ADC1CBP__"
@@ -2553,7 +2596,7 @@ OBJECT LIST SORTED BY ADDRESS
      ADC0CommandList                           1528      20      32       1   adcLists    
      ADC1CommandList                           1548      20      32       1   adcLists    
      ADC0ResultList                            1568      20      32       7   adcLists    
-     ADC1ResultList                            1588      20      32       3   adcLists    
+     ADC1ResultList                            1588      20      32       4   adcLists    
      minZeroPulse                              15A8       2       2       1   .data       
      minSamplingPulse                          15AA       2       2       2   .data       
      triggerOffset1                            15AC       2       2       1   .data       
@@ -2561,205 +2604,236 @@ OBJECT LIST SORTED BY ADDRESS
      triggerOffset3                            15B0       2       2       1   .data       
      triggerOffset4                            15B2       2       2       1   .data       
      _ZZ18Meas_Get3PhCurrentP6structP6structtE9sectorK_1       15B4       2       2       2   .data       
-     state_table                               15B8     126     294       1   .data       
-     @144                                      16E0      16      22       1   .data       
-     dPI                                       16F6       2       2       1   .data       
-     qPI                                       16F8       2       2       1   .data       
-     mcEsValue                                 16FA       2       2       5   .common     
-     mcSpeedFlt                                16FC       2       2       5   .common     
-     mcTempDecFlt                              16FE       2       2       1   .common     
-     mcDcbusFlt                                1700       2       2       3   .common     
-     segmentstate                              1702       2       2       8   .common     
-     mcFaultDect                               1704      70     112      52   .common     
-     mcFaultSource                             1774       1       1      16   .common     
-     writeToList                               1775       1       1       7   .common     
-     pcm_pAppCmdCallFunc                       1778       C      12       2   .common     
-     pcm_pAppCmdCallId                         1784       4       4       2   .common     
-     pcm_nAppCmdResultDataLen                  1788       1       1       2   .common     
-     pcm_nAppCmdResult                         1789       1       1       4   .common     
-     pcm_nAppCmdLen                            178A       2       2       2   .common     
-     pcm_pAppCmdBuff                           178C      20      32       3   .common     
-     pcm_nAppCmd                               17AC       1       1       7   .common     
-     pcm_pOwnRecBuffer                         17B0     400    1024       2   .common     
-     pcm_pCompareFunc                          1BB0       3       3       3   .common     
-     pcm_nRecBuffAddr                          1BB4       3       3       6   .common     
-     pcm_uTrgThreshold                         1BB8       4       4       7   .common     
-     pcm_bTrgVarSigned                         1BBC       1       1       2   .common     
-     pcm_nTrgVarSize                           1BBD       1       1       2   .common     
-     pcm_nTrgVarAddr                           1BC0       3       3       7   .common     
-     pcm_dwRecEndBuffPtr                       1BC4       3       3       2   .common     
-     pcm_dwRecWritePtr                         1BC8       3       3       5   .common     
-     pcm_wRecBuffStartIx                       1BCC       2       2       4   .common     
-     pcm_wRecFlags                             1BCE       1       1      25   .common     
-     pcm_wStoprecCountDown                     1BD0       2       2       3   .common     
-     pcm_wRecTimeDivCtr                        1BD2       2       2       4   .common     
-     pcm_pRecVarSize                           1BD4       8       8       2   .common     
-     pcm_pRecVarAddr                           1BDC      18      24       2   .common     
-     pcm_nRecVarCount                          1BF4       1       1       4   .common     
-     pcm_wRecTimeDiv                           1BF6       2       2       2   .common     
-     pcm_nRecTriggerMode                       1BF8       1       1       3   .common     
-     pcm_wRecPostTrigger                       1BFA       2       2       2   .common     
-     pcm_wRecTotalSmps                         1BFC       2       2       2   .common     
-     pcm_pScopeVarSize                         1C00       8       8       2   .common     
-     pcm_pScopeVarAddr                         1C08      18      24       2   .common     
-     pcm_nScopeVarCount                        1C20       1       1       5   .common     
-     pcm_nRxCheckSum                           1C24       1       1       3   .common     
-     pcm_pRxBuff                               1C28       3       3       5   .common     
-     pcm_pTxBuff                               1C2C       3       3       4   .common     
-     pcm_nRxTodo                               1C2F       1       1       6   .common     
-     pcm_nTxTodo                               1C30       1       1       4   .common     
-     pcm_wFlags                                1C31       1       1      19   .common     
-     pcm_pCommBuffer                           1C34      3D      61       6   .common     
-     OL_SpeedRampInc                           1C74       4       4      22   .common     
-     CL_SpeedRampInc                           1C78       4       4       3   .common     
-     CL_SpeedRampDec                           1C7C       4       4       3   .common     
-     _ZZ14PMFreloadA_ISRvE12getFcnStatus       1C80       1       1       8   .common     
-     _ZZ8stateRunvE14stateRunStatus            1C81       1       1       3   .common     
-     TimerOLRampCNT                            1C82       2       2       2   .common     
-     Timer10msCNT                              1C84       2       2       2   .common     
-     Timer1msCNT                               1C86       2       2       3   .common     
-     AdcError1                                 1C88       2       2       1   .common     
-     AdcError0                                 1C8A       2       2       1   .common     
-     AdcErrorIA                                1C8C       2       2       2   .common     
-     AdcErrorCMD                               1C8E       2       2       2   .common     
-     AdcErrorEOL                               1C90       2       2       2   .common     
-     AdcErrorTRIG                              1C92       2       2       2   .common     
-     AdcErrorRSTAR                             1C94       2       2       2   .common     
-     AdcErrorLDOK                              1C96       2       2       2   .common     
-     pos_mode                                  1C98       1       1      15   .common     
-     meas                                      1C9C      4E      78       9   .common     
-     fmScale                                   1CEC      1C      28       6   .common     
-     permFaults                                1D08       6       6      24   .common     
-     tempfaults                                1D10       6       6       3   .common     
-     cntrState                                 1D18      15      21      55   .common     
-     drvFOC                                    1D30     138     312     319   .common     
+     state_table                               15B8     1E6     486       1   .data       
+     @144                                      17A0      16      22       1   .data       
+     ADC_channel                               17B6       1       1       7   .data       
+     dPI                                       17B8       2       2       1   .data       
+     qPI                                       17BA       2       2       1   .data       
+     mcEsValue                                 17BC       2       2       4   .common     
+     mcSpeedFlt                                17BE       2       2       3   .common     
+     mcTempDecFlt                              17C0       2       2       1   .common     
+     mcDcbusFlt                                17C2       2       2       3   .common     
+     segmentstate                              17C4       2       2       8   .common     
+     control_flags                             17C8       A      10      47   .common     
+     mcFaultDect                               17D4      70     112      51   .common     
+     mcFaultSource                             1844       1       1      13   .common     
+     writeToList                               1845       1       1       7   .common     
+     pcm_pAppCmdCallFunc                       1848       C      12       2   .common     
+     pcm_pAppCmdCallId                         1854       4       4       2   .common     
+     pcm_nAppCmdResultDataLen                  1858       1       1       2   .common     
+     pcm_nAppCmdResult                         1859       1       1       4   .common     
+     pcm_nAppCmdLen                            185A       2       2       2   .common     
+     pcm_pAppCmdBuff                           185C      20      32       3   .common     
+     pcm_nAppCmd                               187C       1       1       7   .common     
+     pcm_pOwnRecBuffer                         1880     400    1024       2   .common     
+     pcm_pCompareFunc                          1C80       3       3       3   .common     
+     pcm_nRecBuffAddr                          1C84       3       3       6   .common     
+     pcm_uTrgThreshold                         1C88       4       4       7   .common     
+     pcm_bTrgVarSigned                         1C8C       1       1       2   .common     
+     pcm_nTrgVarSize                           1C8D       1       1       2   .common     
+     pcm_nTrgVarAddr                           1C90       3       3       7   .common     
+     pcm_dwRecEndBuffPtr                       1C94       3       3       2   .common     
+     pcm_dwRecWritePtr                         1C98       3       3       5   .common     
+     pcm_wRecBuffStartIx                       1C9C       2       2       4   .common     
+     pcm_wRecFlags                             1C9E       1       1      25   .common     
+     pcm_wStoprecCountDown                     1CA0       2       2       3   .common     
+     pcm_wRecTimeDivCtr                        1CA2       2       2       4   .common     
+     pcm_pRecVarSize                           1CA4       8       8       2   .common     
+     pcm_pRecVarAddr                           1CAC      18      24       2   .common     
+     pcm_nRecVarCount                          1CC4       1       1       4   .common     
+     pcm_wRecTimeDiv                           1CC6       2       2       2   .common     
+     pcm_nRecTriggerMode                       1CC8       1       1       3   .common     
+     pcm_wRecPostTrigger                       1CCA       2       2       2   .common     
+     pcm_wRecTotalSmps                         1CCC       2       2       2   .common     
+     pcm_pScopeVarSize                         1CD0       8       8       2   .common     
+     pcm_pScopeVarAddr                         1CD8      18      24       2   .common     
+     pcm_nScopeVarCount                        1CF0       1       1       5   .common     
+     pcm_nRxCheckSum                           1CF4       1       1       3   .common     
+     pcm_pRxBuff                               1CF8       3       3       5   .common     
+     pcm_pTxBuff                               1CFC       3       3       4   .common     
+     pcm_nRxTodo                               1CFF       1       1       6   .common     
+     pcm_nTxTodo                               1D00       1       1       4   .common     
+     pcm_wFlags                                1D01       1       1      19   .common     
+     pcm_pCommBuffer                           1D04      3D      61       6   .common     
+     OL_SpeedRampInc                           1D44       4       4      23   .common     
+     CL_SpeedRampInc                           1D48       4       4       3   .common     
+     CL_SpeedRampDec                           1D4C       4       4       3   .common     
+     _ZZ14PMFreloadA_ISRvE12getFcnStatus       1D50       1       1       8   .common     
+     _ZZ8stateRunvE14stateRunStatus            1D51       1       1       3   .common     
+     _ZZ17CheckMotorRunningvE16previous_vph_red       1D52       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE19previous_vph_yellow_0       1D54       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE17previous_vph_blue_1       1D56       2       2       3   .common     
+     _ZZ17CheckMotorRunningvE15level_count_red_2       1D58       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE18level_count_yellow_3       1D59       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE16level_count_blue_4       1D5A       1       1       4   .common     
+     _ZZ17CheckMotorRunningvE18previous_edge_time_5       1D5C       2       2      10   .common     
+     _ZZ17CheckMotorRunningvE13retry_counter_6       1D5E       1       1       3   .common     
+     phaseVoltage                              1D60       2       2       4   .common     
+     duty_cycle                                1D62       2       2       2   .common     
+     NextCmtPeriod                             1D64       2       2       3   .common     
+     actualSpeed                               1D66       2       2      20   .common     
+     ActualCmtSector                           1D68       2       2       6   .common     
+     NextCmtSector                             1D6A       2       2      13   .common     
+     timeBEMF                                  1D6C       2       2       4   .common     
+     vph_blue                                  1D6E       2       2       5   .common     
+     vph_yellow                                1D70       2       2       5   .common     
+     vph_red                                   1D72       2       2       8   .common     
+     RunningChk_counter                        1D74       4       4       4   .common     
+     brakeEnableFlags                          1D78       1       1       1   .common     
+     LinkupDuration                            1D7A       2       2       4   .common     
+     BrakeLoopDuration                         1D7C       2       2      18   .common     
+     TimerOLRampCNT                            1D7E       2       2       2   .common     
+     Timer10msCNT                              1D80       2       2       2   .common     
+     Timer1msCNT                               1D82       2       2       3   .common     
+     AdcError1                                 1D84       2       2       1   .common     
+     AdcError0                                 1D86       2       2       1   .common     
+     AdcErrorIA                                1D88       2       2       2   .common     
+     AdcErrorCMD                               1D8A       2       2       2   .common     
+     AdcErrorEOL                               1D8C       2       2       2   .common     
+     AdcErrorTRIG                              1D8E       2       2       2   .common     
+     AdcErrorRSTAR                             1D90       2       2       2   .common     
+     AdcErrorLDOK                              1D92       2       2       2   .common     
+     pos_mode                                  1D94       1       1      14   .common     
+     meas                                      1D98      4E      78       9   .common     
+     fmScale                                   1DE8      1C      28       6   .common     
+     permFaults                                1E04       6       6      22   .common     
+     tempfaults                                1E0C       6       6       3   .common     
+     cntrState                                 1E14      15      21      56   .common     
+     drvFOC                                    1E2C     138     312     349   .common     
      DoZeroOut                               FF8000      19      25       1   .init       
      DoCopyDown                              FF8019      15      21       1   .init       
      _Startup                                FF802E      10      16       1   .init       
      f16gflibAtanCoef                        FF805C      30      48       1   .rodata     
-     f16gflibCosCoef                         FF808C       8       8       5   .rodata     
+     f16gflibCosCoef                         FF808C       8       8       6   .rodata     
      f16gflibSinCosCoef                      FF8094       8       8       1   .rodata     
-     f16gflibSinCoef                         FF809C       8       8       5   .rodata     
+     f16gflibSinCoef                         FF809C       8       8       6   .rodata     
      FaultVariablesInit                      FF80A4      A8     168       1   .text       
-     FaultProcess                            FF814C       8       8      10   .text       
+     FaultProcess                            FF814C       8       8       7   .text       
      Fault_OverVoltage                       FF8154      AC     172       1   .text       
      Fault_Overcurrent                       FF8200      B4     180       1   .text       
      Fault_Stall                             FF82B4     1D5     469       1   .text       
-     Fault_Start                             FF8489      FE     254       1   .text       
-     User_Fault_Detection                    FF8587      46      70       1   .text       
-     EnableOutput                            FF85CD      20      32       1   .text       
-     DisableOutput                           FF85ED      21      33       4   .text       
-     SetDutycycle                            FF860E     3C4     964       5   .text       
-     SetPtuTriggers                          FF89D2      5B      91       1   .text       
-     CalcEdges                               FF8A2D      C4     196       6   .text       
-     SetPmfValReg                            FF8AF1      68     104       1   .text       
-     GetDriverError                          FF8B59       B      11       1   .text       
-     ClearDriverError                        FF8B64      20      32       1   .text       
-     Meas_Clear                              FF8B84      58      88       1   .text       
-     Meas_CalibCurrentSense                  FF8BDC      8D     141       1   .text       
-     Meas_Get3PhCurrent                      FF8C69     160     352       1   .text       
-     GetAdcRawValues                         FF8DC9      69     105       2   .text       
-     Meas_GetUdcVoltage                      FF8E32      20      32       1   .text       
-     Meas_GetTemperature                     FF8E52      24      36       1   .text       
-     dummy                                   FF8E76       1       1     118   .text       
-     adc0_init                               FF8E77      53      83       1   .text       
-     adc1_init                               FF8ECA      3E      62       1   .text       
-     cpmu_init                               FF8F08      52      82       1   .text       
-     gdu_init                                FF8F5A      39      57       1   .text       
-     pim_init                                FF8F93       9       9       1   .text       
-     pmf_init                                FF8F9C      54      84       1   .text       
-     GetPMF_Faults                           FF8FF0       4       4       1   .text       
-     ClearPMF_Faults                         FF8FF4      16      22       1   .text       
-     ptu_init                                FF900A      47      71       1   .text       
-     GetPTU_Errors                           FF9051       6       6       1   .text       
-     ClearPTU_Errors                         FF9057      16      22       1   .text       
-     sci1_init                               FF906D       E      14       1   .text       
-     FMSTR_InitAppCmds                       FF907B      34      52       1   .text       
-     FMSTR_StoreAppCmd                       FF90AF      61      97       1   .text       
-     FMSTR_GetAppCmdStatus                   FF9110      43      67       1   .text       
-     FMSTR_GetAppCmdRespData                 FF9153      5D      93       1   .text       
-     FMSTR_FindAppCmdCallIndex               FF91B0      1C      28       1   .text       
-     FMSTR_Init                              FF91CC      1F      31       1   .text       
-     FMSTR_ProtocolDecoder                   FF91EB      FE     254       1   .text       
-     FMSTR_GetBoardInfo                      FF92E9      65     101       1   .text       
-     FMSTR_ReadMem                           FF934E      3B      59       1   .text       
-     FMSTR_WriteMem                          FF9389      2E      46       1   .text       
-     FMSTR_WriteMemMask                      FF93B7      2E      46       1   .text       
-     FMSTR_InitRec                           FF93E5       A      10       1   .text       
-     FMSTR_AbortRec                          FF93EF       4       4       1   .text       
-     FMSTR_SetUpRec                          FF93F3     13A     314       1   .text       
-     FMSTR_TriggerRec                        FF952D      10      16       2   .text       
-     FMSTR_StartRec                          FF953D      41      65       1   .text       
-     FMSTR_StopRec                           FF957E      28      40       1   .text       
-     FMSTR_GetRecStatus                      FF95A6      2A      42       1   .text       
-     FMSTR_GetRecBuffSize                    FF95D0       4       4       2   .text       
-     FMSTR_GetRecBuff                        FF95D4      46      70       1   .text       
-     FMSTR_Compare8S                         FF961A      18      24       1   .text       
-     FMSTR_Compare8U                         FF9632      16      22       1   .text       
-     FMSTR_Compare16S                        FF9648      12      18       1   .text       
-     FMSTR_Compare16U                        FF965A      12      18       1   .text       
-     FMSTR_Compare32S                        FF966C      12      18       1   .text       
-     FMSTR_Compare32U                        FF967E      12      18       1   .text       
-     FMSTR_Recorder                          FF9690       A      10       1   .text       
-     FMSTR_Recorder2                         FF969A      C6     198       1   .text       
-     FMSTR_InitScope                         FF9760       1       1       1   .text       
-     FMSTR_SetUpScope                        FF9761      6E     110       1   .text       
-     FMSTR_ReadScope                         FF97CF      4F      79       1   .text       
-     FMSTR_ProcessSCI                        FF981E      3C      60       1   .text       
-     FMSTR_Listen                            FF985A      1C      28       2   .text       
-     FMSTR_SendError                         FF9876      14      20       1   .text       
-     FMSTR_SendResponse                      FF988A      68     104       2   .text       
-     FMSTR_Tx                                FF98F2      49      73       1   .text       
-     FMSTR_Rx                                FF993B      E1     225       1   .text       
-     FMSTR_InitSerial                        FF9A1C       C      12       1   .text       
-     FMSTR_Poll                              FF9A28       4       4       1   .text       
-     FMSTR_CopyMemory                        FF9A2C      38      56       1   .text       
-     FMSTR_CopyToBuffer                      FF9A64      45      69       3   .text       
-     FMSTR_CopyFromBuffer                    FF9AA9      47      71       2   .text       
-     FMSTR_CopyFromBufferWithMask            FF9AF0      66     102       1   .text       
-     FMSTR_AddressToBuffer                   FF9B56      11      17       1   .text       
-     FMSTR_AddressFromBuffer                 FF9B67      2F      47       6   .text       
-     main                                    FF9B96      42      66       1   .text       
-     ADC0error_ISR                           FF9BD8      57      87       1   .text       
-     ADC1error_ISR                           FF9C2F      57      87       1   .text       
-     ADC0done_ISR                            FF9C86       8       8       1   .text       
-     ADC1done_ISR                            FF9C8E       8       8       1   .text       
-     PMFreloadA_ISR                          FF9C96     11A     282       1   .text       
-     stateReset                              FF9DB0     235     565       2   .text       
-     stateFault                              FF9FE5      6C     108      81   .text       
-     stateInit                               FFA051     124     292       6   .text       
-     stateReady                              FFA175      28      40       3   .text       
-     stateCalib                              FFA19D      4A      74       2   .text       
-     stateAlign                              FFA1E7      C2     194       2   .text       
-     stateRun                                FFA2A9     253     595       2   .text       
-     focSlowLoop                             FFA4FC      BA     186       1   .text       
-     focFastLoop                             FFA5B6     278     632       1   .text       
-     faultDetection                          FFA82E      82     130       1   .text       
-     CalcOpenLoop                            FFA8B0      18      24       1   .text       
-     automaticMode                           FFA8C8      45      69       1   .text       
-     AMCLIB_BemfObsrvDQInit_F16              FFA90D      1D      29       3   .text       
-     AMCLIB_BemfObsrvDQ_F16                  FFA92A     1C0     448       1   .text       
-     AMCLIB_TrackObsrvInit_F16               FFAAEA       B      11       2   .text       
-     AMCLIB_TrackObsrv_F16                   FFAAF5      82     130       1   .text       
-     GDFLIB_FilterIIR1Init_F16               FFAB77       5       5       2   .text       
-     GDFLIB_FilterIIR1_F16                   FFAB7C      2A      42       1   .text       
-     GDFLIB_FilterMAInit_F16                 FFABA6       3       3       2   .text       
-     GDFLIB_FilterMA_F16                     FFABA9      14      20       4   .text       
-     GFLIB_Atan_F16                          FFABBD      4B      75       1   .text       
-     GFLIB_ControllerPIpAW_F16               FFAC08      92     146       1   .text       
-     GFLIB_ControllerPIrAW_F16               FFAC9A      51      81       4   .text       
-     GFLIB_Cos_F16                           FFACEB      57      87       5   .text       
-     GFLIB_IntegratorTR_F16                  FFAD42      29      41       1   .text       
-     GFLIB_Limit_F16                         FFAD6B      11      17       2   .text       
-     GFLIB_Ramp_F32                          FFAD7C      16      22       1   .text       
-     GFLIB_SinCos_F16                        FFAD92      85     133       1   .text       
-     GFLIB_Sin_F16                           FFAE17      54      84       5   .text       
-     GFLIB_Sqrt_F16                          FFAE6B      B2     178       1   .text       
-     GMCLIB_Clark_F16                        FFAF1D      23      35       1   .text       
-     GMCLIB_ElimDcBusRip_F16                 FFAF40      36      54       1   .text       
-     GMCLIB_ParkInv_F16                      FFAF76      2F      47       2   .text       
-     GMCLIB_Park_F16                         FFAFA5      37      55       2   .text       
-     GMCLIB_SvmStd_F16                       FFAFDC      88     136       2   .text       
+     User_Fault_Detection                    FF8489      3E      62       1   .text       
+     EnableOutput                            FF84C7      20      32       2   .text       
+     DisableOutput                           FF84E7      21      33       5   .text       
+     SetDutycycle                            FF8508     3C4     964       6   .text       
+     SetPtuTriggers                          FF88CC      5B      91       1   .text       
+     CalcEdges                               FF8927      C4     196       6   .text       
+     SetPmfValReg                            FF89EB      68     104       1   .text       
+     GetDriverError                          FF8A53       B      11       1   .text       
+     ClearDriverError                        FF8A5E      20      32       1   .text       
+     Meas_Clear                              FF8A7E      58      88       1   .text       
+     Meas_CalibCurrentSense                  FF8AD6      8D     141       1   .text       
+     Meas_Get3PhCurrent                      FF8B63     160     352       1   .text       
+     GetAdcRawValues                         FF8CC3      69     105       2   .text       
+     Meas_GetUdcVoltage                      FF8D2C      20      32       1   .text       
+     Meas_GetTemperature                     FF8D4C      24      36       1   .text       
+     dummy                                   FF8D70       1       1     118   .text       
+     adc0_init                               FF8D71      53      83       1   .text       
+     adc1_init                               FF8DC4      3E      62       1   .text       
+     cpmu_init                               FF8E02      52      82       1   .text       
+     gdu_init                                FF8E54      39      57       1   .text       
+     pim_init                                FF8E8D       9       9       1   .text       
+     pmf_init                                FF8E96      54      84       1   .text       
+     GetPMF_Faults                           FF8EEA       4       4       1   .text       
+     ClearPMF_Faults                         FF8EEE      16      22       1   .text       
+     ptu_init                                FF8F04      47      71       1   .text       
+     GetPTU_Errors                           FF8F4B       6       6       1   .text       
+     ClearPTU_Errors                         FF8F51      16      22       1   .text       
+     sci1_init                               FF8F67       E      14       1   .text       
+     FMSTR_InitAppCmds                       FF8F75      34      52       1   .text       
+     FMSTR_StoreAppCmd                       FF8FA9      61      97       1   .text       
+     FMSTR_GetAppCmdStatus                   FF900A      43      67       1   .text       
+     FMSTR_GetAppCmdRespData                 FF904D      5D      93       1   .text       
+     FMSTR_FindAppCmdCallIndex               FF90AA      1C      28       1   .text       
+     FMSTR_Init                              FF90C6      1F      31       1   .text       
+     FMSTR_ProtocolDecoder                   FF90E5      FE     254       1   .text       
+     FMSTR_GetBoardInfo                      FF91E3      65     101       1   .text       
+     FMSTR_ReadMem                           FF9248      3B      59       1   .text       
+     FMSTR_WriteMem                          FF9283      2E      46       1   .text       
+     FMSTR_WriteMemMask                      FF92B1      2E      46       1   .text       
+     FMSTR_InitRec                           FF92DF       A      10       1   .text       
+     FMSTR_AbortRec                          FF92E9       4       4       1   .text       
+     FMSTR_SetUpRec                          FF92ED     13A     314       1   .text       
+     FMSTR_TriggerRec                        FF9427      10      16       2   .text       
+     FMSTR_StartRec                          FF9437      41      65       1   .text       
+     FMSTR_StopRec                           FF9478      28      40       1   .text       
+     FMSTR_GetRecStatus                      FF94A0      2A      42       1   .text       
+     FMSTR_GetRecBuffSize                    FF94CA       4       4       2   .text       
+     FMSTR_GetRecBuff                        FF94CE      46      70       1   .text       
+     FMSTR_Compare8S                         FF9514      18      24       1   .text       
+     FMSTR_Compare8U                         FF952C      16      22       1   .text       
+     FMSTR_Compare16S                        FF9542      12      18       1   .text       
+     FMSTR_Compare16U                        FF9554      12      18       1   .text       
+     FMSTR_Compare32S                        FF9566      12      18       1   .text       
+     FMSTR_Compare32U                        FF9578      12      18       1   .text       
+     FMSTR_Recorder                          FF958A       A      10       1   .text       
+     FMSTR_Recorder2                         FF9594      C6     198       1   .text       
+     FMSTR_InitScope                         FF965A       1       1       1   .text       
+     FMSTR_SetUpScope                        FF965B      6E     110       1   .text       
+     FMSTR_ReadScope                         FF96C9      4F      79       1   .text       
+     FMSTR_ProcessSCI                        FF9718      3C      60       1   .text       
+     FMSTR_Listen                            FF9754      1C      28       2   .text       
+     FMSTR_SendError                         FF9770      14      20       1   .text       
+     FMSTR_SendResponse                      FF9784      68     104       2   .text       
+     FMSTR_Tx                                FF97EC      49      73       1   .text       
+     FMSTR_Rx                                FF9835      E1     225       1   .text       
+     FMSTR_InitSerial                        FF9916       C      12       1   .text       
+     FMSTR_Poll                              FF9922       4       4       1   .text       
+     FMSTR_CopyMemory                        FF9926      38      56       1   .text       
+     FMSTR_CopyToBuffer                      FF995E      45      69       3   .text       
+     FMSTR_CopyFromBuffer                    FF99A3      47      71       2   .text       
+     FMSTR_CopyFromBufferWithMask            FF99EA      66     102       1   .text       
+     FMSTR_AddressToBuffer                   FF9A50      11      17       1   .text       
+     FMSTR_AddressFromBuffer                 FF9A61      2F      47       6   .text       
+     tim_init                                FF9A90      3A      58       1   .text       
+     main                                    FF9ACA      45      69       1   .text       
+     ADC0error_ISR                           FF9B0F      57      87       1   .text       
+     ADC1error_ISR                           FF9B66      57      87       1   .text       
+     ADC0done_ISR                            FF9BBD       8       8       1   .text       
+     ADC1done_ISR                            FF9BC5       8       8       1   .text       
+     PMFreloadA_ISR                          FF9BCD     107     263       1   .text       
+     stateReset                              FF9CD4     235     565       2   .text       
+     stateFault                              FF9F09      6C     108     140   .text       
+     stateInit                               FF9F75     127     295       7   .text       
+     stateReady                              FFA09C      28      40       3   .text       
+     stateCalib                              FFA0C4      45      69       2   .text       
+     stateAlign                              FFA109      C2     194       3   .text       
+     stateRun                                FFA1CB     2E5     741       2   .text       
+     stateCheckM                             FFA4B0      2E      46       2   .text       
+     stateBrake                              FFA4DE      17      23       1   .text       
+     focSlowLoop                             FFA4F5      BA     186       1   .text       
+     focFastLoop                             FFA5AF     278     632       1   .text       
+     faultDetection                          FFA827      82     130       1   .text       
+     CalcOpenLoop                            FFA8A9      18      24       1   .text       
+     automaticMode                           FFA8C1      45      69       1   .text       
+     Motor_TailWind                          FFA906      59      89       1   .text       
+     CheckMotorRunning                       FFA95F     443    1091       1   .text       
+     AppTranToBrake                          FFADA2      6D     109       1   .text       
+     AppBrakeToAlignment                     FFAE0F      34      52       1   .text       
+     AppCalibToCheckMotor                    FFAE43      3B      59       1   .text       
+     AMCLIB_BemfObsrvDQInit_F16              FFAE7E      1D      29       3   .text       
+     AMCLIB_BemfObsrvDQ_F16                  FFAE9B     1C0     448       1   .text       
+     AMCLIB_TrackObsrvInit_F16               FFB05B       B      11       2   .text       
+     AMCLIB_TrackObsrv_F16                   FFB066      82     130       1   .text       
+     GDFLIB_FilterIIR1Init_F16               FFB0E8       5       5       2   .text       
+     GDFLIB_FilterIIR1_F16                   FFB0ED      2A      42       1   .text       
+     GDFLIB_FilterMAInit_F16                 FFB117       3       3       2   .text       
+     GDFLIB_FilterMA_F16                     FFB11A      14      20       4   .text       
+     GFLIB_Atan_F16                          FFB12E      4B      75       1   .text       
+     GFLIB_ControllerPIpAW_F16               FFB179      92     146       1   .text       
+     GFLIB_ControllerPIrAW_F16               FFB20B      51      81       4   .text       
+     GFLIB_Cos_F16                           FFB25C      57      87       6   .text       
+     GFLIB_IntegratorTR_F16                  FFB2B3      29      41       1   .text       
+     GFLIB_Limit_F16                         FFB2DC      11      17       2   .text       
+     GFLIB_Ramp_F32                          FFB2ED      16      22       1   .text       
+     GFLIB_SinCos_F16                        FFB303      85     133       1   .text       
+     GFLIB_Sin_F16                           FFB388      54      84       6   .text       
+     GFLIB_Sqrt_F16                          FFB3DC      B2     178       1   .text       
+     GMCLIB_Clark_F16                        FFB48E      23      35       1   .text       
+     GMCLIB_ElimDcBusRip_F16                 FFB4B1      36      54       1   .text       
+     GMCLIB_ParkInv_F16                      FFB4E7      2F      47       3   .text       
+     GMCLIB_Park_F16                         FFB516      37      55       2   .text       
+     GMCLIB_SvmStd_F16                       FFB54D      88     136       3   .text       
      _vectab                                 FFFE10     1F0     496       0   vector      
 
 *********************************************************************************************
@@ -2767,8 +2841,8 @@ UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
 NOT USED PROCEDURES
 AddFunction_c.obj:
-  Fault_OverCurrentRecover Fault_EmptyRun Fault_phaseloss Fault_Temperature 
-  GetIABCpeak Get_AvPeak_Current 
+  Fault_OverCurrentRecover Fault_EmptyRun Fault_Start Fault_phaseloss 
+  Fault_Temperature GetIABCpeak Get_AvPeak_Current 
 sci_c.obj:
   sci0_init 
 freemaster_appcmd_c.obj:
@@ -2780,9 +2854,9 @@ freemaster_rec_c.obj:
   FMSTR_SetUpRecBuff FMSTR_IsInRecBuffer 
 freemaster_HC12_c.obj:
   FMSTR_Isr FMSTR_FixHcs12xAddr 
-Wisemay_CoolingFan_c.obj:
+Wisemay_CoolingFan_V2_0_c.obj:
   stateLedOFF stateLedON stateLedFLASHING_SLOW stateLedFLASHING_FASTER 
-  stateLedFLASHING_FAST 
+  stateLedFLASHING_FAST AppFreewheelToRun 
 AMCLIB_BemfObsrvDQ_cUC.o (MC9S12ZVM_AMMCLIB.UC.a):
   AMCLIB_BemfObsrvDQInit_F32 AMCLIB_BemfObsrvDQ_F32 
 AMCLIB_TrackObsrv_cUC.o (MC9S12ZVM_AMMCLIB.UC.a):
@@ -2830,10 +2904,12 @@ NOT USED VARIABLES
 AddFunction_c.obj:
   AvIpeakCal .dwarf.mcIcPeak .dwarf.mcIbPeak .dwarf.mcIaPeak .dwarf.mcEsValue 
   .dwarf.mcSpeedFlt .dwarf.mcTempDecFlt .dwarf.mcDcbusFlt .dwarf.segmentstate 
-  .dwarf.mcFaultDect .dwarf.mcFaultSource .dwarf_type.void .dwarf_type.2587 
-  .dwarf_type.2588 .dwarf_typedef.FaultVarible .dwarf_type.unsigned short 
-  .dwarf_type.short .dwarf_type.2589 .dwarf_type.2590 .dwarf_type.2591 
-  .dwarf_type.2592 .dwarf_type.2593 .dwarf_type.2594 .dwarf_type.2595 
+  .dwarf.control_flags .dwarf.mcFaultDect .dwarf.mcFaultSource .dwarf_type.void 
+  .dwarf_type.2585 .dwarf_type.2586 .dwarf_typedef.FaultVarible 
+  .dwarf_type.unsigned short .dwarf_type.short .dwarf_type.2587 
+  .dwarf_type.2588 .dwarf_type.2589 .dwarf_type.2590 .dwarf_type.2591 
+  .dwarf_type.2592 .dwarf_type.2593 .dwarf_type.2594 
+  .dwarf_typedef.tcontrol_flags .dwarf_type.unsigned char 
   .dwarf_type.@enum$1412AddFunction_c .dwarf.FaultVariablesInit 
   .dwarf.FaultProcess .dwarf.Fault_OverVoltage .dwarf.Fault_Overcurrent 
   .dwarf.Fault_OverCurrentRecover .dwarf.Fault_Stall .dwarf.Fault_EmptyRun 
@@ -2859,17 +2935,18 @@ AddFunction_c.obj:
   .dwarf_pubnames.mcIbPeak .dwarf_pubnames.mcIaPeak .dwarf_pubnames.mcEsValue 
   .dwarf_pubnames.mcSpeedFlt .dwarf_pubnames.mcTempDecFlt 
   .dwarf_pubnames.mcDcbusFlt .dwarf_pubnames.segmentstate 
-  .dwarf_pubnames.mcFaultDect .dwarf_pubnames.mcFaultSource 
-  .dwarf_pubnames.FaultVariablesInit .dwarf_pubnames.FaultProcess 
-  .dwarf_pubnames.Fault_OverVoltage .dwarf_pubnames.Fault_Overcurrent 
-  .dwarf_pubnames.Fault_OverCurrentRecover .dwarf_pubnames.Fault_Stall 
-  .dwarf_pubnames.Fault_EmptyRun .dwarf_pubnames.Fault_Start 
-  .dwarf_pubnames.Fault_phaseloss .dwarf_pubnames.Fault_Temperature 
-  .dwarf_pubnames.User_Fault_Detection .dwarf_pubnames.GetIABCpeak 
-  .dwarf_pubnames.Get_AvPeak_Current .dwarf_aranges.mcIcPeak 
-  .dwarf_aranges.mcIbPeak .dwarf_aranges.mcIaPeak .dwarf_aranges.mcEsValue 
-  .dwarf_aranges.mcSpeedFlt .dwarf_aranges.mcTempDecFlt 
-  .dwarf_aranges.mcDcbusFlt .dwarf_aranges.segmentstate 
+  .dwarf_pubnames.control_flags .dwarf_pubnames.mcFaultDect 
+  .dwarf_pubnames.mcFaultSource .dwarf_pubnames.FaultVariablesInit 
+  .dwarf_pubnames.FaultProcess .dwarf_pubnames.Fault_OverVoltage 
+  .dwarf_pubnames.Fault_Overcurrent .dwarf_pubnames.Fault_OverCurrentRecover 
+  .dwarf_pubnames.Fault_Stall .dwarf_pubnames.Fault_EmptyRun 
+  .dwarf_pubnames.Fault_Start .dwarf_pubnames.Fault_phaseloss 
+  .dwarf_pubnames.Fault_Temperature .dwarf_pubnames.User_Fault_Detection 
+  .dwarf_pubnames.GetIABCpeak .dwarf_pubnames.Get_AvPeak_Current 
+  .dwarf_aranges.mcIcPeak .dwarf_aranges.mcIbPeak .dwarf_aranges.mcIaPeak 
+  .dwarf_aranges.mcEsValue .dwarf_aranges.mcSpeedFlt 
+  .dwarf_aranges.mcTempDecFlt .dwarf_aranges.mcDcbusFlt 
+  .dwarf_aranges.segmentstate .dwarf_aranges.control_flags 
   .dwarf_aranges.mcFaultDect .dwarf_aranges.mcFaultSource 
   .dwarf_aranges.FaultVariablesInit .dwarf_aranges.FaultProcess 
   .dwarf_aranges.Fault_OverVoltage .dwarf_aranges.Fault_Overcurrent 
@@ -2950,10 +3027,10 @@ meas_s12zvm_c.obj:
   .dwarf_aranges.Meas_Get3PhCurrent .dwarf_aranges.GetAdcRawValues 
   .dwarf_aranges.Meas_GetUdcVoltage .dwarf_aranges.Meas_GetTemperature 
 state_machine_c.obj:
-  .dwarf.state_table .dwarf.state_LED .dwarf_type.3 .dwarf_type.4 
-  .dwarf_type.5 .dwarf_type.6 .dwarf_type.void .dwarf_type.7 .dwarf_type.8 
-  .dwarf_type.9 .dwarf_pubnames.state_table .dwarf_pubnames.state_LED 
-  .dwarf_aranges.state_table .dwarf_aranges.state_LED state_LED 
+  .dwarf.state_LED .dwarf.state_table .dwarf_type.3 .dwarf_type.4 
+  .dwarf_type.5 .dwarf_type.void .dwarf_type.6 .dwarf_type.7 .dwarf_type.8 
+  .dwarf_type.9 .dwarf_pubnames.state_LED .dwarf_pubnames.state_table 
+  .dwarf_aranges.state_LED .dwarf_aranges.state_table state_LED 
 vector_c.obj:
   .dwarf._vectab .dwarf.securityVal .dwarf_type.8 .dwarf_type.typeVect 
   .dwarf_typedef.typeVect .dwarf_type.char .dwarf_type.9 .dwarf_type.10 
@@ -4053,83 +4130,115 @@ freemaster_HC12_c.obj:
   .dwarf_aranges.FMSTR_CopyFromBufferWithMask 
   .dwarf_aranges.FMSTR_AddressToBuffer .dwarf_aranges.FMSTR_AddressFromBuffer 
   .dwarf_aranges.FMSTR_FixHcs12xAddr 
-Wisemay_CoolingFan_c.obj:
+Wisemay_CoolingFan_V2_0_c.obj:
   .dwarf.OL_SpeedRampInc .dwarf.CL_SpeedRampInc .dwarf.CL_SpeedRampDec 
-  .dwarf._ZZ14PMFreloadA_ISRvE12getFcnStatus 
+  .dwarf.ADC_channel .dwarf._ZZ14PMFreloadA_ISRvE12getFcnStatus 
   .dwarf._ZZ8stateRunvE14stateRunStatus .dwarf.dPI .dwarf.qPI 
+  .dwarf._ZZ17CheckMotorRunningvE16previous_vph_red 
+  .dwarf._ZZ17CheckMotorRunningvE19previous_vph_yellow_0 
+  .dwarf._ZZ17CheckMotorRunningvE17previous_vph_blue_1 
+  .dwarf._ZZ17CheckMotorRunningvE15level_count_red_2 
+  .dwarf._ZZ17CheckMotorRunningvE18level_count_yellow_3 
+  .dwarf._ZZ17CheckMotorRunningvE16level_count_blue_4 
+  .dwarf._ZZ17CheckMotorRunningvE18previous_edge_time_5 
+  .dwarf._ZZ17CheckMotorRunningvE13retry_counter_6 .dwarf.phaseVoltage 
+  .dwarf.duty_cycle .dwarf.NextCmtPeriod .dwarf.actualSpeed 
+  .dwarf.ActualCmtSector .dwarf.NextCmtSector .dwarf.timeBEMF .dwarf.vph_blue 
+  .dwarf.vph_yellow .dwarf.vph_red .dwarf.RunningChk_counter 
+  .dwarf.brakeEnableFlags .dwarf.LinkupDuration .dwarf.BrakeLoopDuration 
   .dwarf.TimerOLRampCNT .dwarf.Timer10msCNT .dwarf.Timer1msCNT 
   .dwarf.TrigError1 .dwarf.TrigError0 .dwarf.AdcError1 .dwarf.AdcError0 
   .dwarf.AdcErrorIA .dwarf.AdcErrorCMD .dwarf.AdcErrorEOL .dwarf.AdcErrorTRIG 
   .dwarf.AdcErrorRSTAR .dwarf.AdcErrorLDOK .dwarf.reload_PmfCnt 
   .dwarf.AvIpeakCal .dwarf.pos_mode .dwarf.meas .dwarf.fmScale 
   .dwarf.permFaults .dwarf.tempfaults .dwarf.cntrState .dwarf.drvFOC 
-  .dwarf_type.long .dwarf_type.void .dwarf_type.char .dwarf_type.unsigned char 
+  .dwarf_type.long .dwarf_type.unsigned char .dwarf_type.void .dwarf_type.char 
   .dwarf_type.unsigned short .dwarf_type.short .dwarf_type.unsigned int 
-  .dwarf_type.2992 .dwarf_type.2993 .dwarf_typedef.openLoopPospe_t 
-  .dwarf_type.2994 .dwarf_typedef.GFLIB_INTEGRATOR_TR_T_F16 .dwarf_type.2995 
-  .dwarf_typedef.AvIpeak_t .dwarf_type.2996 .dwarf_typedef.SWLIBS_3Syst_F16 
-  .dwarf_type.2997 .dwarf_typedef.GDFLIB_FILTER_MA_T_F16 
-  .dwarf_type.@enum$1409Wisemay_CoolingFan_c .dwarf_type.2998 
-  .dwarf_typedef.measModule_t .dwarf_type.2999 .dwarf_typedef.measResult_t 
-  .dwarf_type.3000 .dwarf_typedef.meas_t .dwarf_type.3001 
-  .dwarf_typedef.offset_t .dwarf_type.3002 .dwarf_typedef.offsetBasic_t 
-  .dwarf_type.3003 .dwarf_typedef.calibParam_t .dwarf_type.3004 
-  .dwarf_typedef.calibFlags_t .dwarf_type.3005 .dwarf_type.3006 
-  .dwarf_typedef.fm_scale_t .dwarf_type.unsigned long .dwarf_type.3007 
-  .dwarf_typedef.appFaultStatus_t .dwarf_type.3008 
-  .dwarf_typedef.mcuFaultStatus_t .dwarf_type.3009 .dwarf_type.3010 
-  .dwarf_typedef.stMachineFaultStatus_t .dwarf_type.3011 .dwarf_type.3012 
-  .dwarf_typedef.motorFaultStatus_t .dwarf_type.3013 .dwarf_type.3014 
-  .dwarf_typedef.driveStates_t .dwarf_type.@enum$11Wisemay_CoolingFan_c 
-  .dwarf_type.@enum$12Wisemay_CoolingFan_c .dwarf_type.3015 
+  .dwarf_type.3626 .dwarf_type.3627 .dwarf_typedef.openLoopPospe_t 
+  .dwarf_type.3628 .dwarf_typedef.GFLIB_INTEGRATOR_TR_T_F16 
+  .dwarf_type.unsigned long .dwarf_type.3629 .dwarf_typedef.AvIpeak_t 
+  .dwarf_type.3630 .dwarf_typedef.SWLIBS_3Syst_F16 .dwarf_type.3631 
+  .dwarf_typedef.GDFLIB_FILTER_MA_T_F16 
+  .dwarf_type.@enum$1409Wisemay_CoolingFan_V2_0_c .dwarf_type.3632 
+  .dwarf_typedef.measModule_t .dwarf_type.3633 .dwarf_typedef.measResult_t 
+  .dwarf_type.3634 .dwarf_typedef.meas_t .dwarf_type.3635 
+  .dwarf_typedef.offset_t .dwarf_type.3636 .dwarf_typedef.offsetBasic_t 
+  .dwarf_type.3637 .dwarf_typedef.calibParam_t .dwarf_type.3638 
+  .dwarf_typedef.calibFlags_t .dwarf_type.3639 .dwarf_type.3640 
+  .dwarf_typedef.fm_scale_t .dwarf_type.3641 .dwarf_typedef.appFaultStatus_t 
+  .dwarf_type.3642 .dwarf_typedef.mcuFaultStatus_t .dwarf_type.3643 
+  .dwarf_type.3644 .dwarf_typedef.stMachineFaultStatus_t .dwarf_type.3645 
+  .dwarf_type.3646 .dwarf_typedef.motorFaultStatus_t .dwarf_type.3647 
+  .dwarf_type.3648 .dwarf_typedef.driveStates_t 
+  .dwarf_type.@enum$11Wisemay_CoolingFan_V2_0_c 
+  .dwarf_type.@enum$12Wisemay_CoolingFan_V2_0_c .dwarf_type.3649 
   .dwarf_typedef.userControl_t .dwarf_type.CONTORL_MODE_e 
-  .dwarf_type.@enum$1410Wisemay_CoolingFan_c .dwarf_type.3016 
-  .dwarf_typedef.pmsmDrive_t .dwarf_type.3017 .dwarf_typedef.SWLIBS_2Syst_F16 
-  .dwarf_type.3018 .dwarf_typedef.GFLIB_LIMIT_T_F16 .dwarf_type.3019 
-  .dwarf_typedef.GMCLIB_ELIMDCBUSRIP_T_F16 .dwarf_type.3020 
-  .dwarf_typedef.GFLIB_CONTROLLER_PIAW_R_T_F16 .dwarf_type.3021 
-  .dwarf_typedef.GFLIB_CONTROLLER_PIAW_P_T_F16 .dwarf_type.3022 
-  .dwarf_typedef.GFLIB_RAMP_T_F32 .dwarf_type.3023 
-  .dwarf_typedef.GDFLIB_FILTER_IIR1_T_F16 .dwarf_type.3024 
-  .dwarf_typedef.GDFLIB_FILTER_IIR1_COEFF_T_F16 .dwarf_type.3025 
-  .dwarf_type.3026 .dwarf_type.3027 .dwarf_typedef.sensorLessPospe_t 
-  .dwarf_type.3028 .dwarf_typedef.AMCLIB_BEMF_OBSRV_DQ_T_F16 .dwarf_type.3029 
-  .dwarf_typedef.SWLIBS_2Syst_F32 .dwarf_type.3030 
-  .dwarf_typedef.AMCLIB_TRACK_OBSRV_T_F16 .dwarf_type.3031 
-  .dwarf_typedef.pospeControl_t .dwarf_type.3032 .dwarf_typedef.scalarControl_t 
-  .dwarf.main .dwarf.ADC0error_ISR .dwarf.ADC1error_ISR .dwarf.ADC0done_ISR 
-  .dwarf.ADC1done_ISR .dwarf.PMFreloadA_ISR .dwarf.stateReset .dwarf.stateFault 
-  .dwarf.stateInit .dwarf.stateReady .dwarf.stateCalib .dwarf.stateAlign 
-  .dwarf.stateRun .dwarf.focSlowLoop .dwarf.focFastLoop .dwarf.faultDetection 
+  .dwarf_type.@enum$1410Wisemay_CoolingFan_V2_0_c .dwarf_type.3650 
+  .dwarf_typedef.pmsmDrive_t .dwarf_type.3651 .dwarf_typedef.SWLIBS_2Syst_F16 
+  .dwarf_type.3652 .dwarf_typedef.GFLIB_LIMIT_T_F16 .dwarf_type.3653 
+  .dwarf_typedef.GMCLIB_ELIMDCBUSRIP_T_F16 .dwarf_type.3654 
+  .dwarf_typedef.GFLIB_CONTROLLER_PIAW_R_T_F16 .dwarf_type.3655 
+  .dwarf_typedef.GFLIB_CONTROLLER_PIAW_P_T_F16 .dwarf_type.3656 
+  .dwarf_typedef.GFLIB_RAMP_T_F32 .dwarf_type.3657 
+  .dwarf_typedef.GDFLIB_FILTER_IIR1_T_F16 .dwarf_type.3658 
+  .dwarf_typedef.GDFLIB_FILTER_IIR1_COEFF_T_F16 .dwarf_type.3659 
+  .dwarf_type.3660 .dwarf_type.3661 .dwarf_typedef.sensorLessPospe_t 
+  .dwarf_type.3662 .dwarf_typedef.AMCLIB_BEMF_OBSRV_DQ_T_F16 .dwarf_type.3663 
+  .dwarf_typedef.SWLIBS_2Syst_F32 .dwarf_type.3664 
+  .dwarf_typedef.AMCLIB_TRACK_OBSRV_T_F16 .dwarf_type.3665 
+  .dwarf_typedef.pospeControl_t .dwarf_type.3666 .dwarf_typedef.scalarControl_t 
+  .dwarf.tim_init .dwarf.main .dwarf.ADC0error_ISR .dwarf.ADC1error_ISR 
+  .dwarf.ADC0done_ISR .dwarf.ADC1done_ISR .dwarf.PMFreloadA_ISR 
+  .dwarf.stateReset .dwarf.stateFault .dwarf.stateInit .dwarf.stateReady 
+  .dwarf.stateCalib .dwarf.stateAlign .dwarf.stateRun .dwarf.stateCheckM 
+  .dwarf.stateBrake .dwarf.focSlowLoop .dwarf.focFastLoop .dwarf.faultDetection 
   .dwarf.CalcOpenLoop .dwarf.automaticMode .dwarf.stateLedOFF .dwarf.stateLedON 
   .dwarf.stateLedFLASHING_SLOW .dwarf.stateLedFLASHING_FASTER 
-  .dwarf.stateLedFLASHING_FAST .dwarf_loc.ADC0error_ISR 
-  .dwarf_loc.ADC1error_ISR .dwarf_loc.PMFreloadA_ISR .dwarf_loc.stateReset 
-  .dwarf_loc.stateFault .dwarf_loc.stateInit .dwarf_loc.stateReady 
-  .dwarf_loc.stateCalib .dwarf_loc.stateAlign .dwarf_loc.stateRun 
+  .dwarf.stateLedFLASHING_FAST .dwarf.Motor_TailWind .dwarf.CheckMotorRunning 
+  .dwarf.AppTranToBrake .dwarf.AppBrakeToAlignment .dwarf.AppCalibToCheckMotor 
+  .dwarf.AppFreewheelToRun .dwarf_loc.ADC0error_ISR .dwarf_loc.ADC1error_ISR 
+  .dwarf_loc.PMFreloadA_ISR .dwarf_loc.stateReset .dwarf_loc.stateFault 
+  .dwarf_loc.stateInit .dwarf_loc.stateReady .dwarf_loc.stateCalib 
+  .dwarf_loc.stateAlign .dwarf_loc.stateRun .dwarf_loc.stateCheckM 
   .dwarf_loc.focSlowLoop .dwarf_loc.focFastLoop .dwarf_loc.faultDetection 
   .dwarf_loc.CalcOpenLoop .dwarf_loc.automaticMode 
   .dwarf_loc.stateLedFLASHING_SLOW .dwarf_loc.stateLedFLASHING_FASTER 
-  .dwarf_loc.stateLedFLASHING_FAST .dwarf_line.main .dwarf_line.ADC0error_ISR 
-  .dwarf_line.ADC1error_ISR .dwarf_line.ADC0done_ISR .dwarf_line.ADC1done_ISR 
-  .dwarf_line.PMFreloadA_ISR .dwarf_line.stateReset .dwarf_line.stateFault 
-  .dwarf_line.stateInit .dwarf_line.stateReady .dwarf_line.stateCalib 
-  .dwarf_line.stateAlign .dwarf_line.stateRun .dwarf_line.focSlowLoop 
-  .dwarf_line.focFastLoop .dwarf_line.faultDetection .dwarf_line.CalcOpenLoop 
-  .dwarf_line.automaticMode .dwarf_line.stateLedOFF .dwarf_line.stateLedON 
-  .dwarf_line.stateLedFLASHING_SLOW .dwarf_line.stateLedFLASHING_FASTER 
-  .dwarf_line.stateLedFLASHING_FAST .dwarf_frame.main 
-  .dwarf_frame.ADC0error_ISR .dwarf_frame.ADC1error_ISR 
-  .dwarf_frame.ADC0done_ISR .dwarf_frame.ADC1done_ISR 
-  .dwarf_frame.PMFreloadA_ISR .dwarf_frame.stateReset .dwarf_frame.stateFault 
-  .dwarf_frame.stateInit .dwarf_frame.stateReady .dwarf_frame.stateCalib 
-  .dwarf_frame.stateAlign .dwarf_frame.stateRun .dwarf_frame.focSlowLoop 
+  .dwarf_loc.stateLedFLASHING_FAST .dwarf_loc.CheckMotorRunning 
+  .dwarf_loc.AppTranToBrake .dwarf_loc.AppFreewheelToRun .dwarf_line.tim_init 
+  .dwarf_line.main .dwarf_line.ADC0error_ISR .dwarf_line.ADC1error_ISR 
+  .dwarf_line.ADC0done_ISR .dwarf_line.ADC1done_ISR .dwarf_line.PMFreloadA_ISR 
+  .dwarf_line.stateReset .dwarf_line.stateFault .dwarf_line.stateInit 
+  .dwarf_line.stateReady .dwarf_line.stateCalib .dwarf_line.stateAlign 
+  .dwarf_line.stateRun .dwarf_line.stateCheckM .dwarf_line.stateBrake 
+  .dwarf_line.focSlowLoop .dwarf_line.focFastLoop .dwarf_line.faultDetection 
+  .dwarf_line.CalcOpenLoop .dwarf_line.automaticMode .dwarf_line.stateLedOFF 
+  .dwarf_line.stateLedON .dwarf_line.stateLedFLASHING_SLOW 
+  .dwarf_line.stateLedFLASHING_FASTER .dwarf_line.stateLedFLASHING_FAST 
+  .dwarf_line.Motor_TailWind .dwarf_line.CheckMotorRunning 
+  .dwarf_line.AppTranToBrake .dwarf_line.AppBrakeToAlignment 
+  .dwarf_line.AppCalibToCheckMotor .dwarf_line.AppFreewheelToRun 
+  .dwarf_frame.tim_init .dwarf_frame.main .dwarf_frame.ADC0error_ISR 
+  .dwarf_frame.ADC1error_ISR .dwarf_frame.ADC0done_ISR 
+  .dwarf_frame.ADC1done_ISR .dwarf_frame.PMFreloadA_ISR .dwarf_frame.stateReset 
+  .dwarf_frame.stateFault .dwarf_frame.stateInit .dwarf_frame.stateReady 
+  .dwarf_frame.stateCalib .dwarf_frame.stateAlign .dwarf_frame.stateRun 
+  .dwarf_frame.stateCheckM .dwarf_frame.stateBrake .dwarf_frame.focSlowLoop 
   .dwarf_frame.focFastLoop .dwarf_frame.faultDetection 
   .dwarf_frame.CalcOpenLoop .dwarf_frame.automaticMode .dwarf_frame.stateLedOFF 
   .dwarf_frame.stateLedON .dwarf_frame.stateLedFLASHING_SLOW 
   .dwarf_frame.stateLedFLASHING_FASTER .dwarf_frame.stateLedFLASHING_FAST 
+  .dwarf_frame.Motor_TailWind .dwarf_frame.CheckMotorRunning 
+  .dwarf_frame.AppTranToBrake .dwarf_frame.AppBrakeToAlignment 
+  .dwarf_frame.AppCalibToCheckMotor .dwarf_frame.AppFreewheelToRun 
   .dwarf_pubnames.OL_SpeedRampInc .dwarf_pubnames.CL_SpeedRampInc 
-  .dwarf_pubnames.CL_SpeedRampDec .dwarf_pubnames.dPI .dwarf_pubnames.qPI 
+  .dwarf_pubnames.CL_SpeedRampDec .dwarf_pubnames.ADC_channel 
+  .dwarf_pubnames.dPI .dwarf_pubnames.qPI .dwarf_pubnames.phaseVoltage 
+  .dwarf_pubnames.duty_cycle .dwarf_pubnames.NextCmtPeriod 
+  .dwarf_pubnames.actualSpeed .dwarf_pubnames.ActualCmtSector 
+  .dwarf_pubnames.NextCmtSector .dwarf_pubnames.timeBEMF 
+  .dwarf_pubnames.vph_blue .dwarf_pubnames.vph_yellow .dwarf_pubnames.vph_red 
+  .dwarf_pubnames.RunningChk_counter .dwarf_pubnames.brakeEnableFlags 
+  .dwarf_pubnames.LinkupDuration .dwarf_pubnames.BrakeLoopDuration 
   .dwarf_pubnames.TimerOLRampCNT .dwarf_pubnames.Timer10msCNT 
   .dwarf_pubnames.Timer1msCNT .dwarf_pubnames.TrigError1 
   .dwarf_pubnames.TrigError0 .dwarf_pubnames.AdcError1 
@@ -4139,37 +4248,52 @@ Wisemay_CoolingFan_c.obj:
   .dwarf_pubnames.AdcErrorLDOK .dwarf_pubnames.AvIpeakCal 
   .dwarf_pubnames.pos_mode .dwarf_pubnames.meas .dwarf_pubnames.fmScale 
   .dwarf_pubnames.permFaults .dwarf_pubnames.tempfaults 
-  .dwarf_pubnames.cntrState .dwarf_pubnames.drvFOC .dwarf_pubnames.main 
-  .dwarf_pubnames.ADC0error_ISR .dwarf_pubnames.ADC1error_ISR 
-  .dwarf_pubnames.ADC0done_ISR .dwarf_pubnames.ADC1done_ISR 
-  .dwarf_pubnames.PMFreloadA_ISR .dwarf_pubnames.stateReset 
-  .dwarf_pubnames.stateFault .dwarf_pubnames.stateInit 
-  .dwarf_pubnames.stateReady .dwarf_pubnames.stateCalib 
-  .dwarf_pubnames.stateAlign .dwarf_pubnames.stateRun 
-  .dwarf_pubnames.automaticMode .dwarf_pubnames.stateLedOFF 
-  .dwarf_pubnames.stateLedON .dwarf_pubnames.stateLedFLASHING_SLOW 
-  .dwarf_pubnames.stateLedFLASHING_FASTER .dwarf_pubnames.stateLedFLASHING_FAST 
-  .dwarf_aranges.OL_SpeedRampInc .dwarf_aranges.CL_SpeedRampInc 
-  .dwarf_aranges.CL_SpeedRampDec .dwarf_aranges.dPI .dwarf_aranges.qPI 
-  .dwarf_aranges.TimerOLRampCNT .dwarf_aranges.Timer10msCNT 
-  .dwarf_aranges.Timer1msCNT .dwarf_aranges.TrigError1 
-  .dwarf_aranges.TrigError0 .dwarf_aranges.AdcError1 .dwarf_aranges.AdcError0 
-  .dwarf_aranges.AdcErrorIA .dwarf_aranges.AdcErrorCMD 
+  .dwarf_pubnames.cntrState .dwarf_pubnames.drvFOC .dwarf_pubnames.tim_init 
+  .dwarf_pubnames.main .dwarf_pubnames.ADC0error_ISR 
+  .dwarf_pubnames.ADC1error_ISR .dwarf_pubnames.ADC0done_ISR 
+  .dwarf_pubnames.ADC1done_ISR .dwarf_pubnames.PMFreloadA_ISR 
+  .dwarf_pubnames.stateReset .dwarf_pubnames.stateFault 
+  .dwarf_pubnames.stateInit .dwarf_pubnames.stateReady 
+  .dwarf_pubnames.stateCalib .dwarf_pubnames.stateAlign 
+  .dwarf_pubnames.stateRun .dwarf_pubnames.stateCheckM 
+  .dwarf_pubnames.stateBrake .dwarf_pubnames.automaticMode 
+  .dwarf_pubnames.stateLedOFF .dwarf_pubnames.stateLedON 
+  .dwarf_pubnames.stateLedFLASHING_SLOW .dwarf_pubnames.stateLedFLASHING_FASTER 
+  .dwarf_pubnames.stateLedFLASHING_FAST .dwarf_pubnames.Motor_TailWind 
+  .dwarf_pubnames.CheckMotorRunning .dwarf_pubnames.AppTranToBrake 
+  .dwarf_pubnames.AppBrakeToAlignment .dwarf_pubnames.AppCalibToCheckMotor 
+  .dwarf_pubnames.AppFreewheelToRun .dwarf_aranges.OL_SpeedRampInc 
+  .dwarf_aranges.CL_SpeedRampInc .dwarf_aranges.CL_SpeedRampDec 
+  .dwarf_aranges.ADC_channel .dwarf_aranges.dPI .dwarf_aranges.qPI 
+  .dwarf_aranges.phaseVoltage .dwarf_aranges.duty_cycle 
+  .dwarf_aranges.NextCmtPeriod .dwarf_aranges.actualSpeed 
+  .dwarf_aranges.ActualCmtSector .dwarf_aranges.NextCmtSector 
+  .dwarf_aranges.timeBEMF .dwarf_aranges.vph_blue .dwarf_aranges.vph_yellow 
+  .dwarf_aranges.vph_red .dwarf_aranges.RunningChk_counter 
+  .dwarf_aranges.brakeEnableFlags .dwarf_aranges.LinkupDuration 
+  .dwarf_aranges.BrakeLoopDuration .dwarf_aranges.TimerOLRampCNT 
+  .dwarf_aranges.Timer10msCNT .dwarf_aranges.Timer1msCNT 
+  .dwarf_aranges.TrigError1 .dwarf_aranges.TrigError0 .dwarf_aranges.AdcError1 
+  .dwarf_aranges.AdcError0 .dwarf_aranges.AdcErrorIA .dwarf_aranges.AdcErrorCMD 
   .dwarf_aranges.AdcErrorEOL .dwarf_aranges.AdcErrorTRIG 
   .dwarf_aranges.AdcErrorRSTAR .dwarf_aranges.AdcErrorLDOK 
   .dwarf_aranges.AvIpeakCal .dwarf_aranges.pos_mode .dwarf_aranges.meas 
   .dwarf_aranges.fmScale .dwarf_aranges.permFaults .dwarf_aranges.tempfaults 
-  .dwarf_aranges.cntrState .dwarf_aranges.drvFOC .dwarf_aranges.main 
-  .dwarf_aranges.ADC0error_ISR .dwarf_aranges.ADC1error_ISR 
+  .dwarf_aranges.cntrState .dwarf_aranges.drvFOC .dwarf_aranges.tim_init 
+  .dwarf_aranges.main .dwarf_aranges.ADC0error_ISR .dwarf_aranges.ADC1error_ISR 
   .dwarf_aranges.ADC0done_ISR .dwarf_aranges.ADC1done_ISR 
   .dwarf_aranges.PMFreloadA_ISR .dwarf_aranges.stateReset 
   .dwarf_aranges.stateFault .dwarf_aranges.stateInit .dwarf_aranges.stateReady 
   .dwarf_aranges.stateCalib .dwarf_aranges.stateAlign .dwarf_aranges.stateRun 
+  .dwarf_aranges.stateCheckM .dwarf_aranges.stateBrake 
   .dwarf_aranges.focSlowLoop .dwarf_aranges.focFastLoop 
   .dwarf_aranges.faultDetection .dwarf_aranges.CalcOpenLoop 
   .dwarf_aranges.automaticMode .dwarf_aranges.stateLedOFF 
   .dwarf_aranges.stateLedON .dwarf_aranges.stateLedFLASHING_SLOW 
   .dwarf_aranges.stateLedFLASHING_FASTER .dwarf_aranges.stateLedFLASHING_FAST 
+  .dwarf_aranges.Motor_TailWind .dwarf_aranges.CheckMotorRunning 
+  .dwarf_aranges.AppTranToBrake .dwarf_aranges.AppBrakeToAlignment 
+  .dwarf_aranges.AppCalibToCheckMotor .dwarf_aranges.AppFreewheelToRun 
   TrigError1 TrigError0 reload_PmfCnt AvIpeakCal 
 AMCLIB_BemfObsrvDQ_cUC.o (MC9S12ZVM_AMMCLIB.UC.a):
   f32gflibSinCosCoef f32gflibAtanCoef .dwarf_type.void .dwarf_type.1111 
@@ -4483,127 +4607,146 @@ GMCLIB_SvmStd_cUC.o (MC9S12ZVM_AMMCLIB.UC.a):
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xFFB064 ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xFFB5D5 ---- SIZE       7 ---
 Filling bytes inserted
  0000003500 1501
-------- ROM-ADDRESS: 0xFFB06B ---- RAM-ADDRESS: 0x1501 ---- SIZE      17 ---
+------- ROM-ADDRESS: 0xFFB5DC ---- RAM-ADDRESS: 0x1501 ---- SIZE      17 ---
 Name of initialized Object : ptuTriggerList0:1
  7D00FA0177 01F4000000 C801900258
  0320
-------- ROM-ADDRESS: 0xFFB07C ---- SIZE       3 ---
+------- ROM-ADDRESS: 0xFFB5ED ---- SIZE       3 ---
 Filling bytes inserted
  000000
-------- ROM-ADDRESS: 0xFFB07F ---- RAM-ADDRESS: 0x1515 ---- SIZE       3 ---
+------- ROM-ADDRESS: 0xFFB5F0 ---- RAM-ADDRESS: 0x1515 ---- SIZE       3 ---
 Name of initialized Object : ptuTriggerList1:1
  9601F4
-------- ROM-ADDRESS: 0xFFB082 ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xFFB5F3 ---- SIZE       7 ---
 Filling bytes inserted
  0000000000 0000
-------- ROM-ADDRESS: 0xFFB089 ---- RAM-ADDRESS: 0x151F ---- SIZE       3 ---
+------- ROM-ADDRESS: 0xFFB5FA ---- RAM-ADDRESS: 0x151F ---- SIZE       3 ---
 Name of initialized Object : ptuTriggerList1:11
  9601F4
-------- ROM-ADDRESS: 0xFFB08C ---- SIZE       6 ---
+------- ROM-ADDRESS: 0xFFB5FD ---- SIZE       6 ---
 Filling bytes inserted
  0000000000 00
-------- ROM-ADDRESS: 0xFFB092 ---- RAM-ADDRESS: 0x1528 ---- SIZE      14 ---
+------- ROM-ADDRESS: 0xFFB603 ---- RAM-ADDRESS: 0x1528 ---- SIZE      14 ---
 Name of initialized Object : ADC0CommandList
  40D0000040 D0000040D0 0000C0D0
-------- ROM-ADDRESS: 0xFFB0A0 ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xFFB611 ---- SIZE       7 ---
 Filling bytes inserted
  0000000600 1548
-------- ROM-ADDRESS: 0xFFB0A7 ---- RAM-ADDRESS: 0x1548 ---- SIZE       6 ---
+------- ROM-ADDRESS: 0xFFB618 ---- RAM-ADDRESS: 0x1548 ---- SIZE       6 ---
 Name of initialized Object : ADC1CommandList
  40CB0000C0 C9
-------- ROM-ADDRESS: 0xFFB0AD ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xFFB61E ---- SIZE       7 ---
 Filling bytes inserted
  0000002200 1568
-------- ROM-ADDRESS: 0xFFB0B4 ---- RAM-ADDRESS: 0x1568 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xFFB625 ---- RAM-ADDRESS: 0x1568 ---- SIZE       8 ---
 Name of initialized Object : ADC0ResultList
  7FF67FF67F F67FF6
-------- ROM-ADDRESS: 0xFFB0BC ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xFFB62D ---- SIZE       8 ---
 Filling bytes inserted
  0000000000 000000
-------- ROM-ADDRESS: 0xFFB0C4 ---- RAM-ADDRESS: 0x1578 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xFFB635 ---- RAM-ADDRESS: 0x1578 ---- SIZE       8 ---
 Name of initialized Object : ADC0ResultList:16
  7FF67FF67F F67FF6
-------- ROM-ADDRESS: 0xFFB0CC ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xFFB63D ---- SIZE       8 ---
 Filling bytes inserted
  0000000000 000000
-------- ROM-ADDRESS: 0xFFB0D4 ---- RAM-ADDRESS: 0x1588 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB645 ---- RAM-ADDRESS: 0x1588 ---- SIZE       2 ---
 Name of initialized Object : ADC1ResultList
  7FF6
-------- ROM-ADDRESS: 0xFFB0D6 ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xFFB647 ---- SIZE       7 ---
 Filling bytes inserted
- 0000015200 15A8
-------- ROM-ADDRESS: 0xFFB0DD ---- RAM-ADDRESS: 0x15A8 ---- SIZE       2 ---
+ 0000021400 15A8
+------- ROM-ADDRESS: 0xFFB64E ---- RAM-ADDRESS: 0x15A8 ---- SIZE       2 ---
 Name of initialized Object : minZeroPulse
  04DD
-------- ROM-ADDRESS: 0xFFB0DF ---- RAM-ADDRESS: 0x15AA ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB650 ---- RAM-ADDRESS: 0x15AA ---- SIZE       2 ---
 Name of initialized Object : minSamplingPulse
  0666
-------- ROM-ADDRESS: 0xFFB0E1 ---- RAM-ADDRESS: 0x15AC ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB652 ---- RAM-ADDRESS: 0x15AC ---- SIZE       2 ---
 Name of initialized Object : triggerOffset1
  FFE7
-------- ROM-ADDRESS: 0xFFB0E3 ---- RAM-ADDRESS: 0x15AE ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB654 ---- RAM-ADDRESS: 0x15AE ---- SIZE       2 ---
 Name of initialized Object : triggerOffset2
  FFE7
-------- ROM-ADDRESS: 0xFFB0E5 ---- RAM-ADDRESS: 0x15B0 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB656 ---- RAM-ADDRESS: 0x15B0 ---- SIZE       2 ---
 Name of initialized Object : triggerOffset3
  FFE7
-------- ROM-ADDRESS: 0xFFB0E7 ---- RAM-ADDRESS: 0x15B2 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB658 ---- RAM-ADDRESS: 0x15B2 ---- SIZE       2 ---
 Name of initialized Object : triggerOffset4
  FFE7
-------- ROM-ADDRESS: 0xFFB0E9 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xFFB65A ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xFFB0EA ---- RAM-ADDRESS: 0x15B5 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xFFB65B ---- RAM-ADDRESS: 0x15B5 ---- SIZE       1 ---
 Name of initialized Object : _ZZ18Meas_Get3PhCurrentP6structP6structtE9sectorK_1:1
  02
-------- ROM-ADDRESS: 0xFFB0EB ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xFFB65C ---- SIZE       2 ---
 Filling bytes inserted
  0000
-------- ROM-ADDRESS: 0xFFB0ED ---- RAM-ADDRESS: 0x15B8 ---- SIZE     294 ---
+------- ROM-ADDRESS: 0xFFB65E ---- RAM-ADDRESS: 0x15B8 ---- SIZE     486 ---
 Name of initialized Object : state_table
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FF9FE5FF A051FF9FE5
- FF9FE5FF9F E5FF9FE5FF 9FE5FFA051
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FFA1 75FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FFA175FF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FFA19DFF 9FE5FF9FE5
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FFA19DFF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FFA1E7FF 9FE5FF9FE5
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FFA1E7FF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FFA2A9FF 9FE5FF9FE5
- FF9FE5FF9F E5FF9FE5FF 9FE5FF9FE5
- FFA2A9FF9F E5FF9FE5FF 9FE5FFA175
- FFA051FFA0 51FFA051FF 9FE5FF9FE5
- FF9FE5FF9D B0FF9FE5FF 9FE5FF9FE5
- FF9DB0FF9F E5FF9FE5FF 9FE5FF9FE5
- FF9FE5FF9F E5FFA051
-------- ROM-ADDRESS: 0xFFB213 ---- SIZE       2 ---
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F75FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F75FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FFA09CFF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF A09CFF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FFA0C4FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FFA0C4FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FFA1 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF A109FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FFA1CBFF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FFA1CBFF 9F09FF9F09
+ FF9F09FFA0 9CFF9F09FF 9F75FF9F75
+ FF9F75FF9F 75FF9F09FF 9F09FF9F09
+ FF9CD4FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9C D4FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F75FF9F 09FF9F09FF 9F09FF9F09
+ FFA4B0FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FFA4B0
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF 9F09FFA4DE
+ FF9F09FF9F 09FF9F09FF 9F09FF9F09
+ FF9F09FF9F 09FF9F09FF A109FF9F09
+ FF9F09FF9F 09
+------- ROM-ADDRESS: 0xFFB844 ---- SIZE       2 ---
 Filling bytes inserted
  0000
-------- ROM-ADDRESS: 0xFFB215 ---- RAM-ADDRESS: 0x16E0 ---- SIZE      21 ---
+------- ROM-ADDRESS: 0xFFB846 ---- RAM-ADDRESS: 0x17A0 ---- SIZE      21 ---
 Name of initialized Object : @144
  4843285329 3132285829 2046726565
  4D41535445 52
-------- ROM-ADDRESS: 0xFFB22A ---- SIZE       2 ---
-Filling bytes inserted
- 0000
-------- ROM-ADDRESS: 0xFFB22C ---- RAM-ADDRESS: 0x16F7 ---- SIZE       1 ---
-Name of initialized Object : dPI:1
- 01
-------- ROM-ADDRESS: 0xFFB22D ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xFFB85B ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xFFB22E ---- RAM-ADDRESS: 0x16F9 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xFFB85C ---- RAM-ADDRESS: 0x17B6 ---- SIZE       1 ---
+Name of initialized Object : ADC_channel
+ 02
+------- ROM-ADDRESS: 0xFFB85D ---- SIZE       2 ---
+Filling bytes inserted
+ 0000
+------- ROM-ADDRESS: 0xFFB85F ---- RAM-ADDRESS: 0x17B9 ---- SIZE       1 ---
+Name of initialized Object : dPI:1
+ 01
+------- ROM-ADDRESS: 0xFFB860 ---- SIZE       1 ---
+Filling bytes inserted
+ 00
+------- ROM-ADDRESS: 0xFFB861 ---- RAM-ADDRESS: 0x17BB ---- SIZE       1 ---
 Name of initialized Object : qPI:1
  01
-------- ROM-ADDRESS: 0xFFB22F ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xFFB862 ---- SIZE       4 ---
 Filling bytes inserted
  00000000
 
@@ -4611,7 +4754,7 @@ Filling bytes inserted
 OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 state_table               USES stateFault stateInit stateReady stateCalib 
-                                stateAlign stateRun stateReset 
+                                stateAlign stateRun stateReset stateCheckM stateBrake 
 DoZeroOut                 USES _startupData 
 DoCopyDown                USES _startupData 
 _Startup                  USES __SEG_END_SSTACK DoZeroOut DoCopyDown main 
@@ -4624,10 +4767,8 @@ Fault_Overcurrent         USES cntrState drvFOC mcFaultSource FaultProcess
                                 permFaults 
 Fault_Stall               USES cntrState pos_mode mcEsValue mcSpeedFlt 
                                 mcFaultSource FaultProcess permFaults 
-Fault_Start               USES cntrState mcEsValue mcSpeedFlt pos_mode 
-                                mcFaultSource FaultProcess permFaults 
 User_Fault_Detection      USES segmentstate mcFaultDect Fault_OverVoltage 
-                                Fault_Start Fault_Stall 
+                                Fault_Stall 
 EnableOutput              USES SetDutycycle 
 DisableOutput             USES SetDutycycle 
 SetDutycycle              USES minSamplingPulse minZeroPulse CalcEdges 
@@ -4713,17 +4854,18 @@ FMSTR_Rx                  USES pcm_wFlags pcm_nRxTodo pcm_nRxCheckSum
 FMSTR_InitSerial          USES pcm_wFlags pcm_nTxTodo FMSTR_Listen 
 FMSTR_Poll                USES FMSTR_ProcessSCI 
 main                      USES cpmu_init pim_init pmf_init ptu_init adc0_init 
-                                adc1_init sci1_init gdu_init FMSTR_Init 
+                                adc1_init sci1_init gdu_init tim_init FMSTR_Init 
                                 FaultVariablesInit mcFaultDect cntrState FMSTR_Poll 
 ADC0error_ISR             USES AdcError0 permFaults AdcErrorLDOK AdcErrorRSTAR 
                                 AdcErrorTRIG AdcErrorEOL AdcErrorCMD AdcErrorIA 
 ADC1error_ISR             USES AdcError1 permFaults AdcErrorLDOK AdcErrorRSTAR 
                                 AdcErrorTRIG AdcErrorEOL AdcErrorCMD AdcErrorIA 
-PMFreloadA_ISR            USES cntrState _ZZ14PMFreloadA_ISRvE12getFcnStatus 
-                                drvFOC meas Meas_Get3PhCurrent Meas_GetTemperature 
-                                Meas_GetUdcVoltage mcFaultDect Fault_Overcurrent Timer1msCNT 
-                                pos_mode Timer10msCNT TimerOLRampCNT faultDetection 
-                                state_table FMSTR_Recorder 
+PMFreloadA_ISR            USES _ZZ14PMFreloadA_ISRvE12getFcnStatus drvFOC meas 
+                                Meas_Get3PhCurrent Meas_GetTemperature Meas_GetUdcVoltage 
+                                mcFaultDect Fault_Overcurrent Motor_TailWind Timer1msCNT 
+                                pos_mode Timer10msCNT cntrState TimerOLRampCNT 
+                                BrakeLoopDuration LinkupDuration RunningChk_counter 
+                                faultDetection state_table FMSTR_Recorder 
 stateReset                USES cntrState DisableOutput fmScale drvFOC 
                                 GDFLIB_FilterIIR1Init_F16 OL_SpeedRampInc CL_SpeedRampInc 
                                 CL_SpeedRampDec AMCLIB_BemfObsrvDQInit_F16 
@@ -4732,19 +4874,23 @@ stateFault                USES cntrState DisableOutput permFaults
                                 ClearDriverError ClearPMF_Faults ClearPTU_Errors mcFaultSource 
 stateInit                 USES cntrState DisableOutput drvFOC meas Meas_Clear 
                                 GDFLIB_FilterIIR1Init_F16 OL_SpeedRampInc AMCLIB_BemfObsrvDQInit_F16 
-                                AMCLIB_TrackObsrvInit_F16 GDFLIB_FilterMAInit_F16 pos_mode tempfaults 
+                                AMCLIB_TrackObsrvInit_F16 GDFLIB_FilterMAInit_F16 pos_mode control_flags 
+                                tempfaults 
 stateReady                USES cntrState 
 stateCalib                USES cntrState DisableOutput drvFOC meas 
-                                Meas_CalibCurrentSense SetDutycycle 
+                                Meas_CalibCurrentSense SetDutycycle AppCalibToCheckMotor 
 stateAlign                USES cntrState EnableOutput drvFOC f16gflibSinCoef 
                                 GFLIB_Sin_F16 f16gflibCosCoef GFLIB_Cos_F16 
                                 GMCLIB_ParkInv_F16 GMCLIB_SvmStd_F16 SetDutycycle 
 stateRun                  USES _ZZ8stateRunvE14stateRunStatus cntrState 
-                                pos_mode drvFOC CalcOpenLoop AMCLIB_BemfObsrvDQ_F16 
-                                AMCLIB_TrackObsrv_F16 GDFLIB_FilterMA_F16 automaticMode 
-                                CL_SpeedRampInc CL_SpeedRampDec OL_SpeedRampInc 
-                                AMCLIB_BemfObsrvDQInit_F16 focSlowLoop tempfaults focFastLoop 
-                                SetDutycycle 
+                                pos_mode drvFOC actualSpeed CalcOpenLoop 
+                                AMCLIB_BemfObsrvDQ_F16 AMCLIB_TrackObsrv_F16 GDFLIB_FilterMA_F16 
+                                LinkupDuration automaticMode CL_SpeedRampInc CL_SpeedRampDec 
+                                OL_SpeedRampInc AMCLIB_BemfObsrvDQInit_F16 focSlowLoop 
+                                tempfaults focFastLoop SetDutycycle 
+stateCheckM               USES cntrState RunningChk_counter control_flags 
+                                AppBrakeToAlignment 
+stateBrake                USES cntrState BrakeLoopDuration brakeEnableFlags 
 focSlowLoop               USES cntrState drvFOC GFLIB_Ramp_F32 
                                 GDFLIB_FilterMA_F16 GFLIB_ControllerPIpAW_F16 
 focFastLoop               USES drvFOC GMCLIB_Clark_F16 cntrState 
@@ -4757,6 +4903,24 @@ faultDetection            USES GetDriverError permFaults GetPMF_Faults
                                 User_Fault_Detection mcFaultSource 
 CalcOpenLoop              USES GFLIB_IntegratorTR_F16 
 automaticMode             USES drvFOC pos_mode 
+Motor_TailWind            USES cntrState timeBEMF ADC1ResultList phaseVoltage 
+                                ADC_channel vph_blue vph_yellow vph_red CheckMotorRunning 
+CheckMotorRunning         USES control_flags 
+                                _ZZ17CheckMotorRunningvE13retry_counter_6 vph_red permFaults 
+                                _ZZ17CheckMotorRunningvE15level_count_red_2 _ZZ17CheckMotorRunningvE16previous_vph_red 
+                                timeBEMF NextCmtSector ActualCmtSector 
+                                _ZZ17CheckMotorRunningvE18previous_edge_time_5 actualSpeed vph_yellow 
+                                _ZZ17CheckMotorRunningvE18level_count_yellow_3 
+                                _ZZ17CheckMotorRunningvE19previous_vph_yellow_0 vph_blue 
+                                _ZZ17CheckMotorRunningvE16level_count_blue_4 _ZZ17CheckMotorRunningvE17previous_vph_blue_1 
+                                BrakeLoopDuration NextCmtPeriod duty_cycle AppTranToBrake 
+AppTranToBrake            USES control_flags EnableOutput drvFOC 
+                                f16gflibSinCoef GFLIB_Sin_F16 f16gflibCosCoef GFLIB_Cos_F16 
+                                GMCLIB_ParkInv_F16 GMCLIB_SvmStd_F16 SetDutycycle cntrState 
+AppBrakeToAlignment       USES drvFOC cntrState 
+AppCalibToCheckMotor      USES DisableOutput RunningChk_counter actualSpeed 
+                                control_flags vph_red vph_yellow vph_blue NextCmtSector 
+                                ADC_channel cntrState 
 AMCLIB_BemfObsrvDQ_F16    USES f16gflibSinCosCoef GFLIB_SinCos_F16 
                                 GFLIB_ControllerPIrAW_F16 f16gflibAtanCoef GFLIB_Atan_F16 
 _vectab                   USES dummy PMFreloadA_ISR ADC1done_ISR ADC1error_ISR 
@@ -4784,6 +4948,8 @@ DEPENDENCY TREE
  |  +- sci1_init           
  |  |    
  |  +- gdu_init            
+ |  |    
+ |  +- tim_init            
  |  |    
  |  +- FMSTR_Init          
  |  |  | 
@@ -4919,6 +5085,32 @@ DEPENDENCY TREE
  |  |  | 
  |  |  +- FaultProcess        
  |  |       
+ |  +- Motor_TailWind      
+ |  |  | 
+ |  |  +- CheckMotorRunning   
+ |  |     | 
+ |  |     +- AppTranToBrake      
+ |  |        | 
+ |  |        +- EnableOutput        
+ |  |        |  | 
+ |  |        |  +- SetDutycycle        
+ |  |        |     | 
+ |  |        |     +- CalcEdges           
+ |  |        |     |    
+ |  |        |     +- SetPtuTriggers      
+ |  |        |     |    
+ |  |        |     +- SetPmfValReg        
+ |  |        |          
+ |  |        +- GFLIB_Sin_F16       
+ |  |        |    
+ |  |        +- GFLIB_Cos_F16       
+ |  |        |    
+ |  |        +- GMCLIB_ParkInv_F16  
+ |  |        |    
+ |  |        +- GMCLIB_SvmStd_F16   
+ |  |        |    
+ |  |        +- SetDutycycle         (see above)
+ |  |           
  |  +- faultDetection      
  |  |  | 
  |  |  +- GetDriverError      
@@ -4933,10 +5125,6 @@ DEPENDENCY TREE
  |  |     |  | 
  |  |     |  +- FaultProcess         (see above)
  |  |     |     
- |  |     +- Fault_Start         
- |  |     |  | 
- |  |     |  +- FaultProcess         (see above)
- |  |     |     
  |  |     +- Fault_Stall         
  |  |        | 
  |  |        +- FaultProcess         (see above)
@@ -4947,14 +5135,8 @@ DEPENDENCY TREE
  |  |  |  | 
  |  |  |  +- DisableOutput       
  |  |  |  |  | 
- |  |  |  |  +- SetDutycycle        
- |  |  |  |     | 
- |  |  |  |     +- CalcEdges           
- |  |  |  |     |    
- |  |  |  |     +- SetPtuTriggers      
- |  |  |  |     |    
- |  |  |  |     +- SetPmfValReg        
- |  |  |  |          
+ |  |  |  |  +- SetDutycycle         (see above)
+ |  |  |  |     
  |  |  |  +- ClearDriverError    
  |  |  |  |    
  |  |  |  +- ClearPMF_Faults     
@@ -4988,21 +5170,23 @@ DEPENDENCY TREE
  |  |  |  |  +- GDFLIB_FilterMA_F16 
  |  |  |  |       
  |  |  |  +- SetDutycycle         (see above)
- |  |  |     
+ |  |  |  |  
+ |  |  |  +- AppCalibToCheckMotor
+ |  |  |     | 
+ |  |  |     +- DisableOutput        (see above)
+ |  |  |        
  |  |  +- stateAlign          
  |  |  |  | 
- |  |  |  +- EnableOutput        
- |  |  |  |  | 
- |  |  |  |  +- SetDutycycle         (see above)
- |  |  |  |     
- |  |  |  +- GFLIB_Sin_F16       
- |  |  |  |    
- |  |  |  +- GFLIB_Cos_F16       
- |  |  |  |    
- |  |  |  +- GMCLIB_ParkInv_F16  
- |  |  |  |    
- |  |  |  +- GMCLIB_SvmStd_F16   
- |  |  |  |    
+ |  |  |  +- EnableOutput         (see above)
+ |  |  |  |  
+ |  |  |  +- GFLIB_Sin_F16        (see above)
+ |  |  |  |  
+ |  |  |  +- GFLIB_Cos_F16        (see above)
+ |  |  |  |  
+ |  |  |  +- GMCLIB_ParkInv_F16   (see above)
+ |  |  |  |  
+ |  |  |  +- GMCLIB_SvmStd_F16    (see above)
+ |  |  |  |  
  |  |  |  +- SetDutycycle         (see above)
  |  |  |     
  |  |  +- stateRun            
@@ -5060,17 +5244,23 @@ DEPENDENCY TREE
  |  |  |  +- SetDutycycle         (see above)
  |  |  |     
  |  |  +- stateReset          
- |  |     | 
- |  |     +- DisableOutput        (see above)
- |  |     |  
- |  |     +- GDFLIB_FilterIIR1Init_F16 (see above)
- |  |     |  
- |  |     +- AMCLIB_BemfObsrvDQInit_F16 (see above)
- |  |     |  
- |  |     +- AMCLIB_TrackObsrvInit_F16 (see above)
- |  |     |  
- |  |     +- GDFLIB_FilterMAInit_F16 (see above)
- |  |        
+ |  |  |  | 
+ |  |  |  +- DisableOutput        (see above)
+ |  |  |  |  
+ |  |  |  +- GDFLIB_FilterIIR1Init_F16 (see above)
+ |  |  |  |  
+ |  |  |  +- AMCLIB_BemfObsrvDQInit_F16 (see above)
+ |  |  |  |  
+ |  |  |  +- AMCLIB_TrackObsrvInit_F16 (see above)
+ |  |  |  |  
+ |  |  |  +- GDFLIB_FilterMAInit_F16 (see above)
+ |  |  |     
+ |  |  +- stateCheckM         
+ |  |  |  | 
+ |  |  |  +- AppBrakeToAlignment 
+ |  |  |       
+ |  |  +- stateBrake          
+ |  |       
  |  +- FMSTR_Recorder      
  |     | 
  |     +- FMSTR_Recorder2     
@@ -5095,6 +5285,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 4
-Total size of all blocks to be downloaded: 13344
+Number of blocks to be downloaded: 5
+Total size of all blocks to be downloaded: 14931
 

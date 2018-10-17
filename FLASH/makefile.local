@@ -5,7 +5,7 @@
 ################################################################################
 
 export GNU_Make_Install_DirEnv=$(CWInstallLocationEnv)/gnu/bin
-export ProjDirPath=D:/Users/workspace/Wisemay_CoolingFan
+export ProjDirPath=D:/Users/workspace/Wisemay_CoolingFan_V2.0
 export CWInstallLocationEnv=C:/Freescale/CW MCU v11.0
 export MC9S12ZVM_AMMCLIB_V1_1_13=C:/Freescale/AMMCLIB/MC9S12ZVM_AMMCLIB_v1.1.13
 export MCUToolsBaseDirEnv=$(CWInstallLocationEnv)/MCU

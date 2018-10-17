@@ -1,15 +1,15 @@
-src/AddFunction_c.obj: D:\Users\workspace\Wisemay_CoolingFan\src\AddFunction.c \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\mc9s12zvml32.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\S12zvm_periph.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\cpmu.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\pim.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\pmf.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\gdu.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\ptu.h \
-	D:\Users\workspace\Wisemay_CoolingFan\Config\S12ZVM_devconfig.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\sci.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\adc.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\state_machine.h \
+src/AddFunction_c.obj: D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\AddFunction.c \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\mc9s12zvml32.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\S12zvm_periph.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\cpmu.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\pim.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\pmf.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\gdu.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\ptu.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\Config\S12ZVM_devconfig.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\sci.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\adc.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\state_machine.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\mlib.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\MLIB_Abs.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\SWLIBS_Defines.h \
@@ -81,7 +81,7 @@ src/AddFunction_c.obj: D:\Users\workspace\Wisemay_CoolingFan\src\AddFunction.c \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterIIR2.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterFIR.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterMA.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\motor_structure.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\motor_structure.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\amclib.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\AMCLIB_BemfObsrvDQ.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\AMCLIB_TrackObsrv.h \
@@ -89,7 +89,7 @@ src/AddFunction_c.obj: D:\Users\workspace\Wisemay_CoolingFan\src\AddFunction.c \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\AMCLIB_FW.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\AMCLIB_FWSpeedLoop.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\AMCLIB_SpeedLoop.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\meas_s12zvm.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\actuate_s12zvm.h \
-	D:\Users\workspace\Wisemay_CoolingFan\Config\PMSM_appconfig.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\AddFunction.h 
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\meas_s12zvm.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\actuate_s12zvm.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\Config\PMSM_appconfig.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\AddFunction.h 

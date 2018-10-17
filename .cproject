@@ -23,7 +23,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="elf" artifactName="Wisemay_CoolingFan" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" buildReferences="true" buildReferencingConfigurations="false" cleanCommand="&quot;${system:ECLIPSE_HOME}/../gnu/bin/rm&quot; -f" description="" errorParsers="com.freescale.core.ide.cdt.errorParsers.GCCErrorParser;org.eclipse.cdt.core.GmakeErrorParser;com.freescale.core.ide.cdt.errorParsers.LnkErrorParser;com.freescale.core.ide.cdt.errorParsers.AsmErrorParser;com.freescale.core.ide.cdt.errorParsers.CobjErrorParser;com.freescale.core.ide.cdt.errorParsers.IcodeErrorParser;com.freescale.core.ide.cdt.errorParsers.LltErrorParser;com.freescale.core.ide.cdt.errorParsers.MwfeErrorParser;com.freescale.core.ide.cdt.errorParsers.MwErrorParser;com.freescale.core.ide.cdt.errorParsers.MPWErrorParser;com.freescale.core.ide.cdt.errorParsers.S08ErrorParser" id="com.freescale.s12z.toolchain.release.279195578" isPrebuildInvalidatingBuild="false" isVersionInfoProjSpecific="false" name="FLASH" parent="com.freescale.s12z.toolchain.release" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="" produceBuildErrorsWithMissingReferences="true">
+				<configuration artifactExtension="elf" artifactName="Wisemay_CoolingFan_2.0" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" buildReferences="true" buildReferencingConfigurations="false" cleanCommand="&quot;${system:ECLIPSE_HOME}/../gnu/bin/rm&quot; -f" description="" errorParsers="com.freescale.core.ide.cdt.errorParsers.GCCErrorParser;org.eclipse.cdt.core.GmakeErrorParser;com.freescale.core.ide.cdt.errorParsers.LnkErrorParser;com.freescale.core.ide.cdt.errorParsers.AsmErrorParser;com.freescale.core.ide.cdt.errorParsers.CobjErrorParser;com.freescale.core.ide.cdt.errorParsers.IcodeErrorParser;com.freescale.core.ide.cdt.errorParsers.LltErrorParser;com.freescale.core.ide.cdt.errorParsers.MwfeErrorParser;com.freescale.core.ide.cdt.errorParsers.MwErrorParser;com.freescale.core.ide.cdt.errorParsers.MPWErrorParser;com.freescale.core.ide.cdt.errorParsers.S08ErrorParser" id="com.freescale.s12z.toolchain.release.279195578" isPrebuildInvalidatingBuild="false" isVersionInfoProjSpecific="false" name="FLASH" parent="com.freescale.s12z.toolchain.release" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="" produceBuildErrorsWithMissingReferences="true">
 					<folderInfo id="com.freescale.s12z.toolchain.release.279195578." name="/" resourcePath="">
 						<toolChain errorParsers="" id="com.freescale.s12z.toolchain.release.900579031" name="S12Z Toolchain" superClass="com.freescale.s12z.toolchain.release">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="com.freescale.s12z.toolchain.targetPlatform.1157907620" isAbstract="false" name="S12Z Target Platform" superClass="com.freescale.s12z.toolchain.targetPlatform"/>
@@ -35,7 +35,7 @@
 								<option id="com.freescale.s12z.toolchain.linker.input.paramFile.895058026" name="Parameter File" superClass="com.freescale.s12z.toolchain.linker.input.paramFile" value="${ProjDirPath}\src\S12ZVM_system\startup_CW\S12zvm.prm" valueType="string"/>
 								<option id="com.freescale.s12z.toolchain.linker.input.libs.370644078" name="Libraries" superClass="com.freescale.s12z.toolchain.linker.input.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="&quot;${MCUToolsBaseDir}/S12lisa_Support/s12lisac/lib_small/ansii.lib&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\lib\cw10x\MC9S12ZVM_AMMCLIB.UC.a&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\lib\cw10x\MC9S12ZVM_AMMCLIB.UC.a&quot;"/>
 								</option>
 								<option id="com.freescale.s12z.toolchain.linker.msgs.WmsgSd.1122979565" name="Set Messages to Disable" superClass="com.freescale.s12z.toolchain.linker.msgs.WmsgSd" valueType="stringList">
 									<listOptionValue builtIn="false" value="1100"/>
@@ -44,13 +44,10 @@
 								<option id="com.freescale.s12z.toolchain.linker.base.linkOrder.1152654921" name="Link Order" superClass="com.freescale.s12z.toolchain.linker.base.linkOrder" valueType="stringList">
 									<listOptionValue builtIn="false" value=".metadata/.plugins/org.eclipse.cdt.make.core/specs.c"/>
 									<listOptionValue builtIn="false" value=".metadata/.plugins/org.eclipse.cdt.make.core/specs.cpp"/>
-									<listOptionValue builtIn="false" value="MC9S12ZVML128_PMSM.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/S12ZVM/freemaster_HC12.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_appcmd.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_bdm.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_can.c"/>
-									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_lin.c"/>
-									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_pipes.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_protocol.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_rec.c"/>
 									<listOptionValue builtIn="false" value="src/FreeMASTER/src_common/freemaster_scope.c"/>
@@ -69,9 +66,12 @@
 									<listOptionValue builtIn="false" value="src/actuate_s12zvm.c"/>
 									<listOptionValue builtIn="false" value="src/meas_s12zvm.c"/>
 									<listOptionValue builtIn="false" value="src/state_machine.c"/>
-									<listOptionValue builtIn="false" value="src/S12ZVM_system/startup_CW/mc9s12zvml31.c"/>
+									<listOptionValue builtIn="false" value="Wisemay_CoolingFan.c"/>
+									<listOptionValue builtIn="false" value="src/AddFunction.c"/>
+									<listOptionValue builtIn="false" value="src/S12ZVM_system/startup_CW/mc9s12zvml32.c"/>
 								</option>
 								<option id="com.freescale.s12z.toolchain.linker.output.b.145739936" name="Generate S-Record file" superClass="com.freescale.s12z.toolchain.linker.output.b" value="true" valueType="boolean"/>
+								<option id="com.freescale.s12z.toolchain.linker.input.searchpath.1667729529" name="Search Paths" superClass="com.freescale.s12z.toolchain.linker.input.searchpath"/>
 								<inputType id="com.freescale.s12z.toolchain.linker.inputType.241025886" name="S12Z Linker Input" superClass="com.freescale.s12z.toolchain.linker.inputType">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>

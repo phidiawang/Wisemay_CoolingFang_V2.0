@@ -1,6 +1,6 @@
-src/actuate_s12zvm_c.obj: D:\Users\workspace\Wisemay_CoolingFan\src\actuate_s12zvm.c \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\mc9s12zvml32.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\actuate_s12zvm.h \
+src/actuate_s12zvm_c.obj: D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\actuate_s12zvm.c \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\mc9s12zvml32.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\actuate_s12zvm.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\gflib.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GFLIB_Sin.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\SWLIBS_Typedefs.h \
@@ -72,5 +72,5 @@ src/actuate_s12zvm_c.obj: D:\Users\workspace\Wisemay_CoolingFan\src\actuate_s12z
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterIIR2.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterFIR.h \
 	C:\Freescale\AMMCLIB\MC9S12ZVM_AMMCLIB_v1.1.13\include\GDFLIB_FilterMA.h \
-	D:\Users\workspace\Wisemay_CoolingFan\src\S12ZVM_system\peripherals\ptu.h \
-	D:\Users\workspace\Wisemay_CoolingFan\Config\S12ZVM_devconfig.h 
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\src\S12ZVM_system\peripherals\ptu.h \
+	D:\Users\workspace\Wisemay_CoolingFan_V2.0\Config\S12ZVM_devconfig.h 

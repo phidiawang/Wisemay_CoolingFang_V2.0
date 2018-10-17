@@ -31,7 +31,7 @@
 /* protect value */
 #define 	CurrentRecoverEnable	(0) // 电流保护恢复，0,不使能；1，使能
 #define 	VoltageProtectEnable	(1) // 电压保护，0,不使能；1，使能
-#define 	StartProtectEnable		(1) // 启动保护，0,不使能；1，使能
+#define 	StartProtectEnable		(0) // 启动保护，0,不使能；1，使能
 #define 	StallProtectEnable		(1) // 堵转保护，0,不使能；1，使能
 #define 	PhaseLossProtectEnable	(0) // 缺相保护，0,不使能；1，使能
 #define		EmptyRunProtectEnable   (0)

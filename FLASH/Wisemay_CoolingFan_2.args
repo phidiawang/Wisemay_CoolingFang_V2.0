@@ -29,7 +29,7 @@
 "$(ProjDirPath)/FLASH/src/FreeMASTER/src_common/freemaster_sfio_c.obj"
 "$(ProjDirPath)/FLASH/src/FreeMASTER/src_common/freemaster_tsa_c.obj"
 "$(ProjDirPath)/FLASH/src/FreeMASTER/S12ZVM/freemaster_HC12_c.obj"
-"$(ProjDirPath)/FLASH/Wisemay_CoolingFan_c.obj"
+"$(ProjDirPath)/FLASH/Wisemay_CoolingFan_V2_0_c.obj"
 "$(ProjDirPath)/FLASH/.metadata/.plugins/org.eclipse.cdt.make.core/specs_c.obj"
 "$(ProjDirPath)/FLASH/.metadata/.plugins/org.eclipse.cdt.make.core/specs_cpp.obj"
 "$(MCUToolsBaseDirEnv)/S12lisa_Support/s12lisac/lib_small/ansii.lib"

@@ -60,37 +60,37 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Wisemay_CoolingFan.elf \
+Wisemay_CoolingFan_2.0.elf \
 
 EXECUTABLES_QUOTED += \
-"Wisemay_CoolingFan.elf" \
+"Wisemay_CoolingFan_2.0.elf" \
 
 EXECUTABLES_OS_FORMAT += \
-Wisemay_CoolingFan.elf \
+Wisemay_CoolingFan_2.0.elf \
 
 BURNER_OUTPUT_OUTPUTS += \
-Wisemay_CoolingFan.elf.s19 \
+Wisemay_CoolingFan_2.0.elf.s19 \
 
 BURNER_OUTPUT_OUTPUTS_QUOTED += \
-"Wisemay_CoolingFan.elf.s19" \
+"Wisemay_CoolingFan_2.0.elf.s19" \
 
 BURNER_OUTPUT_OUTPUTS_OS_FORMAT += \
-Wisemay_CoolingFan.elf.s19 \
+Wisemay_CoolingFan_2.0.elf.s19 \
 
 
 # All Target
-all: warning-messages explicit-dependencies Wisemay_CoolingFan.elf
+all: warning-messages explicit-dependencies Wisemay_CoolingFan_2.0.elf
 
 # Tool invocations
-Wisemay_CoolingFan.elf: $(OBJS) $(USER_OBJS) ../src/S12ZVM_system/startup_CW/S12zvm.prm
+Wisemay_CoolingFan_2.0.elf: $(OBJS) $(USER_OBJS) ../src/S12ZVM_system/startup_CW/S12zvm.prm
 	@echo 'Building target: $@'
 	@echo 'Executing target #28 $@'
 	@echo 'Invoking: S12Z Linker'
-	"$(S12Z_ToolsDirEnv)/linker" -ArgFile"Wisemay_CoolingFan_1.args" -O"Wisemay_CoolingFan.elf"
+	"$(S12Z_ToolsDirEnv)/linker" -ArgFile"Wisemay_CoolingFan_2.args" -O"Wisemay_CoolingFan_2.0.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Wisemay_CoolingFan.elf.s19: $(BBL_SRCS) $(EXECUTABLES)
+Wisemay_CoolingFan_2.0.elf.s19: $(BBL_SRCS) $(EXECUTABLES)
 	@echo 'Executing target #29 $@'
 	@echo 'Invoking: S12Z Burner'
 	"$(S12Z_ToolsDirEnv)/burner" -ViewHidden -WmsgFob"%f%e:%l:%k:%d:%m\n" -f="$<" -env"ABS_FILE=$(strip $(EXECUTABLES_OS_FORMAT))"
@@ -99,7 +99,7 @@ Wisemay_CoolingFan.elf.s19: $(BBL_SRCS) $(EXECUTABLES)
 
 # Other Targets
 clean:
-	-$(RM) $(S_DEPS_QUOTED) "./*/*/*/*.obj" "./*.obj" "./*/*/*.obj" "./*/*.obj"  "./*/*/*/*.d"  $(CC_DEPS_QUOTED) $(S_UPPER_DEPS_QUOTED) $(CXX_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(BURNER_OUTPUT_OUTPUTS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(C_UPPER_DEPS_QUOTED) $(C++_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*/*.d" "./*.d" "./*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/Wisemay_CoolingFan.elf
+	-$(RM) $(S_DEPS_QUOTED) "./*/*/*/*.obj" "./*.obj" "./*/*/*.obj" "./*/*.obj"  "./*/*/*/*.d"  $(CC_DEPS_QUOTED) $(S_UPPER_DEPS_QUOTED) $(CXX_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(BURNER_OUTPUT_OUTPUTS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(C_UPPER_DEPS_QUOTED) $(C++_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*/*.d" "./*.d" "./*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/Wisemay_CoolingFan_2.0.elf
 	-@echo ' '
 
 .PHONY: all clean dependents explicit-dependencies warning-messages

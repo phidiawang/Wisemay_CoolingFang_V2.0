@@ -44,11 +44,11 @@ typedef enum {
     fault           = 1,
     ready           = 2,
     calib           = 3,
-    align           = 4,
-    run             = 5,
-    reset			= 6,
-    checkM		    = 7,
-    brake			= 8    
+    checkM		    = 4,
+    brake			= 5,      
+    align           = 6,
+    run             = 7,
+    reset			= 8  
 }AppStates;         /* Application state identification user type*/
 
 typedef enum {
